@@ -13,8 +13,8 @@
     <ReadMe>https://github.com/NousResearch/hermes-agent/blob/main/README.md</ReadMe>
     <Support>https://github.com/NousResearch/hermes-agent/issues</Support>
     <Project>https://hermes-agent.nousresearch.com/</Project>
-    <Overview>Hermes Agent is a self-improving AI agent built by Nous Research. Features a built-in learning loop, memory system, and supports multiple messaging platforms (Telegram, Discord, Slack, WhatsApp, Matrix, Email, etc.). Stores all config, memory, sessions, and skills in /opt/data. Access the web dashboard at the same port as the gateway API (default: 8642).&#13;&#13;For detailed setup instructions, see the official docs: https://hermes-agent.nousresearch.com/docs</Overview>
-    <WebUI>http://[IP]:[PORT:8642]</WebUI>
+    <Overview>Hermes Agent is a self-improving AI agent built by Nous Research. Features a built-in learning loop, memory system, and supports multiple messaging platforms (Telegram, Discord, Slack, WhatsApp, Matrix, Email, etc.). Stores all config, memory, sessions, and skills in /opt/data. Access the web dashboard at the same port as the gateway API (default: 9119).&#13;&#13;For detailed setup instructions, see the official docs: https://hermes-agent.nousresearch.com/docs</Overview>
+    <WebUI>http://[IP]:[PORT:9119]</WebUI>
     <TemplateURL>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/hermes-agent.xml</TemplateURL>
     <Icon>https://raw.githubusercontent.com/NousResearch/hermes-agent/main/assets/banner.png</Icon>
     <Date>2026-04-22</Date>
@@ -22,7 +22,7 @@
     <Requires>Shared memory is set to 1GB for Playwright browser automation. If you run many concurrent browser tasks, increase --shm-size to 2g or 4g in Extra Parameters. To edit Extra Parameters, switch Basic View --> Advanced View.</Requires>
 
     <!-- Port Mappings -->
-    <Config Name="Port: Gateway/Dashboard" Target="8642" Default="8642" Mode="tcp" Description="HTTP port for the Hermes gateway API and web dashboard." Type="Port" Display="always" Required="true" Mask="false"/>
+    <Config Name="Port: Gateway/Dashboard" Target="9119" Default="9119" Mode="tcp" Description="HTTP port for the Hermes gateway API and web dashboard." Type="Port" Display="always" Required="true" Mask="false"/>
 
     <!-- Volume Mappings -->
     <Config Name="Path: Config" Target="/opt/data" Default="/mnt/user/appdata/hermes-agent" Mode="rw" Description="Persistent config directory for Hermes (.env, config.yaml, skills, memories, logs)." Type="Path" Display="always" Required="true" Mask="false"/>
@@ -34,7 +34,7 @@
     <Config Name="--- API Server ---" Target="" Default="" Mode="" Description="Docs: https://hermes-agent.nousresearch.com/docs" Type="Variable" Display="always" Required="false" Mask="false"/>
     <Config Name="Variable: API_SERVER_ENABLED" Target="API_SERVER_ENABLED" Default="true" Description="Enable the built-in HTTP API server (required for dashboard and integrations)." Type="Variable" Display="always" Required="true" Mask="false"/>
     <Config Name="Variable: API_SERVER_HOST" Target="API_SERVER_HOST" Default="0.0.0.0" Description="Host address for the API server (0.0.0.0 for all interfaces)." Type="Variable" Display="always" Required="true" Mask="false"/>
-    <Config Name="Variable: API_SERVER_PORT" Target="API_SERVER_PORT" Default="8642" Description="Port for the API server." Type="Variable" Display="hidden" Required="true" Mask="false"/>
+    <Config Name="Variable: API_SERVER_PORT" Target="API_SERVER_PORT" Default="9119" Description="Port for the API server." Type="Variable" Display="hidden" Required="true" Mask="false"/>
     <Config Name="Variable: API_SERVER_KEY" Target="API_SERVER_KEY" Default="" Description="Bearer token for API authentication. Required when binding to non-localhost. Use the same value in Open WebUI.&#13;&#13;Generate with: openssl rand -hex 32" Type="Variable" Display="always" Required="true" Mask="true"/>
 
     <!-- Separator: Matrix -->
@@ -46,9 +46,9 @@
     <Config Name="Variable: MATRIX_RECOVERY_KEY" Target="MATRIX_RECOVERY_KEY" Default="" Description="Matrix recovery key for cross-signing (for E2EE)." Type="Variable" Display="always" Required="false" Mask="true"/>
     <Config Name="Variable: MATRIX_DEVICE_ID" Target="MATRIX_DEVICE_ID" Default="HERMES_BOT" Description="Matrix device ID (leave empty for auto-generated)." Type="Variable" Display="always" Required="false" Mask="false"/>
     <Config Name="Variable: MATRIX_HOME_ROOM" Target="MATRIX_HOME_ROOM" Default="" Description="Matrix room ID for bot's home room (for cron notifications)." Type="Variable" Display="always" Required="false" Mask="false"/>
+    <Config Name="Variable: MATRIX_ALLOWED_USERS" Target="MATRIX_ALLOWED_USERS" Default="" Description="Comma-separated list of allowed Matrix user IDs (empty = deny all except self)." Type="Variable" Display="always" Required="false" Mask="false"/>
     <Config Name="Variable: MATRIX_ENCRYPTION" Target="MATRIX_ENCRYPTION" Default="true" Description="Enable end-to-end encryption (requires libolm)." Type="Variable" Display="always" Required="false" Mask="false"/>
     <Config Name="Variable: MATRIX_REQUIRE_MENTION" Target="MATRIX_REQUIRE_MENTION" Default="false" Description="Bot only responds when mentioned in rooms (DMs always respond)." Type="Variable" Display="always" Required="false" Mask="false"/>
-    <Config Name="Variable: MATRIX_ALLOWED_USERS" Target="MATRIX_ALLOWED_USERS" Default="" Description="Comma-separated list of allowed Matrix user IDs (empty = deny all except self)." Type="Variable" Display="always" Required="false" Mask="false"/>
     <Config Name="Variable: MATRIX_REACTIONS" Target="MATRIX_REACTIONS" Default="true" Description="Show emoji reactions during message processing." Type="Variable" Display="always" Required="false" Mask="false"/>
     <Config Name="Variable: MATRIX_AUTO_THREAD" Target="MATRIX_AUTO_THREAD" Default="true" Description="Auto-create threads for responses in rooms." Type="Variable" Display="always" Required="false" Mask="false"/>
     <Config Name="Variable: MATRIX_FREE_RESPONSE_ROOMS" Target="MATRIX_FREE_RESPONSE_ROOMS" Default="" Description="Comma-separated room IDs that respond without mention." Type="Variable" Display="always" Required="false" Mask="false"/>
