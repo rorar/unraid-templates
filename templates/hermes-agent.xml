@@ -32,13 +32,15 @@
     <Config Name="Variable: UMASK" Target="UMASK" Default="000" Description="UMASK for files created by the container." Type="Variable" Display="advanced" Required="false" Mask="false"/>
     <Config Name="Variable: HERMES_HOME" Target="HERMES_HOME" Default="/opt/data" Description="Home directory for Hermes config and data." Type="Variable" Display="hidden" Required="true" Mask="false"/>
 
-    <!-- API Server -->
+    <!-- Separator: API Server -->
+    <Config Name="--- API Server ---" Target="" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false"/>
     <Config Name="Variable: API_SERVER_ENABLED" Target="API_SERVER_ENABLED" Default="true" Description="Enable the built-in HTTP API server (required for dashboard and integrations)." Type="Variable" Display="always" Required="false" Mask="false"/>
     <Config Name="Variable: API_SERVER_HOST" Target="API_SERVER_HOST" Default="0.0.0.0" Description="Host address for the API server (0.0.0.0 for all interfaces)." Type="Variable" Display="always" Required="false" Mask="false"/>
     <Config Name="Variable: API_SERVER_PORT" Target="API_SERVER_PORT" Default="8642" Description="Port for the API server." Type="Variable" Display="hidden" Required="false" Mask="false"/>
     <Config Name="Variable: API_SERVER_KEY" Target="API_SERVER_KEY" Default="" Description="Bearer token for API authentication. Required when binding to non-localhost. Use the same value in Open WebUI." Type="Variable" Display="always" Required="false" Mask="true"/>
 
-    <!-- Matrix Configuration -->
+    <!-- Separator: Matrix -->
+    <Config Name="--- Matrix ---" Target="" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false"/>
     <Config Name="Variable: MATRIX_HOMESERVER" Target="MATRIX_HOMESERVER" Default="https://matrix-client.matrix.org" Description="Matrix homeserver URL." Type="Variable" Display="always" Required="false" Mask="false"/>
     <Config Name="Variable: MATRIX_ACCESS_TOKEN" Target="MATRIX_ACCESS_TOKEN" Default="" Description="Matrix access token (recommended). User ID is auto-detected from token." Type="Variable" Display="always" Required="false" Mask="true"/>
     <Config Name="Variable: MATRIX_USER_ID" Target="MATRIX_USER_ID" Default="" Description="Matrix user ID (auto-detected from access token, or set manually with password)." Type="Variable" Display="always" Required="false" Mask="false"/>
@@ -53,19 +55,23 @@
     <Config Name="Variable: MATRIX_AUTO_THREAD" Target="MATRIX_AUTO_THREAD" Default="true" Description="Auto-create threads for responses in rooms." Type="Variable" Display="always" Required="false" Mask="false"/>
     <Config Name="Variable: MATRIX_FREE_RESPONSE_ROOMS" Target="MATRIX_FREE_RESPONSE_ROOMS" Default="" Description="Comma-separated room IDs that respond without mention." Type="Variable" Display="always" Required="false" Mask="false"/>
 
-    <!-- Telegram Configuration -->
+    <!-- Separator: Telegram -->
+    <Config Name="--- Telegram ---" Target="" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false"/>
     <Config Name="Variable: TELEGRAM_BOT_TOKEN" Target="TELEGRAM_BOT_TOKEN" Default="" Description="Telegram bot token from @BotFather." Type="Variable" Display="always" Required="false" Mask="true"/>
     <Config Name="Variable: TELEGRAM_ALLOWED_USERS" Target="TELEGRAM_ALLOWED_USERS" Default="" Description="Comma-separated list of allowed Telegram user IDs." Type="Variable" Display="always" Required="false" Mask="false"/>
 
-    <!-- Discord Configuration -->
+    <!-- Separator: Discord -->
+    <Config Name="--- Discord ---" Target="" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false"/>
     <Config Name="Variable: DISCORD_BOT_TOKEN" Target="DISCORD_BOT_TOKEN" Default="" Description="Discord bot token." Type="Variable" Display="always" Required="false" Mask="true"/>
     <Config Name="Variable: DISCORD_GUILD_ID" Target="DISCORD_GUILD_ID" Default="" Description="Discord guild/server ID." Type="Variable" Display="always" Required="false" Mask="false"/>
 
-    <!-- Slack Configuration -->
+    <!-- Separator: Slack -->
+    <Config Name="--- Slack ---" Target="" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false"/>
     <Config Name="Variable: SLACK_BOT_TOKEN" Target="SLACK_BOT_TOKEN" Default="" Description="Slack Bot Token (xoxb-...)." Type="Variable" Display="always" Required="false" Mask="true"/>
     <Config Name="Variable: SLACK_APP_TOKEN" Target="SLACK_APP_TOKEN" Default="" Description="Slack App Token (xapp-...)." Type="Variable" Display="always" Required="false" Mask="true"/>
 
-    <!-- LLM Provider Configuration -->
+    <!-- Separator: LLM Provider -->
+    <Config Name="--- LLM Provider ---" Target="" Default="" Mode="" Description="" Type="Variable" Display="advanced" Required="false" Mask="false"/>
     <Config Name="Variable: OPENAI_API_KEY" Target="OPENAI_API_KEY" Default="" Description="OpenAI API key." Type="Variable" Display="advanced" Required="false" Mask="true"/>
     <Config Name="Variable: OPENROUTER_API_KEY" Target="OPENROUTER_API_KEY" Default="" Description="OpenRouter API key." Type="Variable" Display="advanced" Required="false" Mask="true"/>
     <Config Name="Variable: ANTHROPIC_API_KEY" Target="ANTHROPIC_API_KEY" Default="" Description="Anthropic API key (for Claude)." Type="Variable" Display="advanced" Required="false" Mask="true"/>
