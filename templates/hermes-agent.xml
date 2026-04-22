@@ -41,8 +41,8 @@
     <!-- Matrix Configuration -->
     <Config Name="Variable: MATRIX_HOMESERVER" Target="MATRIX_HOMESERVER" Default="https://matrix-client.matrix.org" Description="Matrix homeserver URL." Type="Variable" Display="advanced" Required="false" Mask="false"/>
     <Config Name="Variable: MATRIX_USER_ID" Target="MATRIX_USER_ID" Default="" Description="Matrix user ID (e.g. @hermes:matrix.org)." Type="Variable" Display="always" Required="false" Mask="false"/>
-    <Config Name="Variable: MATRIX_PASSWORD" Target="MATRIX_PASSWORD" Default="" Description="Matrix account password (only if not using access token)." Type="Variable" Display="always" Required="false" Mask="true"/>
-    <Config Name="Variable: MATRIX_ACCESS_TOKEN" Target="MATRIX_ACCESS_TOKEN" Default="" Description="Matrix access token (recommended instead of password)." Type="Variable" Display="advanced" Required="false" Mask="true"/>
+    <Config Name="Variable: MATRIX_ACCESS_TOKEN" Target="MATRIX_ACCESS_TOKEN" Default="" Description="Matrix access token (recommended). If set, remove MATRIX_USER_ID and MATRIX_PASSWORD." Type="Variable" Display="always" Required="false" Mask="true"/>
+    <Config Name="Variable: MATRIX_PASSWORD" Target="MATRIX_PASSWORD" Default="" Description="Matrix password (only if NOT using MATRIX_ACCESS_TOKEN). If using access token, leave empty." Type="Variable" Display="always" Required="false" Mask="true"/>
     <Config Name="Variable: MATRIX_DEVICE_ID" Target="MATRIX_DEVICE_ID" Default="HERMES_BOT" Description="Matrix device ID (leave empty for auto-generated)." Type="Variable" Display="advanced" Required="false" Mask="false"/>
     <Config Name="Variable: MATRIX_HOME_ROOM" Target="MATRIX_HOME_ROOM" Default="" Description="Matrix room ID for bot's home room (for cron notifications)." Type="Variable" Display="advanced" Required="false" Mask="false"/>
     <Config Name="Variable: MATRIX_ENCRYPTION" Target="MATRIX_ENCRYPTION" Default="false" Description="Enable end-to-end encryption (requires libolm)." Type="Variable" Display="advanced" Required="false" Mask="false"/>
