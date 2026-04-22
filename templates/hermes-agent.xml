@@ -2,7 +2,7 @@
 <Container version="2">
     <Name>hermes-agent</Name>
     <Beta>false</Beta>
-    <Category>Utility:</Category>
+    <Category>Other: AI:</Category>
     <Repository>ghcr.io/nousresearch/hermes-agent:latest</Repository>
     <Registry>https://github.com/NousResearch/hermes-agent/pkgs/container/hermes-agent</Registry>
     <Network>bridge</Network>
