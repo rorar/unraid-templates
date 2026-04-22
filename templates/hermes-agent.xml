@@ -18,7 +18,7 @@
     <Icon>https://raw.githubusercontent.com/NousResearch/hermes-agent/main/assets/banner.png</Icon>
     <Date>2026-04-22</Date>
     <Changes></Changes>
-    <Requires>Shared memory is set to 1GB for Playwright browser automation. If you run many concurrent browser tasks, increase --shm-size to 2g or 4g in Extra Parameters.</Requires>
+    <Requires>Shared memory is set to 1GB for Playwright browser automation. If you run many concurrent browser tasks, increase --shm-size to 2g or 4g in Extra Parameters. To edit Extra Parameters, switch Basic View --> Advanced View.</Requires>
 
     <!-- Port Mappings -->
     <Config Name="Port: Gateway/Dashboard" Target="8642" Default="8642" Mode="tcp" Description="HTTP port for the Hermes gateway API and web dashboard." Type="Port" Display="always" Required="true" Mask="false"/>
