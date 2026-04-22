@@ -26,11 +26,8 @@
     <!-- Volume Mappings -->
     <Config Name="Path: Config" Target="/opt/data" Default="/mnt/user/appdata/hermes-agent" Mode="rw" Description="Persistent config directory for Hermes (.env, config.yaml, skills, memories, logs)." Type="Path" Display="always" Required="true" Mask="false"/>
 
-    <!-- User & Permissions (Advanced) -->
-    <Config Name="Variable: HERMES_UID" Target="HERMES_UID" Default="99" Description="UID for the hermes user inside container. Match to your Unraid user (default: nobody). Set to 0 for root." Type="Variable" Display="advanced" Required="false" Mask="false"/>
-    <Config Name="Variable: HERMES_GID" Target="HERMES_GID" Default="100" Description="GID for the hermes user. Match to your Unraid users group." Type="Variable" Display="advanced" Required="false" Mask="false"/>
-    <Config Name="Variable: UMASK" Target="UMASK" Default="000" Description="UMASK for files created by the container." Type="Variable" Display="advanced" Required="false" Mask="false"/>
-    <Config Name="Variable: HERMES_HOME" Target="HERMES_HOME" Default="/opt/data" Description="Home directory for Hermes config and data." Type="Variable" Display="hidden" Required="true" Mask="false"/>
+    <!-- Timezone -->
+    <Config Name="Variable: TZ" Target="TZ" Default="Europe/Berlin" Description="Timezone for scheduling." Type="Variable" Display="always" Required="false" Mask="false"/>
 
     <!-- Separator: API Server -->
     <Config Name="--- API Server ---" Target="" Default="" Mode="" Description="Docs: https://hermes-agent.nousresearch.com/docs" Type="Variable" Display="always" Required="false" Mask="false"/>
@@ -99,6 +96,6 @@
     <!-- Sudo (Advanced) -->
     <Config Name="Variable: SUDO_PASSWORD" Target="SUDO_PASSWORD" Default="" Description="Sudo password for the container (stored in plaintext - use with caution)." Type="Variable" Display="advanced" Required="false" Mask="true"/>
 
-    <!-- Timezone -->
-    <Config Name="Variable: TZ" Target="TZ" Default="UTC" Description="Timezone for scheduling." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+    <!-- User & Permissions (Advanced) -->
+    <Config Name="Variable: SUDO_PASSWORD" Target="SUDO_PASSWORD" Default="" Description="Sudo password for the container (stored in plaintext - use with caution)." Type="Variable" Display="advanced" Required="false" Mask="true"/>
 </Container>
