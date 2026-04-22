@@ -22,7 +22,7 @@
     <Requires>Shared memory is set to 1GB for Playwright browser automation. If you run many concurrent browser tasks, increase --shm-size to 2g or 4g in Extra Parameters. To edit Extra Parameters, switch Basic View --> Advanced View.</Requires>
 
     <!-- Port Mappings -->
-    <Config Name="Port: Web Dashboard" Target="9119" Default="9119" Mode="tcp" Description="HTTP port for the web dashboard. Note: Configure Hermes to run the 'dashboard' command (e.g., in .env or startup script)." Type="Port" Display="always" Required="true" Mask="false"/>
+    <Config Name="Port: Web Dashboard" Target="9119" Default="9119" Mode="tcp" Description="HTTP port for the web dashboard. After setup, configure Hermes to run the dashboard command. See: https://hermes-agent.nousresearch.com/docs/user-guide/features/web-dashboard" Type="Port" Display="always" Required="true" Mask="false"/>
 
     <!-- Volume Mappings -->
     <Config Name="Path: Config" Target="/opt/data" Default="/mnt/user/appdata/hermes-agent" Mode="rw" Description="Persistent config directory for Hermes (.env, config.yaml, skills, memories, logs)." Type="Path" Display="always" Required="true" Mask="false"/>
