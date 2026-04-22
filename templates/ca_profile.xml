@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<CAProfile version="1.0">
+    <Repository>https://github.com/rorar/unraid-templates</Repository>
+    <Maintainer>
+        <Name>rorar</Name>
+        <URL>https://github.com/rorar</URL>
+    </Maintainer>
+    <Description>Personal Unraid Docker templates for Hermes Agent and related utilities.</Description>
+</CAProfile>

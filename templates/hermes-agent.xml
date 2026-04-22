@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<Container version="2">
+    <Name>hermes-agent</Name>
+    <Beta>false</Beta>
+    <Category>Utility:</Category>
+    <Repository>ghcr.io/nousresearch/hermes-agent:latest</Repository>
+    <Registry>https://github.com/NousResearch/hermes-agent/pkgs/container/hermes-agent</Registry>
+    <Network>bridge</Network>
+    <ExtraParams>--user 0:0 --hostname=hermes-agent --restart=unless-stopped</ExtraParams>
+    <Shell>bash</Shell>
+    <GitHub>https://github.com/NousResearch/hermes-agent</GitHub>
+    <ReadMe>https://github.com/NousResearch/hermes-agent/blob/main/README.md</ReadMe>
+    <Support>https://github.com/NousResearch/hermes-agent/issues</Support>
+    <Project>https://hermes-agent.nousresearch.com/</Project>
+    <Overview>Hermes Agent is a self-improving AI agent built by Nous Research. It features a built-in learning loop, memory system, and supports multiple messaging platforms (Telegram, Discord, Slack, WhatsApp, etc.).</Overview>
+    <WebUI>http://[IP]:[PORT:8642]</WebUI>
+    <TemplateURL>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/hermes-agent.xml</TemplateURL>
+    <Icon>https://raw.githubusercontent.com/NousResearch/hermes-agent/main/assets/banner.png</Icon>
+    <Date>2026-04-21</Date>
+    <Changes></Changes>
+
+    <!-- Port Mappings -->
+    <Config Name="Port: Gateway API" Target="8642" Default="8642" Mode="tcp" Description="HTTP API port for the Hermes gateway." Type="Port" Display="always" Required="true" Mask="false"/>
+
+    <!-- Volume Mappings -->
+    <Config Name="Path: Config" Target="/opt/data" Default="/mnt/user/appdata/hermes-agent" Mode="rw" Description="Persistent config directory for Hermes." Type="Path" Display="always" Required="true" Mask="false"/>
+
+    <!-- Environment Variables -->
+    <Config Name="Variable: HERMES_UID" Target="HERMES_UID" Default="99" Description="UID for the hermes user inside container. Match to your Unraid user (default: nobody). Set to 0 for root." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+    <Config Name="Variable: HERMES_GID" Target="HERMES_GID" Default="100" Description="GID for the hermes user. Match to your Unraid users group." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+    <Config Name="Variable: UMASK" Target="UMASK" Default="000" Description="UMASK for files created by the container." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+    <Config Name="Variable: HERMES_HOME" Target="HERMES_HOME" Default="/opt/data" Description="Home directory for Hermes config and data." Type="Variable" Display="hidden" Required="true" Mask="false"/>
+
+    <!-- API Server -->
+    <Config Name="Variable: API_SERVER_ENABLED" Target="API_SERVER_ENABLED" Default="true" Description="Enable the built-in HTTP API server." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+    <Config Name="Variable: API_SERVER_HOST" Target="API_SERVER_HOST" Default="0.0.0.0" Description="Host address for the API server." Type="Variable" Display="hidden" Required="false" Mask="false"/>
+    <Config Name="Variable: API_SERVER_PORT" Target="API_SERVER_PORT" Default="8642" Description="Port for the API server." Type="Variable" Display="hidden" Required="false" Mask="false"/>
+
+    <!-- Matrix Configuration -->
+    <Config Name="Variable: MATRIX_HOMESERVER" Target="MATRIX_HOMESERVER" Default="https://matrix-client.matrix.org" Description="Matrix homeserver URL." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+    <Config Name="Variable: MATRIX_USER_ID" Target="MATRIX_USER_ID" Default="" Description="Matrix user ID (e.g. @user:matrix.org)." Type="Variable" Display="always" Required="false" Mask="false"/>
+    <Config Name="Variable: MATRIX_PASSWORD" Target="MATRIX_PASSWORD" Default="" Description="Matrix account password." Type="Variable" Display="always" Required="false" Mask="true"/>
+    <Config Name="Variable: MATRIX_DEVICE_ID" Target="MATRIX_DEVICE_ID" Default="" Description="Matrix device ID (leave empty for auto-generated)." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+    <Config Name="Variable: MATRIX_HOME_ROOM" Target="MATRIX_HOME_ROOM" Default="" Description="Matrix room ID for bot's home room." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+    <Config Name="Variable: MATRIX_ENCRYPTION" Target="MATRIX_ENCRYPTION" Default="true" Description="Enable end-to-end encryption." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+    <Config Name="Variable: MATRIX_REQUIRE_MENTION" Target="MATRIX_REQUIRE_MENTION" Default="false" Description="Bot only responds when mentioned." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+    <Config Name="Variable: MATRIX_ALLOWED_USERS" Target="MATRIX_ALLOWED_USERS" Default="" Description="Comma-separated list of allowed Matrix user IDs (empty = allow all)." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+
+    <!-- Telegram Configuration -->
+    <Config Name="Variable: TELEGRAM_BOT_TOKEN" Target="TELEGRAM_BOT_TOKEN" Default="" Description="Telegram bot token from @BotFather." Type="Variable" Display="always" Required="false" Mask="true"/>
+    <Config Name="Variable: TELEGRAM_ALLOWED_USERS" Target="TELEGRAM_ALLOWED_USERS" Default="" Description="Comma-separated list of allowed Telegram user IDs." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+
+    <!-- Discord Configuration -->
+    <Config Name="Variable: DISCORD_BOT_TOKEN" Target="DISCORD_BOT_TOKEN" Default="" Description="Discord bot token." Type="Variable" Display="always" Required="false" Mask="true"/>
+    <Config Name="Variable: DISCORD_GUILD_ID" Target="DISCORD_GUILD_ID" Default="" Description="Discord guild/server ID." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+
+    <!-- LLM Provider Configuration -->
+    <Config Name="Variable: OPENAI_API_KEY" Target="OPENAI_API_KEY" Default="" Description="OpenAI API key." Type="Variable" Display="advanced" Required="false" Mask="true"/>
+    <Config Name="Variable: OPENROUTER_API_KEY" Target="OPENROUTER_API_KEY" Default="" Description="OpenRouter API key." Type="Variable" Display="advanced" Required="false" Mask="true"/>
+    <Config Name="Variable: ANTHROPIC_API_KEY" Target="ANTHROPIC_API_KEY" Default="" Description="Anthropic API key (for Claude)." Type="Variable" Display="advanced" Required="false" Mask="true"/>
+    <Config Name="Variable: DEEPSEEK_API_KEY" Target="DEEPSEEK_API_KEY" Default="" Description="DeepSeek API key." Type="Variable" Display="advanced" Required="false" Mask="true"/>
+    <Config Name="Variable: GROQ_API_KEY" Target="GROQ_API_KEY" Default="" Description="Groq API key." Type="Variable" Display="advanced" Required="false" Mask="true"/>
+    <Config Name="Variable: OLLAMA_BASE_URL" Target="OLLAMA_BASE_URL" Default="" Description="Ollama base URL (e.g. http://host:11434)." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+    <Config Name="Variable: OPENAI_BASE_URL" Target="OPENAI_BASE_URL" Default="" Description="Custom OpenAI-compatible API base URL." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+
+    <!-- Timezone -->
+    <Config Name="Variable: TZ" Target="TZ" Default="UTC" Description="Timezone for scheduling." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+</Container>
