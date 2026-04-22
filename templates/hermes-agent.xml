@@ -6,24 +6,25 @@
     <Repository>ghcr.io/nousresearch/hermes-agent:latest</Repository>
     <Registry>https://github.com/NousResearch/hermes-agent/pkgs/container/hermes-agent</Registry>
     <Network>bridge</Network>
-    <ExtraParams>--user 0:0 --hostname=hermes-agent --restart=unless-stopped</ExtraParams>
+    <ExtraParams>--shm-size=1g --user 0:0 --hostname=hermes-agent --restart=unless-stopped</ExtraParams>
     <Shell>bash</Shell>
     <GitHub>https://github.com/NousResearch/hermes-agent</GitHub>
     <ReadMe>https://github.com/NousResearch/hermes-agent/blob/main/README.md</ReadMe>
     <Support>https://github.com/NousResearch/hermes-agent/issues</Support>
     <Project>https://hermes-agent.nousresearch.com/</Project>
-    <Overview>Hermes Agent is a self-improving AI agent built by Nous Research. It features a built-in learning loop, memory system, and supports multiple messaging platforms (Telegram, Discord, Slack, WhatsApp, Matrix, Email, etc.). Access the web dashboard at the same port.</Overview>
+    <Overview>Hermes Agent is a self-improving AI agent built by Nous Research. Features a built-in learning loop, memory system, and supports multiple messaging platforms (Telegram, Discord, Slack, WhatsApp, Matrix, Email, etc.). Stores all config, memory, sessions, and skills in /opt/data. Access the web dashboard at the same port as the gateway API (default: 8642).</Overview>
     <WebUI>http://[IP]:[PORT:8642]</WebUI>
     <TemplateURL>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/hermes-agent.xml</TemplateURL>
     <Icon>https://raw.githubusercontent.com/NousResearch/hermes-agent/main/assets/banner.png</Icon>
     <Date>2026-04-22</Date>
     <Changes></Changes>
+    <Requires>Shared memory is set to 1GB for Playwright browser automation. If you run many concurrent browser tasks, increase --shm-size to 2g or 4g in Extra Parameters.</Requires>
 
     <!-- Port Mappings -->
     <Config Name="Port: Gateway/Dashboard" Target="8642" Default="8642" Mode="tcp" Description="HTTP port for the Hermes gateway API and web dashboard." Type="Port" Display="always" Required="true" Mask="false"/>
 
     <!-- Volume Mappings -->
-    <Config Name="Path: Config" Target="/opt/data" Default="/mnt/user/appdata/hermes-agent" Mode="rw" Description="Persistent config directory for Hermes." Type="Path" Display="always" Required="true" Mask="false"/>
+    <Config Name="Path: Config" Target="/opt/data" Default="/mnt/user/appdata/hermes-agent" Mode="rw" Description="Persistent config directory for Hermes (.env, config.yaml, skills, memories, logs)." Type="Path" Display="always" Required="true" Mask="false"/>
 
     <!-- User & Permissions (Advanced) -->
     <Config Name="Variable: HERMES_UID" Target="HERMES_UID" Default="99" Description="UID for the hermes user inside container. Match to your Unraid user (default: nobody). Set to 0 for root." Type="Variable" Display="advanced" Required="false" Mask="false"/>
@@ -32,22 +33,22 @@
     <Config Name="Variable: HERMES_HOME" Target="HERMES_HOME" Default="/opt/data" Description="Home directory for Hermes config and data." Type="Variable" Display="hidden" Required="true" Mask="false"/>
 
     <!-- API Server -->
-    <Config Name="Variable: API_SERVER_ENABLED" Target="API_SERVER_ENABLED" Default="true" Description="Enable the built-in HTTP API server." Type="Variable" Display="advanced" Required="false" Mask="false"/>
-    <Config Name="Variable: API_SERVER_HOST" Target="API_SERVER_HOST" Default="0.0.0.0" Description="Host address for the API server." Type="Variable" Display="hidden" Required="false" Mask="false"/>
+    <Config Name="Variable: API_SERVER_ENABLED" Target="API_SERVER_ENABLED" Default="true" Description="Enable the built-in HTTP API server (required for dashboard and integrations)." Type="Variable" Display="always" Required="false" Mask="false"/>
+    <Config Name="Variable: API_SERVER_HOST" Target="API_SERVER_HOST" Default="0.0.0.0" Description="Host address for the API server (0.0.0.0 for all interfaces)." Type="Variable" Display="always" Required="false" Mask="false"/>
     <Config Name="Variable: API_SERVER_PORT" Target="API_SERVER_PORT" Default="8642" Description="Port for the API server." Type="Variable" Display="hidden" Required="false" Mask="false"/>
-    <Config Name="Variable: API_SERVER_KEY" Target="API_SERVER_KEY" Default="" Description="Bearer token for API authentication (required when binding to non-localhost)." Type="Variable" Display="advanced" Required="false" Mask="true"/>
+    <Config Name="Variable: API_SERVER_KEY" Target="API_SERVER_KEY" Default="" Description="Bearer token for API authentication. Required when binding to non-localhost. Use the same value in Open WebUI." Type="Variable" Display="always" Required="false" Mask="true"/>
 
     <!-- Matrix Configuration -->
     <Config Name="Variable: MATRIX_HOMESERVER" Target="MATRIX_HOMESERVER" Default="https://matrix-client.matrix.org" Description="Matrix homeserver URL." Type="Variable" Display="advanced" Required="false" Mask="false"/>
     <Config Name="Variable: MATRIX_USER_ID" Target="MATRIX_USER_ID" Default="" Description="Matrix user ID (e.g. @hermes:matrix.org)." Type="Variable" Display="always" Required="false" Mask="false"/>
     <Config Name="Variable: MATRIX_PASSWORD" Target="MATRIX_PASSWORD" Default="" Description="Matrix account password (only if not using access token)." Type="Variable" Display="always" Required="false" Mask="true"/>
     <Config Name="Variable: MATRIX_ACCESS_TOKEN" Target="MATRIX_ACCESS_TOKEN" Default="" Description="Matrix access token (recommended instead of password)." Type="Variable" Display="advanced" Required="false" Mask="true"/>
-    <Config Name="Variable: MATRIX_DEVICE_ID" Target="MATRIX_DEVICE_ID" Default="" Description="Matrix device ID (leave empty for auto-generated)." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+    <Config Name="Variable: MATRIX_DEVICE_ID" Target="MATRIX_DEVICE_ID" Default="HERMES_BOT" Description="Matrix device ID (leave empty for auto-generated)." Type="Variable" Display="advanced" Required="false" Mask="false"/>
     <Config Name="Variable: MATRIX_HOME_ROOM" Target="MATRIX_HOME_ROOM" Default="" Description="Matrix room ID for bot's home room (for cron notifications)." Type="Variable" Display="advanced" Required="false" Mask="false"/>
     <Config Name="Variable: MATRIX_ENCRYPTION" Target="MATRIX_ENCRYPTION" Default="false" Description="Enable end-to-end encryption (requires libolm)." Type="Variable" Display="advanced" Required="false" Mask="false"/>
     <Config Name="Variable: MATRIX_RECOVERY_KEY" Target="MATRIX_RECOVERY_KEY" Default="" Description="Matrix recovery key for cross-signing (for E2EE)." Type="Variable" Display="advanced" Required="false" Mask="true"/>
     <Config Name="Variable: MATRIX_REQUIRE_MENTION" Target="MATRIX_REQUIRE_MENTION" Default="false" Description="Bot only responds when mentioned in rooms (DMs always respond)." Type="Variable" Display="advanced" Required="false" Mask="false"/>
-    <Config Name="Variable: MATRIX_ALLOWED_USERS" Target="MATRIX_ALLOWED_USERS" Default="" Description="Comma-separated list of allowed Matrix user IDs (empty = deny all except self)." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+    <Config Name="Variable: MATRIX_ALLOWED_USERS" Target="MATRIX_ALLOWED_USERS" Default="" Description="Comma-separated list of allowed Matrix user IDs (empty = deny all except self)." Type="Variable" Display="always" Required="false" Mask="false"/>
     <Config Name="Variable: MATRIX_REACTIONS" Target="MATRIX_REACTIONS" Default="true" Description="Show emoji reactions during message processing." Type="Variable" Display="advanced" Required="false" Mask="false"/>
     <Config Name="Variable: MATRIX_AUTO_THREAD" Target="MATRIX_AUTO_THREAD" Default="true" Description="Auto-create threads for responses in rooms." Type="Variable" Display="advanced" Required="false" Mask="false"/>
     <Config Name="Variable: MATRIX_FREE_RESPONSE_ROOMS" Target="MATRIX_FREE_RESPONSE_ROOMS" Default="" Description="Comma-separated room IDs that respond without mention." Type="Variable" Display="advanced" Required="false" Mask="false"/>
@@ -70,9 +71,27 @@
     <Config Name="Variable: ANTHROPIC_API_KEY" Target="ANTHROPIC_API_KEY" Default="" Description="Anthropic API key (for Claude)." Type="Variable" Display="advanced" Required="false" Mask="true"/>
     <Config Name="Variable: GOOGLE_API_KEY" Target="GOOGLE_API_KEY" Default="" Description="Google AI API key (for Gemini)." Type="Variable" Display="advanced" Required="false" Mask="true"/>
     <Config Name="Variable: DEEPSEEK_API_KEY" Target="DEEPSEEK_API_KEY" Default="" Description="DeepSeek API key." Type="Variable" Display="advanced" Required="false" Mask="true"/>
-    <Config Name="Variable: GROQ_API_KEY" Target="GROQ_API_KEY" Default="" Description="Groq API key." Type="Variable" Display="advanced" Required="false" Mask="true"/>
+    <Config Name="Variable: GROQ_API_KEY" Target="GROQ_API_KEY" Default="" Description="Groq API key (for Groq Whisper STT)." Type="Variable" Display="advanced" Required="false" Mask="true"/>
     <Config Name="Variable: OLLAMA_BASE_URL" Target="OLLAMA_BASE_URL" Default="" Description="Ollama base URL (e.g. http://host:11434)." Type="Variable" Display="advanced" Required="false" Mask="false"/>
     <Config Name="Variable: OPENAI_BASE_URL" Target="OPENAI_BASE_URL" Default="" Description="Custom OpenAI-compatible API base URL." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+    <Config Name="Variable: GLM_API_KEY" Target="GLM_API_KEY" Default="" Description="z.ai / ZhipuAI GLM API key." Type="Variable" Display="advanced" Required="false" Mask="true"/>
+    <Config Name="Variable: KIMI_API_KEY" Target="KIMI_API_KEY" Default="" Description="Kimi / Moonshot API key." Type="Variable" Display="advanced" Required="false" Mask="true"/>
+    <Config Name="Variable: MINIMAX_API_KEY" Target="MINIMAX_API_KEY" Default="" Description="MiniMax global API key." Type="Variable" Display="advanced" Required="false" Mask="true"/>
+    <Config Name="Variable: MINIMAX_CN_API_KEY" Target="MINIMAX_CN_API_KEY" Default="" Description="MiniMax China endpoint API key." Type="Variable" Display="advanced" Required="false" Mask="true"/>
+    <Config Name="Variable: KILOCODE_API_KEY" Target="KILOCODE_API_KEY" Default="" Description="Kilo Code API key." Type="Variable" Display="advanced" Required="false" Mask="true"/>
+    <Config Name="Variable: XIAOMI_API_KEY" Target="XIAOMI_API_KEY" Default="" Description="Xiaomi MiMo API key." Type="Variable" Display="advanced" Required="false" Mask="true"/>
+    <Config Name="Variable: HF_TOKEN" Target="HF_TOKEN" Default="" Description="Hugging Face Inference Providers token." Type="Variable" Display="advanced" Required="false" Mask="true"/>
+    <Config Name="Variable: DASHSCOPE_API_KEY" Target="DASHSCOPE_API_KEY" Default="" Description="Alibaba DashScope API key." Type="Variable" Display="advanced" Required="false" Mask="true"/>
+    <Config Name="Variable: OPENCODE_ZEN_API_KEY" Target="OPENCODE_ZEN_API_KEY" Default="" Description="OpenCode Zen API key." Type="Variable" Display="advanced" Required="false" Mask="true"/>
+    <Config Name="Variable: OPENCODE_GO_API_KEY" Target="OPENCODE_GO_API_KEY" Default="" Description="OpenCode Go API key." Type="Variable" Display="advanced" Required="false" Mask="true"/>
+    <Config Name="Variable: AI_GATEWAY_API_KEY" Target="AI_GATEWAY_API_KEY" Default="" Description="Vercel AI Gateway API key." Type="Variable" Display="advanced" Required="false" Mask="true"/>
+
+    <!-- Tool API Keys -->
+    <Config Name="Variable: TAVILY_API_KEY" Target="TAVILY_API_KEY" Default="" Description="Tavily API key for AI-native web search, extract, and crawl." Type="Variable" Display="advanced" Required="false" Mask="true"/>
+    <Config Name="Variable: EXA_API_KEY" Target="EXA_API_KEY" Default="" Description="Exa API key for AI-native web search and content retrieval." Type="Variable" Display="advanced" Required="false" Mask="true"/>
+
+    <!-- Sudo (Advanced) -->
+    <Config Name="Variable: SUDO_PASSWORD" Target="SUDO_PASSWORD" Default="" Description="Sudo password for the container (stored in plaintext - use with caution)." Type="Variable" Display="advanced" Required="false" Mask="true"/>
 
     <!-- Timezone -->
     <Config Name="Variable: TZ" Target="TZ" Default="UTC" Description="Timezone for scheduling." Type="Variable" Display="advanced" Required="false" Mask="false"/>
