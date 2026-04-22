@@ -27,7 +27,7 @@
     <Config Name="Path: Config" Target="/opt/data" Default="/mnt/user/appdata/hermes-agent" Mode="rw" Description="Persistent config directory for Hermes (.env, config.yaml, skills, memories, logs)." Type="Path" Display="always" Required="true" Mask="false"/>
 
     <!-- Timezone -->
-    <Config Name="Variable: TZ" Target="TZ" Default="Europe/Berlin" Description="Timezone for scheduling." Type="Variable" Display="always" Required="false" Mask="false"/>
+    <Config Name="Variable: TZ" Target="TZ" Default="Europe/Berlin" Description="Timezone for scheduling. See: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones" Type="Variable" Display="always" Required="false" Mask="false"/>
 
     <!-- Separator: API Server -->
     <Config Name="--- API Server ---" Target="" Default="" Mode="" Description="Docs: https://hermes-agent.nousresearch.com/docs" Type="Variable" Display="always" Required="false" Mask="false"/>
