@@ -10,23 +10,49 @@ Personal collection of Unraid Docker container templates for [Community Applicat
 
 | Template | Description |
 |----------|-------------|
-| `hermes-agent.xml` | Main container with messaging gateway (Telegram, Discord, Slack, WhatsApp, Matrix, Email, etc.) |
-| `hermes-dashboard.xml` | Web-based dashboard UI for monitoring and control |
+| `hermes-agent.xml` | Main container with messaging gateway, web dashboard, and all platform integrations |
 
-#### Hermes Features
+#### Features
 
 - Built-in learning loop — creates skills from experience
 - Memory system with persistent context across sessions
 - 40+ tools and skill system
-- Multiple messaging platform support
+- **Messaging platforms**: Telegram, Discord, Slack, WhatsApp, Matrix, Email, Signal, SMS, and more
+- Web dashboard for monitoring and control
 - Scheduled automations (cron)
 - Terminal and code execution
 
-#### Hermes Setup Notes
+#### Supported Platforms
 
-- Requires `HERMES_UID` and `HERMES_GID` to match your Unraid user for proper file permissions
-- The container uses `--user 0:0` to allow internal permission fixing
-- Matrix support requires additional configuration in the app
+| Platform | Status |
+|----------|--------|
+| Matrix | ✅ Full E2EE support |
+| Telegram | ✅ |
+| Discord | ✅ |
+| Slack | ✅ |
+| WhatsApp | ✅ |
+| Email (IMAP/SMTP) | ✅ |
+| Signal | ✅ |
+| SMS (Twilio) | ✅ |
+| Home Assistant | ✅ |
+| Mattermost | ✅ |
+| DingTalk | ✅ |
+| Feishu / Lark | ✅ |
+| WeCom | ✅ |
+| And more... | |
+
+#### Setup Notes
+
+1. **Important:** The container uses `--user 0:0` to allow internal permission fixing. The `HERMES_UID` and `HERMES_GID` variables adjust the user to match your Unraid filesystem.
+2. Access the **web dashboard** at the same port as the gateway API (default: 8642).
+3. Set `MATRIX_ALLOWED_USERS` to restrict who can interact with the bot.
+
+#### Matrix E2EE Notes
+
+For end-to-end encryption with Matrix:
+- Set `MATRIX_ENCRYPTION=true`
+- Install `libolm-dev` on the host if using rootless Podman
+- Set `MATRIX_RECOVERY_KEY` for cross-signing support
 
 ---
 
