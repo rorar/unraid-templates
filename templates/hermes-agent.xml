@@ -34,7 +34,7 @@
     <Config Name="--- API Server ---" Target="" Default="" Mode="" Description="Docs: https://hermes-agent.nousresearch.com/docs" Type="Variable" Display="always" Required="false" Mask="false"/>
     <Config Name="Variable: API_SERVER_ENABLED" Target="API_SERVER_ENABLED" Default="true" Description="Enable the built-in HTTP API server (required for dashboard and integrations)." Type="Variable" Display="always" Required="true" Mask="false"/>
     <Config Name="Variable: API_SERVER_HOST" Target="API_SERVER_HOST" Default="0.0.0.0" Description="Host address for the API server (0.0.0.0 for all interfaces)." Type="Variable" Display="always" Required="true" Mask="false"/>
-    <Config Name="Variable: API_SERVER_PORT" Target="API_SERVER_PORT" Default="9119" Description="Port for the API server." Type="Variable" Display="hidden" Required="true" Mask="false"/>
+    <Config Name="Variable: API_SERVER_PORT" Target="API_SERVER_PORT" Default="8642" Description="Port for the API server." Type="Variable" Display="hidden" Required="true" Mask="false"/>
     <Config Name="Variable: API_SERVER_KEY" Target="API_SERVER_KEY" Default="" Description="Bearer token for API authentication. Required when binding to non-localhost. Use the same value in Open WebUI.&#13;&#13;Generate with: openssl rand -hex 32" Type="Variable" Display="always" Required="true" Mask="true"/>
 
     <!-- Separator: Matrix -->
