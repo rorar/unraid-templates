@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>wger-nginx</Name>
+  <Repository>nginx:stable</Repository>
+  <Registry>https://registry.hub.docker.com/_/nginx</Registry>
+  <Network>wger_network</Network>
+  <MyIP/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/wger-project/docker</Support>
+  <Project>https://wger.de</Project>
+  <Overview>&#xD;
+nginx dient als Reverse Proxy, der statische Inhalte aus den freigegebenen Volumes liefert und Anfragen an den wger&#x2011;Server weiterleitet.&#xD;
+  </Overview>
+  <Category>Networking: Proxy</Category>
+  <WebUI>http://[IP]:[PORT:8557]</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/wger-project/unraid-templates/master/wger-nginx.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/wger-project/wger/master/wger/core/static/images/logos/logo.png</Icon>
+  <ExtraParams>--health-cmd="service nginx status" --health-interval=10s --health-retries=5 --health-start-period=30s --health-timeout=5s</ExtraParams>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled>1746057570</DateInstalled>
+  <DonateText/>
+  <DonateLink/>
+  <Requires/>
+  <Config Name="PORT" Target="80" Default="8557" Mode="tcp" Description="HTTP Port f&#xFC;r den nginx-Container (Container-Port 80)" Type="Port" Display="always" Required="true" Mask="false">8557</Config>
+  <Config Name="NGINX_CONFIG" Target="/etc/nginx/conf.d/" Default="/mnt/user/appdata/wger/nginx/" Mode="ro" Description="Pfad zur nginx-Konfiguration (Host: /mnt/user/appdata/wger/nginx/)" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/wger/nginx/</Config>
+  <Config Name="STATIC_ROOT" Target="/wger/static" Default="/mnt/user/appdata/wger/static/" Mode="ro" Description="Pfad zu den statischen Dateien (Host: /mnt/user/appdata/wger/static/)" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/wger/static/</Config>
+  <Config Name="MEDIA_ROOT" Target="/wger/media" Default="/mnt/user/appdata/wger/media/" Mode="ro" Description="Pfad zu den Mediendateien (Host: /mnt/user/appdata/wger/media/)" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/wger/media/</Config>
+  <Config Name="PUID" Target="PUID" Default="99" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">99</Config>
+  <Config Name="PGID" Target="PGID" Default="100" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">100</Config>
+  <Config Name="UMASK" Target="UMASK" Default="022" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">022</Config>
+  <TailscaleStateDir/>
+</Container>

@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>wger-celery-flower</Name>
+  <Repository>wger/server:latest</Repository>
+  <Registry>https://registry.hub.docker.com/r/wger/server</Registry>
+  <Network>wger_network</Network>
+  <MyIP/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/wger-project/docker</Support>
+  <Project>https://wger-project.github.io/</Project>
+  <Overview>&#xD;
+    Flower ist ein webbasiertes Tool zur &#xDC;berwachung und Verwaltung von Celery-Clustern. &#xD;
+    Dieses Template startet den Flower-Dienst f&#xFC;r die wger-Anwendung, &#xD;
+    um die &#xDC;berwachung von Celery-Tasks zu erm&#xF6;glichen.&#xD;
+  </Overview>
+  <Category>Monitoring:Tools:</Category>
+  <WebUI>http://[IP]:[PORT:5555]</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/wger-project/docker/master/unraid-templates/wger-celery-flower.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/wger-project/wger/master/wger/core/static/images/logos/logo.png</Icon>
+  <ExtraParams>--entrypoint /start-flower</ExtraParams>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled>1746060707</DateInstalled>
+  <DonateText/>
+  <DonateLink/>
+  <Requires>&#xD;
+    &#xD;
+  </Requires>
+  <Config Name="Flower WebUI Port" Target="5555" Default="5555" Mode="tcp" Description="Port f&#xFC;r die Flower-Weboberfl&#xE4;che" Type="Port" Display="always" Required="true" Mask="null">8559</Config>
+  <Config Name="SECRET_KEY" Target="SECRET_KEY" Default="wger-docker-supersecret-key-1234567890!@#$%^&amp;amp;*(-_)" Mode="" Description="Django SECRET_KEY &#x2013; identisch mit dem wger-Server" Type="Variable" Display="always" Required="true" Mask="{8}">wger-docker-supersecret-key-1234567890!@#$%^&amp;*(-_)</Config>
+  <Config Name="SIGNING_KEY" Target="SIGNING_KEY" Default="wger-docker-secret-jwtkey-1234567890!@#$%^&amp;amp;*(-_=+)" Mode="" Description="Signing Key f&#xFC;r JWT &#x2013; identisch mit dem wger-Server" Type="Variable" Display="always" Required="true" Mask="{8}">wger-docker-secret-jwtkey-1234567890!@#$%^&amp;*(-_=+)</Config>
+  <Config Name="TIME_ZONE" Target="TIME_ZONE" Default="Europe/Berlin" Mode="" Description="Zeitzone des Servers" Type="Variable" Display="always" Required="true" Mask="{8}">Europe/Berlin</Config>
+  <Config Name="DJANGO_DB_HOST" Target="DJANGO_DB_HOST" Default="wger-db" Mode="" Description="Hostname des PostgreSQL-Datenbankcontainers" Type="Variable" Display="always" Required="true" Mask="null">wger-db</Config>
+  <Config Name="DJANGO_DB_PORT" Target="DJANGO_DB_PORT" Default="5432" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">5432</Config>
+  <Config Name="CELERY_BROKER" Target="CELERY_BROKER" Default="redis://wger-redis:8558/2" Mode="" Description="URL f&#xFC;r den Celery Broker (Redis)" Type="Variable" Display="always" Required="true" Mask="null">redis://wger-redis:6379/2</Config>
+  <Config Name="CELERY_BACKEND" Target="CELERY_BACKEND" Default="redis://wger-redis:8558/2" Mode="" Description="URL f&#xFC;r das Celery Backend (Redis)" Type="Variable" Display="always" Required="true" Mask="null">redis://wger-redis:6379/2</Config>
+  <Config Name="DJANGO_MEDIA_ROOT" Target="/home/wger/media" Default="/mnt/user/appdata/wger/media" Mode="rw" Description="Pfad zu den Mediendateien" Type="Path" Display="always" Required="true" Mask="null">/mnt/user/appdata/wger/media</Config>
+  <Config Name="PUID" Target="PUID" Default="99" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">99</Config>
+  <Config Name="PGID" Target="PGID" Default="100" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">100</Config>
+  <Config Name="UMASK" Target="UMASK" Default="022" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">022</Config>
+  <Config Name="CELERY_FLOWER_PASSWORD" Target="CELERY_FLOWER_PASSWORD" Default="adminadmin" Mode="" Description="Passwort f&#xFC;r den Zugang zu Celery Flower" Type="Variable" Display="advanced" Required="true" Mask="false">adminadmin</Config>
+  <TailscaleStateDir/>
+</Container>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>wger-redis</Name>
+  <Repository>redis</Repository>
+  <Registry>https://registry.hub.docker.com/_/redis/</Registry>
+  <Network>wger_network</Network>
+  <MyIP/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://forums.unraid.net/topic/69490-support-jj9987-redis/</Support>
+  <Project>https://redis.io/</Project>
+  <Overview>&#xD;
+Redis wird als Cache sowie als Backend f&#xFC;r Celery in der wger-Anwendung verwendet.&#xD;
+  </Overview>
+  <Category>Network:Management Productivity: Tools:Utilities</Category>
+  <WebUI/>
+  <TemplateURL>https://raw.githubusercontent.com/wger-project/unraid-templates/master/wger-redis.xml</TemplateURL>
+  <Icon/>
+  <ExtraParams>--health-cmd="redis-cli ping" --health-interval=10s --health-retries=5 --health-start-period=30s --health-timeout=5s</ExtraParams>
+  <PostArgs>redis-server /usr/local/etc/redis/redis.conf</PostArgs>
+  <CPUset/>
+  <DateInstalled>1746057490</DateInstalled>
+  <DonateText/>
+  <DonateLink/>
+  <Requires/>
+  <Config Name="PORT" Target="6379" Default="6379" Mode="tcp" Description="Redis-Port (6379)" Type="Port" Display="always" Required="true" Mask="false">6379</Config>
+  <Config Name="REDIS_DATA" Target="/data" Default="/mnt/user/appdata/wger/redis/" Mode="rw" Description="Verzeichnis f&#xFC;r Redis-Daten (Host: /mnt/user/appdata/wger/redis/)" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/wger/redis/</Config>
+  <Config Name="REDIS_CONF" Target="/usr/local/etc/redis/" Default="/mnt/user/appdata/wger/redis/" Mode="rw" Description="" Type="Path" Display="always" Required="false" Mask="false">/mnt/user/appdata/wger/redis/</Config>
+  <Config Name="PUID" Target="PUID" Default="99" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">99</Config>
+  <Config Name="PGID" Target="PGID" Default="100" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">100</Config>
+  <Config Name="UMASK" Target="UMASK" Default="022" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">022</Config>
+  <TailscaleStateDir/>
+</Container>

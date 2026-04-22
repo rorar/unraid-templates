@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>wger-unraid</Name>
+  <Repository>wger/server:latest</Repository>
+  <Registry>https://registry.hub.docker.com/r/wger/server</Registry>
+  <Network>wger-unraid-docker</Network>
+  <MyIP/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support/>
+  <Project>https://wger.de/software/features</Project>
+  <Overview>wger (&#x2C8;v&#x25B;&#x261;&#x250;) Workout Manager is a free, open source web&#xD;
+        application that help you manage your personal workouts, weight and diet plans and can also&#xD;
+        be used as a simple gym management utility. It offers a REST API as well, for easy&#xD;
+        integration with other projects and tools.</Overview>
+  <Category>Productivity: Other:</Category>
+  <WebUI>http://[IP]:[PORT:8555]</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/wger-project/unraid-templates/master/wger.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/wger-project/wger/master/wger/core/static/images/logos/logo.png</Icon>
+  <ExtraParams/>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled>1740007455</DateInstalled>
+  <DonateText/>
+  <DonateLink/>
+  <Requires/>
+  <Config Name="PORT" Target="8000" Default="8000" Mode="tcp" Description="WebUI port: 8000" Type="Port" Display="always" Required="true" Mask="false">8555</Config>
+  <Config Name="DJANGO_DB_ENGINE" Target="DJANGO_DB_ENGINE" Default="django.db.backends.postgresql" Mode="" Description="Database Engine" Type="Variable" Display="always" Required="true" Mask="false">django.db.backends.postgresql</Config>
+  <Config Name="DJANGO_DB_DATABASE" Target="DJANGO_DB_DATABASE" Default="wger" Mode="" Description="Database Name" Type="Variable" Display="always" Required="true" Mask="false">wger</Config>
+  <Config Name="DJANGO_DB_USER" Target="DJANGO_DB_USER" Default="wger" Mode="" Description="Database User" Type="Variable" Display="always" Required="true" Mask="false">wger</Config>
+  <Config Name="DJANGO_DB_PASSWORD" Target="DJANGO_DB_PASSWORD" Default="" Mode="" Description="Database password" Type="Variable" Display="always" Required="false" Mask="true">wger</Config>
+  <Config Name="DJANGO_DB_HOST" Target="DJANGO_DB_HOST" Default="" Mode="" Description="Database host" Type="Variable" Display="always" Required="true" Mask="false">db</Config>
+  <Config Name="DJANGO_DB_PORT" Target="DJANGO_DB_PORT" Default="5432" Mode="" Description="Database port" Type="Variable" Display="always" Required="true" Mask="false">5432</Config>
+  <Config Name="TIME_ZONE" Target="TIME_ZONE" Default="US/Central" Mode="" Description="Time Zone" Type="Variable" Display="always" Required="true" Mask="false">Europe/Berlin</Config>
+  <Config Name="SITE_URL" Target="SITE_URL" Default="" Mode="" Description="SITE_URL: ex. http://www.my-local-gym.com" Type="Variable" Display="always" Required="true" Mask="false">http://localhost</Config>
+  <Config Name="DJANGO_MEDIA_ROOT" Target="/home/wger/media" Default="" Mode="rw" Description="Path to uploaded files" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/wger/media</Config>
+  <Config Name="DJANGO_STATIC_ROOT" Target="/home/wger/static" Default="" Mode="rw" Description="DJANGO_STATIC_ROOT" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/wger/static</Config>
+  <Config Name="ALLOW_REGISTRATION" Target="ALLOW_REGISTRATION" Default="True" Mode="" Description="Default: True" Type="Variable" Display="always" Required="false" Mask="false">True</Config>
+  <Config Name="ALLOW_GUEST_USERS" Target="ALLOW_GUEST_USERS" Default="True" Mode="" Description="Default: True" Type="Variable" Display="always" Required="false" Mask="false">True</Config>
+  <Config Name="SECRET_KEY" Target="SECRET_KEY" Default="" Mode="" Description="Create one using this service &amp;lt;br&amp;gt;https://djecrety.ir/ &amp;lt;br&amp;gt;&#13;&#10;Must be 50 characters and &amp;lt;br&amp;gt;&#13;&#10;different to SIGNING_KEY" Type="Variable" Display="always" Required="true" Mask="false">iy@8+6!k7y!$6gzs56w)+q6+x8)5nqc%sxf$hi0y5jj%@&amp;a3vv</Config>
+  <Config Name="ENABLE_EMAIL" Target="ENABLE_EMAIL" Default="False" Mode="" Description="Enable SMTP email setting: True/False; Default False" Type="Variable" Display="always" Required="false" Mask="false">False</Config>
+  <Config Name="EMAIL_HOST" Target="EMAIL_HOST" Default="" Mode="" Description="EMAIL_HOST" Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="EMAIL_PORT" Target="EMAIL_PORT" Default="" Mode="" Description="EMAIL_PORT" Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="EMAIL_HOST_USER" Target="EMAIL_HOST_USER" Default="" Mode="" Description="EMAIL_HOST_USER" Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="EMAIL_HOST_PASSWORD" Target="EMAIL_HOST_PASSWORD" Default="" Mode="" Description="EMAIL_HOST_PASSWORD" Type="Variable" Display="always" Required="false" Mask="true"/>
+  <Config Name="EMAIL_USE_TLS" Target="EMAIL_USE_TLS" Default="False" Mode="" Description="EMAIL_USE_TLS: True/False; Default: False" Type="Variable" Display="always" Required="false" Mask="false">True</Config>
+  <Config Name="EMAIL_USE_SSL" Target="EMAIL_USE_SSL" Default="False" Mode="" Description="EMAIL_USE_SSL: True/False; Default: False" Type="Variable" Display="always" Required="false" Mask="false">False</Config>
+  <Config Name="FROM_EMAIL" Target="FROM_EMAIL" Default="" Mode="" Description="FROM_EMAIL" Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="SIGNING_KEY" Target="SIGNING_KEY" Default="" Mode="" Description="Create one using this service &amp;lt;br&amp;gt;https://djecrety.ir/ &amp;lt;br&amp;gt;&#13;&#10;Must be 50 characters and &amp;lt;br&amp;gt;&#13;&#10;different to SECRET_KEY" Type="Variable" Display="always" Required="false" Mask="false">@v0u+m1s4mcnm%5^td+337x-659lixgbro(*u%zpru&amp;smf)rth</Config>
+  <Config Name="RECAPTCHA_PUBLIC_KEY" Target="RECAPTCHA_PUBLIC_KEY" Default="" Mode="" Description="RECAPTCHA_PUBLIC_KEY" Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="RECAPTCHA_PRIVATE_KEY" Target="RECAPTCHA_PRIVATE_KEY" Default="" Mode="" Description="RECAPTCHA_PRIVATE_KEY" Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="NOCAPTCHA" Target="NOCAPTCHA" Default="false" Mode="" Description="NOCAPTCHA: true/false&#13;&#10;Default: false" Type="Variable" Display="advanced" Required="false" Mask="false">False</Config>
+  <Config Name="DJANGO_CACHE_BACKEND" Target="DJANGO_CACHE_BACKEND" Default="" Mode="" Description="Leave blank for no cache. Otherwise use this example for redis: django_redis.cache.RedisCache&#13;&#10;" Type="Variable" Display="advanced-hide" Required="false" Mask="false">django_redis.cache.RedisCache</Config>
+  <Config Name="DJANGO_CACHE_TIMEOUT" Target="DJANGO_CACHE_TIMEOUT" Default="" Mode="" Description="in seconds" Type="Variable" Display="advanced-hide" Required="false" Mask="false">1296000</Config>
+  <Config Name="DJANGO_CACHE_LOCATION" Target="DJANGO_CACHE_LOCATION" Default="" Mode="" Description="Ex: redis://127.0.0.1:6379/1" Type="Variable" Display="advanced-hide" Required="false" Mask="false">redis://cache:6379/1</Config>
+  <Config Name="DJANGO_CACHE_CLIENT_CLASS" Target="DJANGO_CACHE_CLIENT_CLASS" Default="django_redis.client.DefaultClient" Mode="" Description="" Type="Variable" Display="advanced-hide" Required="false" Mask="false">django_redis.client.DefaultClient</Config>#
+  <Config Name="PUID" Target="PUID" Default="99" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">99</Config>
+  <Config Name="PGID" Target="PGID" Default="100" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">100</Config>
+  <Config Name="UMASK" Target="UMASK" Default="022" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">022</Config>
+  <TailscaleStateDir/>
+</Container>

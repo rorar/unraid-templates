@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>wger-db</Name>
+  <Repository>postgres:15-alpine</Repository>
+  <Registry>https://registry.hub.docker.com/_/postgres</Registry>
+  <Network>wger_network</Network>
+  <MyIP/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/wger-project/docker</Support>
+  <Project>https://wger.de</Project>
+  <Overview>&#xD;
+PostgreSQL dient als Datenbankserver f&#xFC;r den wger-Server. Die persistenten Daten werden im angegebenen Host-Verzeichnis gespeichert.&#xD;
+  </Overview>
+  <Category>Databases</Category>
+  <WebUI/>
+  <TemplateURL>https://raw.githubusercontent.com/wger-project/unraid-templates/master/wger-db.xml</TemplateURL>
+  <Icon/>
+  <ExtraParams>--health-cmd="pg_isready -U wger" --health-interval=10s --health-retries=5 --health-start-period=30s --health-timeout=5s</ExtraParams>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled>1746057443</DateInstalled>
+  <DonateText/>
+  <DonateLink/>
+  <Requires/>
+  <Config Name="PORT" Target="5432" Default="8556" Mode="tcp" Description="Port der PostgreSQL-Datenbank (5432)" Type="Port" Display="always" Required="true" Mask="false">8556</Config>
+  <Config Name="POSTGRES_USER" Target="POSTGRES_USER" Default="wger" Mode="" Description="Benutzername f&#xFC;r die Datenbank" Type="Variable" Display="always" Required="true" Mask="false">wger</Config>
+  <Config Name="POSTGRES_PASSWORD" Target="POSTGRES_PASSWORD" Default="wger" Mode="" Description="Passwort f&#xFC;r die Datenbank &#x2013; bitte &#xE4;ndern!" Type="Variable" Display="always" Required="true" Mask="true">wger</Config>
+  <Config Name="POSTGRES_DB" Target="POSTGRES_DB" Default="wger" Mode="" Description="Name der Datenbank" Type="Variable" Display="always" Required="true" Mask="false">wger</Config>
+  <Config Name="DB_DATA" Target="/var/lib/postgresql/data" Default="/mnt/user/appdata/wger/db/" Mode="rw" Description="Verzeichnis f&#xFC;r persistente Daten (Host: /mnt/user/appdata/wger/db/)" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/wger/db/</Config>
+  <Config Name="TimeZone" Target="TZ" Default="Europe/Berlin" Mode="" Description="Choose your timezone:&#13;&#10;https://en.wikipedia.org/wiki/List_of_tz_database_time_zones" Type="Variable" Display="always" Required="false" Mask="false">Europe/Berlin</Config>
+  <Config Name="PUID" Target="PUID" Default="99" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">99</Config>
+  <Config Name="PGID" Target="PGID" Default="100" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">100</Config>
+  <Config Name="UMASK" Target="UMASK" Default="022" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">022</Config>
+  <TailscaleStateDir/>
+</Container>

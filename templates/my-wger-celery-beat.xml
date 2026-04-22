@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>wger-celery-beat</Name>
+  <Repository>wger/server:latest</Repository>
+  <Registry>https://registry.hub.docker.com/r/wger/server</Registry>
+  <Network>wger_network</Network>
+  <MyIP/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/wger-project/docker</Support>
+  <Project>https://wger.de</Project>
+  <Overview>&#xD;
+Celery Beat &#xFC;bernimmt die Planung periodischer Aufgaben in der wger-Anwendung.&#xD;
+  </Overview>
+  <Category>Utilities: Scheduling</Category>
+  <WebUI/>
+  <TemplateURL>https://raw.githubusercontent.com/wger-project/unraid-templates/master/wger-celery-beat.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/wger-project/wger/master/wger/core/static/images/logos/logo.png</Icon>
+  <ExtraParams>--entrypoint /start-beat</ExtraParams>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled>1746062645</DateInstalled>
+  <DonateText/>
+  <DonateLink/>
+  <Requires/>
+  <Config Name="SECRET_KEY" Target="SECRET_KEY" Default="wger-docker-supersecret-key-1234567890!@#$%^&amp;amp;*(-_)" Mode="" Description="Django SECRET_KEY &#x2013; identisch mit dem wger-Server" Type="Variable" Display="always" Required="true" Mask="false">wger-docker-supersecret-key-1234567890!@#$%^&amp;*(-_)</Config>
+  <Config Name="SIGNING_KEY" Target="SIGNING_KEY" Default="wger-docker-secret-jwtkey-1234567890!@#$%^&amp;amp;*(-_=+)" Mode="" Description="Signing Key f&#xFC;r JWT &#x2013; identisch mit dem wger-Server" Type="Variable" Display="always" Required="true" Mask="false">wger-docker-secret-jwtkey-1234567890!@#$%^&amp;*(-_=+)</Config>
+  <Config Name="TIME_ZONE" Target="TIME_ZONE" Default="Europe/Berlin" Mode="" Description="Zeitzone (identisch mit dem wger-Server)" Type="Variable" Display="always" Required="true" Mask="false">Europe/Berlin</Config>
+  <Config Name="DJANGO_DB_HOST" Target="DJANGO_DB_HOST" Default="wger-db" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">wger-db</Config>
+  <Config Name="CELERY_BROKER" Target="CELERY_BROKER" Default="redis://wger-redis:6379/2" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">redis://wger-redis:6379/2</Config>
+  <Config Name="CELERY_BACKEND" Target="CELERY_BACKEND" Default="redis://wger-redis:6379/2" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">redis://wger-redis:6379/2</Config>
+  <Config Name="PUID" Target="PUID" Default="99" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">99</Config>
+  <Config Name="PGID" Target="PGID" Default="100" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">100</Config>
+  <Config Name="UMASK" Target="UMASK" Default="022" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">022</Config>
+  <TailscaleStateDir/>
+</Container>
