@@ -3,7 +3,7 @@
     <Name>hermes-agent</Name>
     <Beta>false</Beta>
     <Category>Other: AI:</Category>
-    <Repository>ghcr.io/nousresearch/hermes-agent:latest</Repository>
+    <Repository>nousresearch/hermes-agent:latest</Repository>
     <Registry>https://hub.docker.com/r/nousresearch/hermes-agent/</Registry>
     <Network>bridge</Network>
     <ExtraParams>--shm-size=1g --user 0:0 --hostname=hermes-agent --restart=unless-stopped</ExtraParams>
