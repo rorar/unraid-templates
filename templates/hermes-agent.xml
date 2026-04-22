@@ -7,6 +7,7 @@
     <Registry>https://hub.docker.com/r/nousresearch/hermes-agent/</Registry>
     <Network>bridge</Network>
     <ExtraParams>--shm-size=1g --user 0:0 --hostname=hermes-agent --restart=unless-stopped</ExtraParams>
+    <PostArgs>gateway run</PostArgs>
     <Shell>bash</Shell>
     <GitHub>https://github.com/NousResearch/hermes-agent</GitHub>
     <ReadMe>https://github.com/NousResearch/hermes-agent/blob/main/README.md</ReadMe>
