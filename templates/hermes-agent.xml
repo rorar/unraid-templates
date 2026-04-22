@@ -12,7 +12,7 @@
     <ReadMe>https://github.com/NousResearch/hermes-agent/blob/main/README.md</ReadMe>
     <Support>https://github.com/NousResearch/hermes-agent/issues</Support>
     <Project>https://hermes-agent.nousresearch.com/</Project>
-    <Overview>Hermes Agent is a self-improving AI agent built by Nous Research. Features a built-in learning loop, memory system, and supports multiple messaging platforms (Telegram, Discord, Slack, WhatsApp, Matrix, Email, etc.). Stores all config, memory, sessions, and skills in /opt/data. Access the web dashboard at the same port as the gateway API (default: 8642).</Overview>
+    <Overview>Hermes Agent is a self-improving AI agent built by Nous Research. Features a built-in learning loop, memory system, and supports multiple messaging platforms (Telegram, Discord, Slack, WhatsApp, Matrix, Email, etc.). Stores all config, memory, sessions, and skills in /opt/data. Access the web dashboard at the same port as the gateway API (default: 8642). For detailed setup instructions, see the official docs: https://hermes-agent.nousresearch.com/docs</Overview>
     <WebUI>http://[IP]:[PORT:8642]</WebUI>
     <TemplateURL>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/hermes-agent.xml</TemplateURL>
     <Icon>https://raw.githubusercontent.com/NousResearch/hermes-agent/main/assets/banner.png</Icon>
