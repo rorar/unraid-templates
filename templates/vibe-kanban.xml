@@ -10,7 +10,7 @@
     <Shell>bash</Shell>
     <GitHub>https://github.com/rorar/vibe-kanban-docker</GitHub>
     <Project>https://vibekanban.com</Project>
-    <Overview>Vibe Kanban is an AI-first software development project management tool. It uses AI agents to help manage and track software development tasks. This container includes GitHub CLI, Docker CLI, and OpenAI Codex for a complete development environment.&#13;&#13;&#13;For detailed setup instructions, see: https://vibekanban.com/docs</Overview>
+    <Overview>Vibe Kanban is an AI-first software development project management tool. It uses AI agents to help manage and track software development tasks. This container includes GitHub CLI, Docker CLI, and OpenAI Codex for a complete development environment.&#13;&#13;&#13;Always available: Codex, SVGO, imagemagick, libvips, librsvg, ripgrep, jq, tree, bat, fd, tmux, nano, python3, pip, pipx.&#13;&#13;For detailed setup instructions, see: https://vibekanban.com/docs</Overview>
     <WebUI>http://[IP]:[PORT:8085]</WebUI>
     <TemplateURL>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/vibe-kanban.xml</TemplateURL>
     <Icon>https://raw.githubusercontent.com/rorar/vibe-kanban-docker/main/.github/logo.png</Icon>
@@ -53,10 +53,11 @@
     <Config Name="Variable: OPENAI_API_KEY" Target="OPENAI_API_KEY" Default="" Description="OpenAI API key for Codex and AI features." Type="Variable" Display="advanced" Required="false" Mask="true"/>
 
     <!-- Separator: Runtime Tools -->
-    <Config Name="--- Runtime Tools ---" Target="" Default="" Mode="" Description="Install additional tools at container startup. Available agents: claude, gemini, copilot, amp, cursor, opencode, droid, clauderouter, qwen. Available browsers: chromium, firefox, webkit. Available tools: vitest, jest, msw" Type="Variable" Display="always" Required="false" Mask="false"/>
+    <Config Name="--- Runtime Tools ---" Target="" Default="" Mode="" Description="Install additional tools at container startup. Available agents: claude, gemini, copilot, amp, cursor, opencode, droid, clauderouter, qwen. Available browsers: chromium, firefox, webkit. Available tools: vitest, jest, msw. Always available: Codex, SVGO, imagemagick, libvips, librsvg, ripgrep, jq, tree, bat, fd" Type="Variable" Display="always" Required="false" Mask="false"/>
     <Config Name="Variable: RUNTIME_AGENTS" Target="RUNTIME_AGENTS" Default="" Description="Additional coding agents to install (space-separated). e.g., claude gemini" Type="Variable" Display="always" Required="false" Mask="false"/>
     <Config Name="Variable: RUNTIME_PLAYWRIGHT_BROWSERS" Target="RUNTIME_PLAYWRIGHT_BROWSERS" Default="" Description="Playwright browsers to install (space-separated). e.g., chromium firefox" Type="Variable" Display="always" Required="false" Mask="false"/>
     <Config Name="Variable: RUNTIME_TESTING_TOOLS" Target="RUNTIME_TESTING_TOOLS" Default="" Description="Testing tools to install (space-separated). e.g., vitest jest" Type="Variable" Display="always" Required="false" Mask="false"/>
+    <Config Name="Variable: RUNTIME_PYTHON_TOOLS" Target="RUNTIME_PYTHON_TOOLS" Default="" Description="Python tools to install via pipx (space-separated). e.g., httpie black" Type="Variable" Display="always" Required="false" Mask="false"/>
 
     <!-- Separator: User & Permissions (Advanced) -->
     <Config Name="--- User &amp; Permissions (Advanced) ---" Target="" Default="" Mode="" Description="Advanced user and permission settings." Type="Variable" Display="advanced" Required="false" Mask="false"/>
