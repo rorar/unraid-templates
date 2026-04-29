@@ -4,6 +4,37 @@ Personal collection of Unraid Docker container templates for [Community Applicat
 
 ## Templates
 
+### Vibe Kanban
+
+**Vibe Kanban** - AI-first software development project management tool by [BloopAI](https://github.com/BloopAI/vibe-kanban).
+
+| Template | Description |
+|----------|-------------|
+| `vibe-kanban.xml` | Main container with AI-powered project management |
+
+#### Features
+
+- **AI-Powered**: Uses AI agents to help manage and track software development tasks
+- **GitHub Integration**: Built-in GitHub CLI for repository operations
+- **OpenAI Codex**: Includes Codex CLI for AI-assisted development
+- **Docker Support**: Docker-in-Docker capability for containerized development
+- **Persistent Storage**: All data persists across container restarts
+
+#### Setup Notes
+
+1. The container runs on port **8085** by default
+2. Configure volume paths for persistent storage
+3. Set git author information for commits
+4. Optionally add API keys (GH_TOKEN, OPENAI_API_KEY)
+
+#### Documentation
+
+- [Official Docs](https://vibekanban.com/docs)
+- [Self-Hosting Guide](https://vibekanban.com/docs/self-hosting/deploy-docker)
+- [Docker Repository](https://github.com/JKamsker/vibe-kanban-docker)
+
+---
+
 ### Hermes Agent
 
 **Hermes Agent** - A self-improving AI agent built by [Nous Research](https://nousresearch.com).
