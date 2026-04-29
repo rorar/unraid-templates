@@ -1,10 +1,21 @@
 # Unraid Docker Templates
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Unraid Community Applications](https://img.shields.io/badge/Unraid-Community%20Apps-blue.svg)](https://forums.unraid.net/categories/category-45/)
+[![GitHub repo size](https://img.shields.io/github/repo-size/rorar/unraid-templates)](https://github.com/rorar/unraid-templates)
+[![Contributors](https://img.shields.io/github/contributors/rorar/unraid-templates)](https://github.com/rorar/unraid-templates/graphs/contributors)
+[![Last commit](https://img.shields.io/github/last-commit/rorar/unraid-templates/main)](https://github.com/rorar/unraid-templates/commits/main)
+
 Personal collection of Unraid Docker container templates for [Community Applications](https://forums.unraid.net/categories/category-45/).
 
 ## Templates
 
 ### Vibe Kanban
+
+[![Docker Image Size](https://img.shields.io/docker/image-size/rorar/vibe-kanban-docker/latest)](https://github.com/rorar/vibe-kanban-docker)
+[![Docker Pulls](https://img.shields.io/docker/pulls/rorar/vibe-kanban-docker)](https://github.com/rorar/vibe-kanban-docker)
+[![GitHub stars](https://img.shields.io/github/stars/rorar/vibe-kanban-docker?style=flat)](https://github.com/rorar/vibe-kanban-docker/stargazers)
+[![Vibe Kanban Version](https://img.shields.io/github/v/tag/rorar/vibe-kanban-docker?label=version)](https://github.com/rorar/vibe-kanban-docker/releases)
 
 **Vibe Kanban** - AI-first software development project management tool by [BloopAI](https://github.com/BloopAI/vibe-kanban).
 
@@ -36,6 +47,10 @@ Personal collection of Unraid Docker container templates for [Community Applicat
 ---
 
 ### Hermes Agent
+
+[![License](https://img.shields.io/github/license/NousResearch/hermes-agent)](https://github.com/NousResearch/hermes-agent/blob/main/LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/NousResearch/hermes-agent?style=flat)](https://github.com/NousResearch/hermes-agent/stargazers)
+[![Last Updated](https://img.shields.io/github/last-commit/NousResearch/hermes-agent/main)](https://github.com/NousResearch/hermes-agent/commits/main)
 
 **Hermes Agent** - A self-improving AI agent built by [Nous Research](https://nousresearch.com).
 
@@ -88,6 +103,10 @@ For end-to-end encryption with Matrix:
 ---
 
 ### WGER (Fitness Tracker)
+
+[![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL--3.0-green.svg)](https://www.gnu.org/licenses/agpl-3.0)
+[![GitHub stars](https://img.shields.io/github/stars/wger-project/wger?style=flat)](https://github.com/wger-project/wger/stargazers)
+[![Docker Hub](https://img.shields.io/badge/Docker-Hub-blue.svg)](https://hub.docker.com/u/wger)
 
 **WGER** - Self-hosted fitness tracker, workout logger and nutrition calculator.
 
