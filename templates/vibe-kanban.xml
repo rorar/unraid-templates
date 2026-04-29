@@ -52,6 +52,12 @@
     <Config Name="Variable: GH_TOKEN" Target="GH_TOKEN" Default="" Description="GitHub personal access token (alternative to GitHub CLI auth)." Type="Variable" Display="advanced" Required="false" Mask="true"/>
     <Config Name="Variable: OPENAI_API_KEY" Target="OPENAI_API_KEY" Default="" Description="OpenAI API key for Codex and AI features." Type="Variable" Display="advanced" Required="false" Mask="true"/>
 
+    <!-- Separator: Runtime Tools -->
+    <Config Name="--- Runtime Tools ---" Target="" Default="" Mode="" Description="Install additional tools at container startup. Available agents: claude, gemini, copilot, amp, cursor, opencode, droid, clauderouter, qwen. Available browsers: chromium, firefox, webkit. Available tools: vitest, jest, msw" Type="Variable" Display="always" Required="false" Mask="false"/>
+    <Config Name="Variable: RUNTIME_AGENTS" Target="RUNTIME_AGENTS" Default="" Description="Additional coding agents to install (space-separated). e.g., claude gemini" Type="Variable" Display="always" Required="false" Mask="false"/>
+    <Config Name="Variable: RUNTIME_PLAYWRIGHT_BROWSERS" Target="RUNTIME_PLAYWRIGHT_BROWSERS" Default="" Description="Playwright browsers to install (space-separated). e.g., chromium firefox" Type="Variable" Display="always" Required="false" Mask="false"/>
+    <Config Name="Variable: RUNTIME_TESTING_TOOLS" Target="RUNTIME_TESTING_TOOLS" Default="" Description="Testing tools to install (space-separated). e.g., vitest jest" Type="Variable" Display="always" Required="false" Mask="false"/>
+
     <!-- Separator: User & Permissions (Advanced) -->
     <Config Name="--- User &amp; Permissions (Advanced) ---" Target="" Default="" Mode="" Description="Advanced user and permission settings." Type="Variable" Display="advanced" Required="false" Mask="false"/>
     <Config Name="Variable: LOCAL_UID" Target="LOCAL_UID" Default="99" Description="UID to run the container process as (default: 99 for nobody user)." Type="Variable" Display="advanced" Required="false" Mask="false"/>
