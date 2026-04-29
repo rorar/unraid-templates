@@ -13,7 +13,7 @@
     <Overview>Vibe Kanban is an AI-first software development project management tool. It uses AI agents to help manage and track software development tasks. This container includes GitHub CLI, Docker CLI, and OpenAI Codex for a complete development environment.&#13;&#13;&#13;Always available: Codex, SVGO, imagemagick, libvips, librsvg, ripgrep, jq, tree, bat, fd, tmux, nano, python3, pip, pipx.&#13;&#13;For detailed setup instructions, see: https://vibekanban.com/docs</Overview>
     <WebUI>http://[IP]:[PORT:8085]</WebUI>
     <TemplateURL>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/vibe-kanban.xml</TemplateURL>
-    <Icon>https://raw.githubusercontent.com/rorar/vibe-kanban-docker/main/.github/logo.png</Icon>
+    <Icon>https://raw.githubusercontent.com/BloopAI/vibe-kanban/main/docs/logo/v-192.png</Icon>
     <Date>2026-04-29</Date>
     <Changes></Changes>
     <Requires>This container requires Docker socket mounting for Docker-in-Docker support and persistent storage for project data.</Requires>
