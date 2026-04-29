@@ -3,17 +3,17 @@
     <Name>vibe-kanban</Name>
     <Beta>false</Beta>
     <Category>Development: AI:</Category>
-    <Repository>jkamsker/vibe-kanban:latest</Repository>
-    <Registry>https://hub.docker.com/r/jkamsker/vibe-kanban</Registry>
+    <Repository>ghcr.io/rorar/vibe-kanban-docker:latest</Repository>
+    <Registry>https://github.com/rorar/vibe-kanban-docker/pkgs/container/vibe-kanban-docker</Registry>
     <Network>bridge</Network>
     <ExtraParams>--shm-size=1g --hostname=vibe-kanban</ExtraParams>
     <Shell>bash</Shell>
-    <GitHub>https://github.com/JKamsker/vibe-kanban-docker</GitHub>
+    <GitHub>https://github.com/rorar/vibe-kanban-docker</GitHub>
     <Project>https://vibekanban.com</Project>
     <Overview>Vibe Kanban is an AI-first software development project management tool. It uses AI agents to help manage and track software development tasks. This container includes GitHub CLI, Docker CLI, and OpenAI Codex for a complete development environment.&#13;&#13;&#13;For detailed setup instructions, see: https://vibekanban.com/docs</Overview>
     <WebUI>http://[IP]:[PORT:8085]</WebUI>
     <TemplateURL>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/vibe-kanban.xml</TemplateURL>
-    <Icon>https://raw.githubusercontent.com/JKamsker/vibe-kanban-docker/main/.github/logo.png</Icon>
+    <Icon>https://raw.githubusercontent.com/rorar/vibe-kanban-docker/main/.github/logo.png</Icon>
     <Date>2026-04-29</Date>
     <Changes></Changes>
     <Requires>This container requires Docker socket mounting for Docker-in-Docker support and persistent storage for project data.</Requires>
