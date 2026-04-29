@@ -23,22 +23,11 @@
 
     <!-- Volume Mappings -->
     <Config Name="Path: Project Data" Target="/home/node/.local/share/vibe-kanban" Default="/mnt/user/appdata/vibe-kanban/data" Mode="rw" Description="Persistent storage for Vibe Kanban data (config, database)." Type="Path" Display="always" Required="true" Mask="false"/>
-    <Config Name="Path: Cache" Target="/home/node/.cache/utils" Default="/mnt/user/appdata/vibe-kanban/cache" Mode="rw" Description="Cache directory for Vibe Kanban." Type="Path" Display="always" Required="false" Mask="false"/>
+    <Config Name="Path: Cache" Target="/home/node/.cache" Default="/mnt/user/appdata/vibe-kanban/cache" Mode="rw" Description="Cache directory for Vibe Kanban and agent tools." Type="Path" Display="always" Required="false" Mask="false"/>
     <Config Name="Path: Worktrees" Target="/var/tmp/vibe-kanban" Default="/mnt/user/appdata/vibe-kanban/worktrees" Mode="rw" Description="Temporary git worktree storage." Type="Path" Display="always" Required="false" Mask="false"/>
     <Config Name="Path: Workspace" Target="/work" Default="/mnt/user/appdata/vibe-kanban/work" Mode="rw" Description="Main workspace directory for your projects." Type="Path" Display="always" Required="true" Mask="false"/>
-    <Config Name="Path: SSH Keys (RO)" Target="/home/node/.ssh" Default="/mnt/user/appdata/vibe-kanban/ssh" Mode="ro" Description="SSH keys for git operations (read-only)." Type="Path" Display="always" Required="false" Mask="false"/>
-    <Config Name="Path: GitConfig (RO)" Target="/home/node/.gitconfig" Default="/mnt/user/appdata/vibe-kanban/gitconfig" Mode="ro" Description="Git configuration file (read-only)." Type="Path" Display="always" Required="false" Mask="false"/>
-    <Config Name="Path: Codex Config" Target="/home/node/.codex" Default="/mnt/user/appdata/vibe-kanban/codex" Mode="rw" Description="OpenAI Codex configuration directory." Type="Path" Display="always" Required="false" Mask="false"/>
-    <Config Name="Path: Claude Config" Target="/home/node/.claude" Default="/mnt/user/appdata/vibe-kanban/claude" Mode="rw" Description="Claude Code configuration directory." Type="Path" Display="always" Required="false" Mask="false"/>
-    <Config Name="Path: Gemini Config" Target="/home/node/.gemini" Default="/mnt/user/appdata/vibe-kanban/gemini" Mode="rw" Description="Gemini CLI configuration directory." Type="Path" Display="always" Required="false" Mask="false"/>
-    <Config Name="Path: Copilot Config" Target="/home/node/.copilot" Default="/mnt/user/appdata/vibe-kanban/copilot" Mode="rw" Description="GitHub Copilot CLI configuration directory." Type="Path" Display="always" Required="false" Mask="false"/>
-    <Config Name="Path: Amp Config" Target="/home/node/.amp" Default="/mnt/user/appdata/vibe-kanban/amp" Mode="rw" Description="Amp configuration directory." Type="Path" Display="always" Required="false" Mask="false"/>
-    <Config Name="Path: Cursor Config" Target="/home/node/.cursor" Default="/mnt/user/appdata/vibe-kanban/cursor" Mode="rw" Description="Cursor CLI configuration directory." Type="Path" Display="always" Required="false" Mask="false"/>
-    <Config Name="Path: OpenCode Config" Target="/home/node/.config/opencode" Default="/mnt/user/appdata/vibe-kanban/opencode" Mode="rw" Description="OpenCode configuration directory." Type="Path" Display="always" Required="false" Mask="false"/>
-    <Config Name="Path: Droid Config" Target="/home/node/.droid" Default="/mnt/user/appdata/vibe-kanban/droid" Mode="rw" Description="Droid CLI configuration directory." Type="Path" Display="always" Required="false" Mask="false"/>
-    <Config Name="Path: CCR Config" Target="/home/node/.claude-code-router" Default="/mnt/user/appdata/vibe-kanban/ccr" Mode="rw" Description="Claude Code Router configuration directory." Type="Path" Display="always" Required="false" Mask="false"/>
-    <Config Name="Path: Qwen Config" Target="/home/node/.qwen" Default="/mnt/user/appdata/vibe-kanban/qwen" Mode="rw" Description="Qwen Code configuration directory." Type="Path" Display="always" Required="false" Mask="false"/>
-    <Config Name="Path: GitHub CLI Config" Target="/home/node/.config/gh" Default="/mnt/user/appdata/vibe-kanban/gh" Mode="rw" Description="GitHub CLI configuration directory." Type="Path" Display="always" Required="false" Mask="false"/>
+    <Config Name="Path: SSH Keys" Target="/home/node/.ssh" Default="/mnt/user/appdata/vibe-kanban/ssh" Mode="rw" Description="SSH keys for git operations." Type="Path" Display="always" Required="false" Mask="false"/>
+    <Config Name="Path: GitConfig" Target="/home/node/.gitconfig" Default="/mnt/user/appdata/vibe-kanban/gitconfig" Mode="rw" Description="Git configuration file." Type="Path" Display="always" Required="false" Mask="false"/>
     <Config Name="Path: Docker Socket" Target="/var/run/docker.sock" Default="/var/run/docker.sock" Mode="rw" Description="Docker socket for Docker-in-Docker support." Type="Path" Display="always" Required="false" Mask="false"/>
 
     <!-- Timezone -->
