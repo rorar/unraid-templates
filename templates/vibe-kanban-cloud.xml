@@ -1,123 +1,52 @@
 <?xml version="1.0"?>
 <Container version="2">
-  <Name>Vibe Kanban Cloud</Name>
-  <Repository>ghcr.io/rorar/vibe-kanban-cloud:latest</Repository>
-  <Registry>https://github.com/rorar/vibe-kanban-cloud-docker</Registry>
-  <Network>bridge</Network>
-  <MyIP/>
-  <Shell>sh</Shell>
-  <Privileged>true</Privileged>
-  <Support>https://github.com/rorar/vibe-kanban-cloud-docker/issues</Support>
-  <Project>https://github.com/BloopAI/vibe-kanban</Project>
-  <Overview>Deploy Vibe Kanban Cloud on UnRAID. This is a true Docker-in-Docker wrapper that runs the entire Cloud stack (remote-server, Postgres, ElectricSQL, Caddy). Important: You MUST use Privileged mode. For Local setups without domain, enter your local IP in DOMAIN and it will auto-generate an SSL cert you can find in your appdata. For External proxies (Nginx/Traefik), set USE_EXTERNAL_PROXY to true and map the External App Port.</Overview>
-  <Category>Productivity: Tools: Utilities:</Category>
-  <WebUI>http://[IP]:[PORT:180]/</WebUI>
-  <TemplateURL>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/vibe-kanban-cloud.xml</TemplateURL>
-  <Icon>https://raw.githubusercontent.com/BloopAI/vibe-kanban/main/crates/web/public/logo.png</Icon>
-  <ExtraParams/>
-  <PostArgs/>
-  <CPUset/>
-  <DateInstalled></DateInstalled>
-  <DonateText/>
-  <DonateLink/>
-  <Description>Deploy Vibe Kanban Cloud on UnRAID...</Description>
-  <Networking>
-    <Mode>bridge</Mode>
-    <Publish>
-      <Port>
-        <HostPort>180</HostPort>
-        <ContainerPort>80</ContainerPort>
-        <Protocol>tcp</Protocol>
-      </Port>
-      <Port>
-        <HostPort>1443</HostPort>
-        <ContainerPort>443</ContainerPort>
-        <Protocol>tcp</Protocol>
-      </Port>
-      <Port>
-        <HostPort>8081</HostPort>
-        <ContainerPort>8081</ContainerPort>
-        <Protocol>tcp</Protocol>
-      </Port>
-    </Publish>
-  </Networking>
-  <Data>
-    <Volume>
-      <HostDir>/mnt/user/appdata/vibe-kanban-cloud/</HostDir>
-      <ContainerDir>/data</ContainerDir>
-      <Mode>rw</Mode>
-    </Volume>
-  </Data>
-  <Environment>
-    <Variable>
-      <Value>vibe.local</Value>
-      <Name>DOMAIN</Name>
-      <Mode/>
-    </Variable>
-    <Variable>
-      <Value>false</Value>
-      <Name>USE_EXTERNAL_PROXY</Name>
-      <Mode/>
-    </Variable>
-    <Variable>
-      <Value></Value>
-      <Name>TLS_EMAIL</Name>
-      <Mode/>
-    </Variable>
-    <Variable>
-      <Value>admin@example.com</Value>
-      <Name>SELF_HOST_LOCAL_AUTH_EMAIL</Name>
-      <Mode/>
-    </Variable>
-    <Variable>
-      <Value>changeme</Value>
-      <Name>SELF_HOST_LOCAL_AUTH_PASSWORD</Name>
-      <Mode/>
-    </Variable>
-    <Variable>
-      <Value></Value>
-      <Name>GITHUB_OAUTH_CLIENT_ID</Name>
-      <Mode/>
-    </Variable>
-    <Variable>
-      <Value></Value>
-      <Name>GITHUB_OAUTH_CLIENT_SECRET</Name>
-      <Mode/>
-    </Variable>
-    <Variable>
-      <Value></Value>
-      <Name>GOOGLE_OAUTH_CLIENT_ID</Name>
-      <Mode/>
-    </Variable>
-    <Variable>
-      <Value></Value>
-      <Name>GOOGLE_OAUTH_CLIENT_SECRET</Name>
-      <Mode/>
-    </Variable>
-    <Variable>
-      <Value>99</Value>
-      <Name>PUID</Name>
-      <Mode/>
-    </Variable>
-    <Variable>
-      <Value>100</Value>
-      <Name>PGID</Name>
-      <Mode/>
-    </Variable>
-  </Environment>
-  <Config Name="Domain (IP or FQDN)" Target="DOMAIN" Default="vibe.local" Mode="" Description="Your domain. If you enter a local IP/hostname (e.g. 192.168.x.x), Caddy will use internal SSL." Type="Variable" Display="always" Required="true" Mask="false">vibe.local</Config>
-  <Config Name="External Proxy Mode" Target="USE_EXTERNAL_PROXY" Default="false" Mode="" Description="Set to 'true' if you use Nginx Proxy Manager, Traefik, or an external Caddy. This disables the internal SSL handling." Type="Variable" Display="always" Required="true" Mask="false">false</Config>
-  <Config Name="Local Auth Admin Email" Target="SELF_HOST_LOCAL_AUTH_EMAIL" Default="admin@example.com" Mode="" Description="For initial setup without OAuth. The email address to use for the bootstrap admin." Type="Variable" Display="always" Required="false" Mask="false">admin@example.com</Config>
-  <Config Name="Local Auth Admin Password" Target="SELF_HOST_LOCAL_AUTH_PASSWORD" Default="changeme" Mode="" Description="For initial setup without OAuth. Secure password for the bootstrap admin." Type="Variable" Display="always" Required="false" Mask="true">changeme</Config>
-  <Config Name="Appdata Directory" Target="/data" Default="/mnt/user/appdata/vibe-kanban-cloud/" Mode="rw" Description="All persistent data, database, and generated secrets (.env) are stored here." Type="Path" Display="advanced-hide" Required="true" Mask="false">/mnt/user/appdata/vibe-kanban-cloud/</Config>
-  <Config Name="HTTP Port" Target="80" Default="180" Mode="tcp" Description="Internal Caddy HTTP Port (used if USE_EXTERNAL_PROXY=false)." Type="Port" Display="always" Required="false" Mask="false">180</Config>
-  <Config Name="HTTPS Port" Target="443" Default="1443" Mode="tcp" Description="Internal Caddy HTTPS Port (used if USE_EXTERNAL_PROXY=false)." Type="Port" Display="always" Required="false" Mask="false">1443</Config>
-  <Config Name="External App Port" Target="8081" Default="8081" Mode="tcp" Description="Direct access to Vibe Kanban App (used if USE_EXTERNAL_PROXY=true). Point your reverse proxy to this port." Type="Port" Display="always" Required="false" Mask="false">8081</Config>
-  <Config Name="TLS Email" Target="TLS_EMAIL" Default="" Mode="" Description="(Optional) Email address for Let's Encrypt ACME registration if you use a public domain and internal Caddy." Type="Variable" Display="advanced" Required="false" Mask="false"></Config>
-  <Config Name="GitHub OAuth Client ID" Target="GITHUB_OAUTH_CLIENT_ID" Default="" Mode="" Description="(Optional) For GitHub Auth." Type="Variable" Display="advanced" Required="false" Mask="false"></Config>
-  <Config Name="GitHub OAuth Client Secret" Target="GITHUB_OAUTH_CLIENT_SECRET" Default="" Mode="" Description="(Optional) For GitHub Auth." Type="Variable" Display="advanced" Required="false" Mask="true"></Config>
-  <Config Name="Google OAuth Client ID" Target="GOOGLE_OAUTH_CLIENT_ID" Default="" Mode="" Description="(Optional) For Google Auth." Type="Variable" Display="advanced" Required="false" Mask="false"></Config>
-  <Config Name="Google OAuth Client Secret" Target="GOOGLE_OAUTH_CLIENT_SECRET" Default="" Mode="" Description="(Optional) For Google Auth." Type="Variable" Display="advanced" Required="false" Mask="true"></Config>
-  <Config Name="PUID" Target="PUID" Default="99" Mode="" Description="Container User ID" Type="Variable" Display="advanced" Required="false" Mask="false">99</Config>
-  <Config Name="PGID" Target="PGID" Default="100" Mode="" Description="Container Group ID" Type="Variable" Display="advanced" Required="false" Mask="false">100</Config>
+    <Name>vibe-kanban-cloud</Name>
+    <Beta>false</Beta>
+    <Category>Productivity: Tools: Utilities:</Category>
+    <Repository>ghcr.io/rorar/vibe-kanban-cloud:latest</Repository>
+    <Registry>https://github.com/rorar/vibe-kanban-cloud-docker</Registry>
+    <Network>bridge</Network>
+    <ExtraParams>--hostname=vibe-kanban-cloud</ExtraParams>
+    <Shell>bash</Shell>
+    <Privileged>true</Privileged>
+    <GitHub>https://github.com/rorar/vibe-kanban-cloud-docker</GitHub>
+    <Project>https://vibekanban.com</Project>
+    <Overview>Deploy Vibe Kanban Cloud on UnRAID. This is a true Docker-in-Docker wrapper that runs the entire Cloud stack (remote-server, Postgres, ElectricSQL, Caddy).&#13;&#13;Important: You MUST use Privileged mode.&#13;&#13;For Local setups without domain, enter your local IP in DOMAIN and it will auto-generate an SSL cert you can find in your appdata.&#13;&#13;For External proxies (Nginx/Traefik), set USE_EXTERNAL_PROXY to true and map the External App Port.</Overview>
+    <WebUI>http://[IP]:[PORT:180]/</WebUI>
+    <TemplateURL>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/vibe-kanban-cloud.xml</TemplateURL>
+    <Icon>https://raw.githubusercontent.com/BloopAI/vibe-kanban/main/crates/web/public/logo.png</Icon>
+    <Date>2026-04-30</Date>
+    <Changes></Changes>
+    <Requires>This container requires Privileged mode to run its internal Docker daemon (True Docker-in-Docker).</Requires>
+
+    <!-- Port Mappings -->
+    <Config Name="Port: HTTP (Internal Proxy)" Target="80" Default="180" Mode="tcp" Description="Internal Caddy HTTP Port (used if USE_EXTERNAL_PROXY=false)." Type="Port" Display="always" Required="false" Mask="false"/>
+    <Config Name="Port: HTTPS (Internal Proxy)" Target="443" Default="1443" Mode="tcp" Description="Internal Caddy HTTPS Port (used if USE_EXTERNAL_PROXY=false)." Type="Port" Display="always" Required="false" Mask="false"/>
+    <Config Name="Port: External App (Direct)" Target="8081" Default="8081" Mode="tcp" Description="Direct access to Vibe Kanban App (used if USE_EXTERNAL_PROXY=true). Point your external reverse proxy to this port." Type="Port" Display="always" Required="false" Mask="false"/>
+
+    <!-- Volume Mappings -->
+    <Config Name="Path: Appdata Directory" Target="/data" Default="/mnt/user/appdata/vibe-kanban-cloud" Mode="rw" Description="Persistent storage for all data (database, electric, SSL certs, generated secrets in .env)." Type="Path" Display="always" Required="true" Mask="false"/>
+
+    <!-- Separator: Core Configuration -->
+    <Config Name="--- Core Configuration ---" Target="" Default="" Mode="" Description="Main server settings." Type="Variable" Display="always" Required="false" Mask="false"/>
+    <Config Name="Variable: Domain (IP or FQDN)" Target="DOMAIN" Default="vibe.local" Description="Your domain. If you enter a local IP/hostname (e.g. 192.168.x.x), Caddy uses internal SSL. If public FQDN, Caddy uses Let's Encrypt." Type="Variable" Display="always" Required="true" Mask="false"/>
+    <Config Name="Variable: External Proxy Mode" Target="USE_EXTERNAL_PROXY" Default="false" Description="Set to 'true' if you use Nginx Proxy Manager, Traefik, or an external Caddy. This disables the internal Caddy." Type="Variable" Display="always" Required="true" Mask="false"/>
+    <Config Name="Variable: TLS Email" Target="TLS_EMAIL" Default="" Description="(Optional) Email address for Let's Encrypt ACME registration if you use a public domain and internal Caddy." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+
+    <!-- Separator: Local Authentication -->
+    <Config Name="--- Local Authentication ---" Target="" Default="" Mode="" Description="Bootstrap credentials for initial setup without OAuth." Type="Variable" Display="always" Required="false" Mask="false"/>
+    <Config Name="Variable: Local Admin Email" Target="SELF_HOST_LOCAL_AUTH_EMAIL" Default="admin@example.com" Description="The email address to use for the bootstrap admin." Type="Variable" Display="always" Required="false" Mask="false"/>
+    <Config Name="Variable: Local Admin Password" Target="SELF_HOST_LOCAL_AUTH_PASSWORD" Default="changeme" Description="Secure password for the bootstrap admin." Type="Variable" Display="always" Required="false" Mask="true"/>
+
+    <!-- Separator: OAuth Providers (Advanced) -->
+    <Config Name="--- OAuth Providers (Advanced) ---" Target="" Default="" Mode="" Description="Configure GitHub or Google login." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+    <Config Name="Variable: GitHub OAuth Client ID" Target="GITHUB_OAUTH_CLIENT_ID" Default="" Description="Client ID for GitHub Auth." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+    <Config Name="Variable: GitHub OAuth Client Secret" Target="GITHUB_OAUTH_CLIENT_SECRET" Default="" Description="Client Secret for GitHub Auth." Type="Variable" Display="advanced" Required="false" Mask="true"/>
+    <Config Name="Variable: Google OAuth Client ID" Target="GOOGLE_OAUTH_CLIENT_ID" Default="" Description="Client ID for Google Auth." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+    <Config Name="Variable: Google OAuth Client Secret" Target="GOOGLE_OAUTH_CLIENT_SECRET" Default="" Description="Client Secret for Google Auth." Type="Variable" Display="advanced" Required="false" Mask="true"/>
+
+    <!-- Separator: User & Permissions (Advanced) -->
+    <Config Name="--- User &amp; Permissions (Advanced) ---" Target="" Default="" Mode="" Description="Advanced user and permission settings." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+    <Config Name="Variable: PUID" Target="PUID" Default="99" Description="Container User ID for file ownership in /data (default: 99)." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+    <Config Name="Variable: PGID" Target="PGID" Default="100" Description="Container Group ID for file ownership in /data (default: 100)." Type="Variable" Display="advanced" Required="false" Mask="false"/>
 </Container>
