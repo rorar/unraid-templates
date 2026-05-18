@@ -102,6 +102,43 @@ For end-to-end encryption with Matrix:
 
 ---
 
+### PhotoMigrator
+
+[![License: GPL-3.0](https://img.shields.io/badge/License-GPL--3.0-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![GitHub stars](https://img.shields.io/github/stars/jaimetur/PhotoMigrator?style=flat)](https://github.com/jaimetur/PhotoMigrator/stargazers)
+[![Docker Pulls](https://img.shields.io/docker/pulls/jaimetur/photomigrator)](https://hub.docker.com/r/jaimetur/photomigrator)
+[![Last Updated](https://img.shields.io/github/last-commit/jaimetur/PhotoMigrator/main)](https://github.com/jaimetur/PhotoMigrator/commits/main)
+
+**PhotoMigrator** - Interact with and migrate between photo services such as Google Photos, Synology Photos, Immich, NextCloud, and Google Takeout by [Jaime Tur](https://github.com/jaimetur).
+
+| Template | Description |
+|----------|-------------|
+| `photomigrator.xml` | Main container with web UI for photo service migration and management |
+
+#### Features
+
+- **Multi-Service**: Google Photos, Synology Photos, Immich, NextCloud, Google Takeout
+- **Migration**: Automatic migration between services or accounts
+- **Google Takeout**: Analysis and EXIF metadata embedding
+- **Album Management**: Upload, download, delete, rename albums and assets
+- **Library Tools**: Duplicate detection, folder organization, symbolic links
+- **Multi-Account**: Support for multiple accounts per service
+- **Web UI + CLI**: FastAPI-based web interface and command-line access
+
+#### Setup Notes
+
+1. The container runs on port **6078** by default
+2. On first start, default `Config.ini` and `docker.conf` are generated in the config directory
+3. Configure volume paths for config, data, and additional volumes
+4. Set `PUID`/`PGID` to match your Unraid user (default: 99/100)
+
+#### Documentation
+
+- [GitHub Repository](https://github.com/jaimetur/PhotoMigrator)
+- [Demo Instance](https://photomigrator.jaimetur.cloud) (credentials: demo/demo)
+
+---
+
 ### WGER (Fitness Tracker)
 
 [![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL--3.0-green.svg)](https://www.gnu.org/licenses/agpl-3.0)
@@ -127,7 +164,7 @@ For end-to-end encryption with Matrix:
 ### Via Community Applications
 
 1. Go to **Apps** in your Unraid WebUI
-2. Search for **Hermes Agent** or **WGER**
+2. Search for **PhotoMigrator**, **Hermes Agent**, or **WGER**
 3. Click **Install**
 
 ### Manual Repository
@@ -150,6 +187,10 @@ Download the XML file and import via Unraid's Docker page.
 ---
 
 ## Documentation
+
+### PhotoMigrator
+- [GitHub Repository](https://github.com/jaimetur/PhotoMigrator)
+- [Docker Hub](https://hub.docker.com/r/jaimetur/photomigrator)
 
 ### Hermes Agent
 - [Official Docs](https://hermes-agent.nousresearch.com/docs/)
