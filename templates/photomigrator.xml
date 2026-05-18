@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<Container version="2">
+    <Name>photomigrator</Name>
+    <Beta>false</Beta>
+    <Category>Backup: Cloud: MediaApp:Photos Tools:</Category>
+    <Repository>jaimetur/photomigrator:latest-stable</Repository>
+    <Registry>https://hub.docker.com/r/jaimetur/photomigrator/</Registry>
+    <Network>bridge</Network>
+    <Shell>bash</Shell>
+    <GitHub>https://github.com/jaimetur/PhotoMigrator</GitHub>
+    <ReadMe>https://github.com/jaimetur/PhotoMigrator/blob/main/README.md</ReadMe>
+    <Support>https://github.com/jaimetur/PhotoMigrator/issues</Support>
+    <Project>https://github.com/jaimetur/PhotoMigrator</Project>
+    <Overview>PhotoMigrator lets you interact with and migrate between photo services such as Google Photos, Synology Photos, Immich Photos, NextCloud Photos, and Google Takeout. Features include automatic migration between services/accounts, Google Takeout analysis with EXIF metadata embedding, album/asset management (upload, download, delete, rename), library organization (duplicates, folder structures), and multi-account support. Includes a web interface (FastAPI) and CLI.&#13;&#13;For setup instructions and documentation, see: https://github.com/jaimetur/PhotoMigrator</Overview>
+    <WebUI>http://[IP]:[PORT:6078]</WebUI>
+    <TemplateURL>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/photomigrator.xml</TemplateURL>
+    <Icon>https://raw.githubusercontent.com/jaimetur/PhotoMigrator/main/assets/logos/logo.png</Icon>
+    <Date>2026-05-18</Date>
+    <Changes>https://github.com/jaimetur/PhotoMigrator/blob/main/CHANGELOG.md</Changes>
+    <Requires>Create volume paths before first start. On first run the container will generate default Config.ini and docker.conf in the config directory.</Requires>
+
+    <!-- Port Mappings -->
+    <Config Name="Port: Web UI" Target="6078" Default="6078" Mode="tcp" Description="HTTP port for the PhotoMigrator web interface." Type="Port" Display="always" Required="true" Mask="false"/>
+
+    <!-- Volume Mappings -->
+    <Config Name="Path: Config" Target="/app/config" Default="/mnt/user/appdata/photomigrator/config" Mode="rw" Description="Persistent config directory (Config.ini, docker.conf)." Type="Path" Display="always" Required="true" Mask="false"/>
+    <Config Name="Path: Data" Target="/app/data" Default="/mnt/user/appdata/photomigrator/data" Mode="rw" Description="Input/output data directory for migrations and processing." Type="Path" Display="always" Required="true" Mask="false"/>
+    <Config Name="Path: Volumes" Target="/app/volumes" Default="/mnt/user/appdata/photomigrator/volumes" Mode="rw" Description="Additional folder for mounted directories (e.g. photo libraries)." Type="Path" Display="always" Required="true" Mask="false"/>
+
+    <!-- Timezone -->
+    <Config Name="Variable: TZ" Target="TZ" Default="Europe/Berlin" Description="Timezone for the container. Important for correct timestamps in logs and file suffixes. See: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List" Type="Variable" Display="always" Required="false" Mask="false"/>
+
+    <!-- Separator: User & Permissions -->
+    <Config Name="--- User &amp; Permissions ---" Target="" Default="" Mode="" Description="Set PUID/PGID to match your Unraid user. Find yours with: id $user" Type="Variable" Display="always" Required="false" Mask="false"/>
+    <Config Name="Variable: PUID" Target="PUID" Default="99" Description="User ID to run the container as (default: 99 for nobody)." Type="Variable" Display="always" Required="false" Mask="false"/>
+    <Config Name="Variable: PGID" Target="PGID" Default="100" Description="Group ID to run the container as (default: 100 for users)." Type="Variable" Display="always" Required="false" Mask="false"/>
+
+    <!-- Separator: Web Interface (Advanced) -->
+    <Config Name="--- Web Interface (Advanced) ---" Target="" Default="" Mode="" Description="Advanced settings for the PhotoMigrator web interface." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+    <Config Name="Variable: PHOTOMIGRATOR_WEB_DELETE_ROOTS" Target="PHOTOMIGRATOR_WEB_DELETE_ROOTS" Default="" Description="Comma-separated list of allowed base folders for the 'Remove Selected' feature in the web UI. Leave empty to disable deletion." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+    <Config Name="Variable: PHOTOMIGRATOR_WEB_MAX_JOB_OUTPUT_LINES" Target="PHOTOMIGRATOR_WEB_MAX_JOB_OUTPUT_LINES" Default="100000" Description="Maximum number of log output lines to buffer per job in the web UI." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+</Container>
