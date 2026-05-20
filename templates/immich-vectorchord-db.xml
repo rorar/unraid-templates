@@ -32,7 +32,7 @@
   <Config Name="Port: PostgreSQL" Target="5432" Default="5432" Mode="tcp" Description="PostgreSQL database port (5432)" Type="Port" Display="always" Required="true" Mask="false">5432</Config>
 
   <!-- Volume -->
-  <Config Name="Path: DB Data" Target="/var/lib/postgresql" Default="/mnt/user/appdata/immich/db/" Mode="rw" Description="Persistent database data directory. PG 18+ stores data in a version-specific subdirectory (18/docker). Must be on locally attached storage (SSD/NVMe), not a remote filesystem." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/immich/db/</Config>
+  <Config Name="Path: DB Data" Target="/var/lib/postgresql" Default="/mnt/user/appdata/immich-vectorchord-db/" Mode="rw" Description="Persistent database data directory. PG 18+ stores data in a version-specific subdirectory (18/docker). Must be on locally attached storage (SSD/NVMe), not a remote filesystem." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/immich-vectorchord-db/</Config>
 
   <!-- Separator: System -->
   <Config Name="--- System ---" Target="" Default="" Mode="" Description="Timezone and permissions." Type="Variable" Display="always" Required="false" Mask="false"/>
