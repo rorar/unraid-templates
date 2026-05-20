@@ -24,7 +24,7 @@
   <!-- Separator: Database -->
   <Config Name="--- Database ---" Target="" Default="" Mode="" Description="Core PostgreSQL settings for Immich." Type="Variable" Display="always" Required="false" Mask="false"/>
   <Config Name="POSTGRES_USER" Target="POSTGRES_USER" Default="postgres" Mode="" Description="Database username" Type="Variable" Display="always" Required="true" Mask="false">postgres</Config>
-  <Config Name="POSTGRES_PASSWORD" Target="POSTGRES_PASSWORD" Default="postgres" Mode="" Description="Database password &#x2013; please change! Use only A-Za-z0-9, no special characters." Type="Variable" Display="always" Required="true" Mask="true">postgres</Config>
+  <Config Name="POSTGRES_PASSWORD" Target="POSTGRES_PASSWORD" Default="postgres" Mode="" Description="Database password &#x2013; please change! Use only A-Za-z0-9, no special characters. Generate a secure one in the Unraid terminal: openssl rand -base64 32 | tr -dc A-Za-z0-9 | head -c 32" Type="Variable" Display="always" Required="true" Mask="true">postgres</Config>
   <Config Name="POSTGRES_DB" Target="POSTGRES_DB" Default="immich" Mode="" Description="Database name" Type="Variable" Display="always" Required="true" Mask="false">immich</Config>
   <Config Name="POSTGRES_INITDB_ARGS" Target="POSTGRES_INITDB_ARGS" Default="--data-checksums" Mode="" Description="Arguments for initdb. --data-checksums enables checksums for data integrity." Type="Variable" Display="advanced" Required="false" Mask="false">--data-checksums</Config>
 
