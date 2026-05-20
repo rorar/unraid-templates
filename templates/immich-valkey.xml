@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>immich-valkey</Name>
+  <Repository>valkey/valkey:9</Repository>
+  <Registry>https://hub.docker.com/r/valkey/valkey</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/valkey-io/valkey/issues</Support>
+  <Project>https://valkey.io</Project>
+  <Overview>Valkey is an open-source, high-performance key/value store (Redis fork). Used by Immich as a cache and message broker.&#13;&#13;This is a lightweight component with minimal configuration needed. Must be on the same Docker network as the Immich server.&#13;&#13;Note: Immich officially uses Valkey (not Redis) since their docker-compose.yml references valkey/valkey:9.</Overview>
+  <Category>Network:Management Tools: Status:Stable</Category>
+  <WebUI/>
+  <TemplateURL>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/immich-valkey.xml</TemplateURL>
+  <Icon>https://valkey.io/img/favicon/apple-touch-icon.png</Icon>
+  <ExtraParams>--health-cmd="redis-cli ping || exit 1" --health-interval=10s --health-retries=5 --health-start-period=10s --health-timeout=5s</ExtraParams>
+  <PostArgs/>
+  <CPUset/>
+  <DonateText/>
+  <DonateLink/>
+  <Requires>Must be on the same Docker network as the immich-server container.</Requires>
+
+  <!-- Volume -->
+  <Config Name="Path: Data" Target="/data" Default="/mnt/user/appdata/immich-valkey/" Mode="rw" Description="Persistent Valkey data directory." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/immich-valkey/</Config>
+
+  <!-- Separator: System -->
+  <Config Name="--- System ---" Target="" Default="" Mode="" Description="General settings." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="Variable: TZ" Target="TZ" Default="Europe/Berlin" Mode="" Description="Timezone. See: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List" Type="Variable" Display="always" Required="false" Mask="false">Europe/Berlin</Config>
+</Container>

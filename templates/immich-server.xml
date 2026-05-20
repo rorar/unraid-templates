@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>immich-server</Name>
+  <Repository>ghcr.io/immich-app/immich-server:release</Repository>
+  <Registry>https://github.com/immich-app/immich/pkgs/container/immich-server</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>bash</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/immich-app/immich/issues</Support>
+  <Project>https://immich.app</Project>
+  <Overview>Immich &#x2013; self-hosted photo and video management. High-performance backup solution with machine learning powered search, face recognition, and automatic organization.&#13;&#13;This is the main server component. It requires a PostgreSQL database with VectorChord/pgvector, a Valkey/Redis instance, and the Immich Machine Learning service.&#13;&#13;All Immich containers should be on the same Docker network so they can communicate by container name.&#13;&#13;Docs: https://docs.immich.app</Overview>
+  <Category>MediaApp:Photos Productivity: Status:Stable</Category>
+  <WebUI>http://[IP]:[PORT:2283]</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/immich-server.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/immich-app/immich/main/docs/static/img/immich-logo.svg</Icon>
+  <ExtraParams>--health-cmd="wget --no-verbose --tries=1 --spider http://localhost:2283/api/server/ping || exit 1" --health-interval=10s --health-retries=5 --health-start-period=60s --health-timeout=5s</ExtraParams>
+  <PostArgs/>
+  <CPUset/>
+  <DonateText/>
+  <DonateLink/>
+  <Requires>Requires: immich-vectorchord-db (or compatible PostgreSQL with VectorChord/pgvector), Valkey/Redis, and immich-machine-learning containers on the same Docker network.</Requires>
+
+  <!-- Separator: Media -->
+  <Config Name="--- Media ---" Target="" Default="" Mode="" Description="Upload and media storage settings." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="Port: Web UI" Target="2283" Default="2283" Mode="tcp" Description="Immich web interface and API port" Type="Port" Display="always" Required="true" Mask="false">2283</Config>
+  <Config Name="Path: Uploads" Target="/data" Default="/mnt/user/appdata/immich/uploads/" Mode="rw" Description="Photo and video upload storage. This is where all your media files are stored." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/immich/uploads/</Config>
+  <Config Name="Path: Localtime" Target="/etc/localtime" Default="/etc/localtime" Mode="ro" Description="Timezone sync from host (read-only)" Type="Path" Display="advanced" Required="false" Mask="false">/etc/localtime</Config>
+
+  <!-- Separator: Database -->
+  <Config Name="--- Database ---" Target="" Default="" Mode="" Description="PostgreSQL connection settings. Must match your immich-vectorchord-db configuration." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="DB_HOSTNAME" Target="DB_HOSTNAME" Default="immich-vectorchord-db" Mode="" Description="Database container name or IP" Type="Variable" Display="always" Required="true" Mask="false">immich-vectorchord-db</Config>
+  <Config Name="DB_PORT" Target="DB_PORT" Default="5432" Mode="" Description="Database port" Type="Variable" Display="always" Required="true" Mask="false">5432</Config>
+  <Config Name="DB_USERNAME" Target="DB_USERNAME" Default="postgres" Mode="" Description="Database username (must match DB container)" Type="Variable" Display="always" Required="true" Mask="false">postgres</Config>
+  <Config Name="DB_PASSWORD" Target="DB_PASSWORD" Default="postgres" Mode="" Description="Database password (must match DB container)" Type="Variable" Display="always" Required="true" Mask="true">postgres</Config>
+  <Config Name="DB_DATABASE_NAME" Target="DB_DATABASE_NAME" Default="immich" Mode="" Description="Database name (must match DB container)" Type="Variable" Display="always" Required="true" Mask="false">immich</Config>
+
+  <!-- Separator: Redis -->
+  <Config Name="--- Redis/Valkey ---" Target="" Default="" Mode="" Description="Valkey/Redis connection settings." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="REDIS_HOSTNAME" Target="REDIS_HOSTNAME" Default="immich-valkey" Mode="" Description="Valkey/Redis container name or IP" Type="Variable" Display="always" Required="true" Mask="false">immich-valkey</Config>
+  <Config Name="REDIS_PORT" Target="REDIS_PORT" Default="6379" Mode="" Description="Valkey/Redis port" Type="Variable" Display="advanced" Required="false" Mask="false">6379</Config>
+
+  <!-- Separator: System -->
+  <Config Name="--- System ---" Target="" Default="" Mode="" Description="General settings." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="Variable: TZ" Target="TZ" Default="Europe/Berlin" Mode="" Description="Timezone. See: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List" Type="Variable" Display="always" Required="false" Mask="false">Europe/Berlin</Config>
+
+  <!-- Separator: Advanced -->
+  <Config Name="--- Advanced ---" Target="" Default="" Mode="" Description="Advanced settings. Only change if you know what you are doing." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="DB_VECTOR_EXTENSION" Target="DB_VECTOR_EXTENSION" Default="" Mode="" Description="Force vector extension: vectorchord, pgvector, or pgvecto.rs. Leave empty for auto-detection (recommended)." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="IMMICH_LOG_LEVEL" Target="IMMICH_LOG_LEVEL" Default="log" Mode="" Description="Log verbosity: verbose, debug, log, warn, error" Type="Variable" Display="advanced" Required="false" Mask="false">log</Config>
+  <Config Name="IMMICH_TRUSTED_PROXIES" Target="IMMICH_TRUSTED_PROXIES" Default="" Mode="" Description="Comma-separated trusted proxy IPs (for reverse proxy setups)" Type="Variable" Display="advanced" Required="false" Mask="false"/>
+</Container>
