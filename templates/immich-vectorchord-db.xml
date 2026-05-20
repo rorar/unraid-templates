@@ -19,7 +19,7 @@
   <CPUset/>
   <DonateText/>
   <DonateLink/>
-  <Requires>Database directory must be on a local SSD (no network shares). Used as the database backend for Immich.</Requires>
+  <Requires>Database files must reside on locally attached storage (SSD/NVMe), not on a remote-mounted filesystem (e.g. NFS/SMB from another machine). Used as the database backend for Immich.</Requires>
 
   <!-- Separator: Database -->
   <Config Name="--- Database ---" Target="" Default="" Mode="" Description="Core PostgreSQL settings for Immich." Type="Variable" Display="always" Required="false" Mask="false"/>
@@ -32,7 +32,7 @@
   <Config Name="Port: PostgreSQL" Target="5432" Default="5432" Mode="tcp" Description="PostgreSQL database port (5432)" Type="Port" Display="always" Required="true" Mask="false">5432</Config>
 
   <!-- Volume -->
-  <Config Name="Path: DB Data" Target="/var/lib/postgresql/data" Default="/mnt/user/appdata/immich/db/" Mode="rw" Description="Persistent database data directory. Must be on a local SSD!" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/immich/db/</Config>
+  <Config Name="Path: DB Data" Target="/var/lib/postgresql/data" Default="/mnt/user/appdata/immich/db/" Mode="rw" Description="Persistent database data directory. Must be on locally attached storage (SSD/NVMe), not a remote filesystem." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/immich/db/</Config>
 
   <!-- Separator: System -->
   <Config Name="--- System ---" Target="" Default="" Mode="" Description="Timezone and permissions." Type="Variable" Display="always" Required="false" Mask="false"/>
