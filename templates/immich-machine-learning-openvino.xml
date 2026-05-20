@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <Container version="2">
   <Name>immich-machine-learning</Name>
-  <Repository>ghcr.io/immich-app/immich-machine-learning:release</Repository>
+  <Repository>ghcr.io/immich-app/immich-machine-learning:release-openvino</Repository>
   <Registry>https://github.com/immich-app/immich/pkgs/container/immich-machine-learning</Registry>
   <Network>immich_internal</Network>
   <MyIP/>
@@ -9,17 +9,20 @@
   <Privileged>false</Privileged>
   <Support>https://github.com/immich-app/immich/issues</Support>
   <Project>https://immich.app</Project>
-  <Overview>Immich Machine Learning service. Handles face recognition, CLIP-based image search, and OCR.&#13;&#13;This service runs ML models locally. Models are downloaded on first use and cached. The default cache can grow to several GB depending on enabled features.&#13;&#13;For GPU acceleration, change the image tag to: release-cuda, release-rocm, release-openvino, release-armnn, or release-rknn.&#13;&#13;Must be on the same Docker network as the Immich server.</Overview>
+  <Overview>Immich Machine Learning service with Intel OpenVINO GPU acceleration.&#13;&#13;Uses Intel iGPU (UHD/Iris Graphics) for ML inference. Works with Intel N100, N150, NUC, and other chips with integrated graphics.&#13;&#13;Handles face recognition, CLIP-based image search, and OCR using GPU-accelerated inference.&#13;&#13;Must be on the same Docker network as the Immich server.</Overview>
   <Category>MediaApp:Photos AI: Status:Stable</Category>
   <WebUI/>
-  <TemplateURL>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/immich-machine-learning.xml</TemplateURL>
+  <TemplateURL>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/immich-machine-learning-openvino.xml</TemplateURL>
   <Icon>https://raw.githubusercontent.com/immich-app/immich/main/docs/static/img/immich-logo.svg</Icon>
   <ExtraParams/>
   <PostArgs/>
   <CPUset/>
   <DonateText/>
   <DonateLink/>
-  <Requires>Must be on the same Docker network as the immich-server container. The server connects to this service on port 3003 by container name.</Requires>
+  <Requires>Requires Intel iGPU with /dev/dri available. Must be on the same Docker network as the immich-server container.</Requires>
+
+  <!-- GPU Device -->
+  <Config Name="Device: Intel iGPU" Target="/dev/dri" Default="/dev/dri" Mode="" Description="Intel integrated GPU device. Required for OpenVINO acceleration." Type="Device" Display="always" Required="true" Mask="false">/dev/dri</Config>
 
   <!-- Volume -->
   <Config Name="Path: Model Cache" Target="/cache" Default="/mnt/user/appdata/immich/model-cache/" Mode="rw" Description="ML model cache directory. Models are downloaded on first use (several GB)." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/immich/model-cache/</Config>
@@ -29,9 +32,9 @@
   <Config Name="Variable: TZ" Target="TZ" Default="Europe/Berlin" Mode="" Description="Timezone. See: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List" Type="Variable" Display="always" Required="false" Mask="false">Europe/Berlin</Config>
 
   <!-- Separator: Advanced -->
-  <Config Name="--- Advanced ---" Target="" Default="" Mode="" Description="Advanced ML settings. Defaults work well for most setups." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="--- Advanced ---" Target="" Default="" Mode="" Description="Advanced ML settings." Type="Variable" Display="advanced" Required="false" Mask="false"/>
   <Config Name="MACHINE_LEARNING_MODEL_TTL" Target="MACHINE_LEARNING_MODEL_TTL" Default="300" Mode="" Description="Seconds of inactivity before unloading models from memory. Set to 0 to keep loaded permanently." Type="Variable" Display="advanced" Required="false" Mask="false">300</Config>
-  <Config Name="MACHINE_LEARNING_WORKERS" Target="MACHINE_LEARNING_WORKERS" Default="1" Mode="" Description="Number of ML worker processes. Increase if you have enough RAM/VRAM." Type="Variable" Display="advanced" Required="false" Mask="false">1</Config>
-  <Config Name="MACHINE_LEARNING_WORKER_TIMEOUT" Target="MACHINE_LEARNING_WORKER_TIMEOUT" Default="120" Mode="" Description="Seconds before a worker is considered unresponsive (use 300 for GPU)." Type="Variable" Display="advanced" Required="false" Mask="false">120</Config>
+  <Config Name="MACHINE_LEARNING_WORKERS" Target="MACHINE_LEARNING_WORKERS" Default="1" Mode="" Description="Number of ML worker processes." Type="Variable" Display="advanced" Required="false" Mask="false">1</Config>
+  <Config Name="MACHINE_LEARNING_WORKER_TIMEOUT" Target="MACHINE_LEARNING_WORKER_TIMEOUT" Default="300" Mode="" Description="Seconds before a worker is considered unresponsive. GPU inference can be slow on first run." Type="Variable" Display="advanced" Required="false" Mask="false">300</Config>
   <Config Name="IMMICH_LOG_LEVEL" Target="IMMICH_LOG_LEVEL" Default="log" Mode="" Description="Log verbosity: verbose, debug, log, warn, error" Type="Variable" Display="advanced" Required="false" Mask="false">log</Config>
 </Container>

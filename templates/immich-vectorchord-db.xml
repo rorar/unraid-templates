@@ -3,7 +3,7 @@
   <Name>immich-vectorchord-db</Name>
   <Repository>tensorchord/vchord-postgres:pg18-v1.1.1</Repository>
   <Registry>https://hub.docker.com/r/tensorchord/vchord-postgres</Registry>
-  <Network>bridge</Network>
+  <Network>immich_internal</Network>
   <MyIP/>
   <Shell>bash</Shell>
   <Privileged>false</Privileged>
