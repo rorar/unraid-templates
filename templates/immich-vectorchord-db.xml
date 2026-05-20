@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>immich-vectorchord-db</Name>
+  <Repository>tensorchord/vchord-postgres:pg18-v1.1.1</Repository>
+  <Registry>https://hub.docker.com/r/tensorchord/vchord-postgres</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>bash</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/tensorchord/VectorChord/issues</Support>
+  <Project>https://github.com/tensorchord/VectorChord</Project>
+  <Overview>PostgreSQL 18.3 with VectorChord 1.1.1 and pgvector 0.8.2 for Immich.&#13;&#13;VectorChord is the successor to pgvecto.rs and uses RaBitQ compression for efficient vector search. Immich uses these extensions for face recognition (face_index) and CLIP-based image search (clip_index).&#13;&#13;This image uses the official TensorChord image with an optimized PostgreSQL configuration (based on Immich defaults: 512MB shared_buffers, SSD-optimized I/O parameters).&#13;&#13;Note: The official Immich image is ghcr.io/immich-app/postgres &#x2013; this template uses the latest VectorChord version directly from TensorChord instead.</Overview>
+  <Category>Databases</Category>
+  <WebUI/>
+  <TemplateURL>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/immich-vectorchord-db.xml</TemplateURL>
+  <Icon>https://avatars.githubusercontent.com/u/170015862</Icon>
+  <ExtraParams>--shm-size=128m --health-cmd="pg_isready -U postgres" --health-interval=10s --health-retries=5 --health-start-period=30s --health-timeout=5s</ExtraParams>
+  <PostArgs>postgres -c shared_preload_libraries=vchord,vector -c shared_buffers=512MB -c max_wal_size=5GB -c wal_compression=on -c work_mem=16MB -c effective_io_concurrency=200 -c random_page_cost=1.2 -c autovacuum_vacuum_scale_factor=0.1 -c autovacuum_analyze_scale_factor=0.05 -c autovacuum_vacuum_cost_limit=1000</PostArgs>
+  <CPUset/>
+  <DonateText/>
+  <DonateLink/>
+  <Requires>Database directory must be on a local SSD (no network shares). Used as the database backend for Immich.</Requires>
+
+  <!-- Separator: Database -->
+  <Config Name="--- Database ---" Target="" Default="" Mode="" Description="Core PostgreSQL settings for Immich." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="POSTGRES_USER" Target="POSTGRES_USER" Default="postgres" Mode="" Description="Database username" Type="Variable" Display="always" Required="true" Mask="false">postgres</Config>
+  <Config Name="POSTGRES_PASSWORD" Target="POSTGRES_PASSWORD" Default="postgres" Mode="" Description="Database password &#x2013; please change! Use only A-Za-z0-9, no special characters." Type="Variable" Display="always" Required="true" Mask="true">postgres</Config>
+  <Config Name="POSTGRES_DB" Target="POSTGRES_DB" Default="immich" Mode="" Description="Database name" Type="Variable" Display="always" Required="true" Mask="false">immich</Config>
+  <Config Name="POSTGRES_INITDB_ARGS" Target="POSTGRES_INITDB_ARGS" Default="--data-checksums" Mode="" Description="Arguments for initdb. --data-checksums enables checksums for data integrity." Type="Variable" Display="advanced" Required="false" Mask="false">--data-checksums</Config>
+
+  <!-- Port -->
+  <Config Name="Port: PostgreSQL" Target="5432" Default="5432" Mode="tcp" Description="PostgreSQL database port (5432)" Type="Port" Display="always" Required="true" Mask="false">5432</Config>
+
+  <!-- Volume -->
+  <Config Name="Path: DB Data" Target="/var/lib/postgresql/data" Default="/mnt/user/appdata/immich/db/" Mode="rw" Description="Persistent database data directory. Must be on a local SSD!" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/immich/db/</Config>
+
+  <!-- Separator: System -->
+  <Config Name="--- System ---" Target="" Default="" Mode="" Description="Timezone and permissions." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="Variable: TZ" Target="TZ" Default="Europe/Berlin" Mode="" Description="Timezone. See: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List" Type="Variable" Display="always" Required="false" Mask="false">Europe/Berlin</Config>
+  <Config Name="Variable: PUID" Target="PUID" Default="99" Mode="" Description="User ID (default: 99 for nobody)" Type="Variable" Display="always" Required="false" Mask="false">99</Config>
+  <Config Name="Variable: PGID" Target="PGID" Default="100" Mode="" Description="Group ID (default: 100 for users)" Type="Variable" Display="always" Required="false" Mask="false">100</Config>
+</Container>
