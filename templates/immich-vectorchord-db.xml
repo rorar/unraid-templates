@@ -10,7 +10,7 @@
   <Support>https://github.com/tensorchord/VectorChord/issues</Support>
   <Project>https://github.com/tensorchord/VectorChord</Project>
   <Overview>PostgreSQL 18.3 with VectorChord 1.1.1 and pgvector 0.8.2 for Immich.&#13;&#13;VectorChord is the successor to pgvecto.rs and uses RaBitQ compression for efficient vector search. Immich uses these extensions for face recognition (face_index) and CLIP-based image search (clip_index).&#13;&#13;This image uses the official TensorChord image with an optimized PostgreSQL configuration (based on Immich defaults: 512MB shared_buffers, SSD-optimized I/O parameters).&#13;&#13;Note: The official Immich image is ghcr.io/immich-app/postgres &#x2013; this template uses the latest VectorChord version directly from TensorChord instead.</Overview>
-  <Category>Databases</Category>
+  <Category>Network:Management Productivity: Tools:Utilities</Category>
   <WebUI/>
   <TemplateURL>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/immich-vectorchord-db.xml</TemplateURL>
   <Icon>https://avatars.githubusercontent.com/u/170015862</Icon>
