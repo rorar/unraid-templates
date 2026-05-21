@@ -25,7 +25,7 @@
     <!-- Volume Mappings -->
     <Config Name="Path: Config" Target="/app/config" Default="/mnt/user/appdata/photomigrator/config" Mode="rw" Description="Persistent config directory (Config.ini, docker.conf)." Type="Path" Display="always" Required="true" Mask="false"/>
     <Config Name="Path: Data" Target="/app/data" Default="/mnt/user/appdata/photomigrator/data" Mode="rw" Description="Input/output data directory for migrations and processing." Type="Path" Display="always" Required="true" Mask="false"/>
-    <Config Name="Path: Volumes" Target="/app/volumes" Default="/mnt/user/immich/Takeout" Mode="rw" Description="Source directory for photo import. For Google Takeout migration, point this to your extracted Takeout folder (e.g. /mnt/user/immich/Takeout)." Type="Path" Display="always" Required="true" Mask="false"/>
+    <Config Name="Path: Volumes" Target="/app/volumes/admin" Default="/mnt/user/immich/Takeout" Mode="rw" Description="Source directory for the admin user's file browser. For Google Takeout migration, point this to your extracted Takeout folder (e.g. /mnt/user/immich/Takeout). Files will be browsable at /app/volumes/admin/ in the web UI." Type="Path" Display="always" Required="true" Mask="false"/>
 
     <!-- Timezone -->
     <Config Name="Variable: TZ" Target="TZ" Default="Europe/Berlin" Description="Timezone for the container. Important for correct timestamps in logs and file suffixes. See: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List" Type="Variable" Display="always" Required="false" Mask="false"/>
