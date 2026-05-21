@@ -3,7 +3,7 @@
     <Name>photomigrator</Name>
     <Beta>false</Beta>
     <Category>Backup: Cloud: MediaApp:Photos Tools:</Category>
-    <Repository>jaimetur/photomigrator:latest-stable</Repository>
+    <Repository>jaimetur/photomigrator:latest</Repository>
     <Registry>https://hub.docker.com/r/jaimetur/photomigrator/</Registry>
     <Network>immich_internal</Network>
     <Shell>bash</Shell>
