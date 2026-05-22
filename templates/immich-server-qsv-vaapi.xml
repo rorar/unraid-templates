@@ -58,6 +58,6 @@
   <Config Name="Path: Localtime" Target="/etc/localtime" Default="/etc/localtime" Mode="ro" Description="Timezone sync from host (read-only)" Type="Path" Display="advanced" Required="false" Mask="false">/etc/localtime</Config>
 
   <!-- Separator: Advanced -->
-  <Config Name="--- Advanced ---" Target="" Default="" Mode="" Description="Advanced settings. Only change if you know what you are doing." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="--- Advanced ---" Target="" Default="" Mode="" Description="Advanced settings. Only change if you know what you are doing. If using a reverse proxy (e.g. Nginx Proxy Manager, Traefik), add IMMICH_TRUSTED_PROXIES manually via Add Variable with your proxy IP so Immich sees the real client IP." Type="Variable" Display="advanced" Required="false" Mask="false"/>
   <Config Name="IMMICH_LOG_LEVEL" Target="IMMICH_LOG_LEVEL" Default="log" Mode="" Description="Log verbosity: verbose, debug, log, warn, error" Type="Variable" Display="advanced" Required="false" Mask="false">log</Config>
 </Container>
