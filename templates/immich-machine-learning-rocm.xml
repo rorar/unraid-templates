@@ -35,7 +35,7 @@
   <!-- Separator: Advanced -->
   <Config Name="--- Advanced ---" Target="" Default="" Mode="" Description="Advanced ML settings." Type="Variable" Display="advanced" Required="false" Mask="false"/>
   <Config Name="MACHINE_LEARNING_MODEL_TTL" Target="MACHINE_LEARNING_MODEL_TTL" Default="300" Mode="" Description="Seconds of inactivity before unloading models from VRAM. Set to 0 to keep loaded permanently." Type="Variable" Display="advanced" Required="false" Mask="false">300</Config>
-  <Config Name="MACHINE_LEARNING_WORKERS" Target="MACHINE_LEARNING_WORKERS" Default="1" Mode="" Description="Number of ML worker processes." Type="Variable" Display="advanced" Required="false" Mask="false">1</Config>
+  <Config Name="MACHINE_LEARNING_WORKERS" Target="MACHINE_LEARNING_WORKERS" Default="1" Mode="" Description="Number of ML worker processes. For multi-GPU setups, increase workers and set MACHINE_LEARNING_DEVICE_IDS (e.g. 0,1) to distribute workers across GPUs." Type="Variable" Display="advanced" Required="false" Mask="false">1</Config>
   <Config Name="MACHINE_LEARNING_WORKER_TIMEOUT" Target="MACHINE_LEARNING_WORKER_TIMEOUT" Default="300" Mode="" Description="Seconds before a worker is considered unresponsive. GPU inference can be slow on first run." Type="Variable" Display="advanced" Required="false" Mask="false">300</Config>
   <Config Name="IMMICH_LOG_LEVEL" Target="IMMICH_LOG_LEVEL" Default="log" Mode="" Description="Log verbosity: verbose, debug, log, warn, error" Type="Variable" Display="advanced" Required="false" Mask="false">log</Config>
 </Container>
