@@ -13,7 +13,7 @@
   <Category>MediaApp:Photos AI: Status:Stable</Category>
   <WebUI/>
   <TemplateURL>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/immich-machine-learning-cuda.xml</TemplateURL>
-  <Icon>https://raw.githubusercontent.com/immich-app/immich/main/docs/static/img/immich-logo.svg</Icon>
+  <Icon>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/docker_icons/immich-ml-logo.png</Icon>
   <ExtraParams>--runtime=nvidia --gpus=all</ExtraParams>
   <PostArgs/>
   <CPUset/>

@@ -13,7 +13,7 @@
   <Category>Network:Management Productivity: Tools:Utilities Status:Stable</Category>
   <WebUI/>
   <TemplateURL>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/immich-postgres-official.xml</TemplateURL>
-  <Icon>https://raw.githubusercontent.com/immich-app/immich/main/docs/static/img/immich-logo.svg</Icon>
+  <Icon>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/docker_icons/vectorchord-logo.png</Icon>
   <ExtraParams>--shm-size=128m --health-cmd="pg_isready -U postgres" --health-interval=10s --health-retries=5 --health-start-period=30s --health-timeout=5s</ExtraParams>
   <PostArgs/>
   <CPUset/>
@@ -36,7 +36,7 @@
 
   <!-- Separator: Storage Tuning -->
   <Config Name="--- Storage Tuning ---" Target="" Default="" Mode="" Description="Built-in PostgreSQL tuning. The official Immich image auto-configures based on storage type." Type="Variable" Display="always" Required="false" Mask="false"/>
-  <Config Name="DB_STORAGE_TYPE" Target="DB_STORAGE_TYPE" Default="SSD" Mode="" Description="Storage type for I/O tuning. Set to HDD if your database is not on an SSD/NVMe. Adjusts effective_io_concurrency and random_page_cost automatically." Type="Variable" Display="always" Required="false" Mask="false">SSD</Config>
+  <Config Name="DB_STORAGE_TYPE" Target="DB_STORAGE_TYPE" Default="SSD|HDD" Mode="" Description="Storage type for I/O tuning. Set to HDD if your database is not on an SSD/NVMe. Adjusts effective_io_concurrency and random_page_cost automatically." Type="Variable" Display="always" Required="false" Mask="false">SSD</Config>
 
   <!-- Separator: System -->
   <Config Name="--- System ---" Target="" Default="" Mode="" Description="Timezone." Type="Variable" Display="always" Required="false" Mask="false"/>
