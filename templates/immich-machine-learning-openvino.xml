@@ -14,7 +14,7 @@
   <WebUI/>
   <TemplateURL>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/immich-machine-learning-openvino.xml</TemplateURL>
   <Icon>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/docker_icons/immich-ml-logo.png</Icon>
-  <ExtraParams/>
+  <ExtraParams>--device-cgroup-rule="c 189:* rmw"</ExtraParams>
   <PostArgs/>
   <CPUset/>
   <DonateText/>
@@ -23,6 +23,9 @@
 
   <!-- GPU Device -->
   <Config Name="Device: Intel iGPU" Target="/dev/dri" Default="/dev/dri" Mode="" Description="Intel integrated GPU device. Required for OpenVINO acceleration." Type="Device" Display="always" Required="true" Mask="false">/dev/dri</Config>
+
+  <!-- USB (for Intel Neural Compute Stick / VPU) -->
+  <Config Name="Path: USB Bus" Target="/dev/bus/usb" Default="/dev/bus/usb" Mode="rw" Description="USB device bus. Required for Intel Neural Compute Stick or VPU devices. Can be removed if using only iGPU." Type="Path" Display="always" Required="false" Mask="false">/dev/bus/usb</Config>
 
   <!-- Volume -->
   <Config Name="Path: Model Cache" Target="/cache" Default="/mnt/user/appdata/immich/model-cache/" Mode="rw" Description="ML model cache directory. Models are downloaded on first use (several GB)." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/immich/model-cache/</Config>

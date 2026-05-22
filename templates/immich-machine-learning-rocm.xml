@@ -14,7 +14,7 @@
   <WebUI/>
   <TemplateURL>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/immich-machine-learning-rocm.xml</TemplateURL>
   <Icon>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/docker_icons/immich-ml-logo.png</Icon>
-  <ExtraParams/>
+  <ExtraParams>--group-add video</ExtraParams>
   <PostArgs/>
   <CPUset/>
   <DonateText/>
