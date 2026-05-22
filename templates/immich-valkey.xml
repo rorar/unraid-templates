@@ -9,22 +9,29 @@
   <Privileged>false</Privileged>
   <Support>https://github.com/valkey-io/valkey/issues</Support>
   <Project>https://valkey.io</Project>
-  <Overview>Valkey is an open-source, high-performance key/value store (Redis fork). Used by Immich as a cache and message broker.&#13;&#13;This is a lightweight component with minimal configuration needed. Must be on the same Docker network as the Immich server.&#13;&#13;Note: Immich officially uses Valkey (not Redis) since their docker-compose.yml references valkey/valkey:9.</Overview>
+  <Overview>Valkey is an open-source, high-performance key/value store (Redis fork). Used by Immich as a cache and job queue (BullMQ).&#13;&#13;This is a lightweight component. Must be on the same Docker network as the Immich server.&#13;&#13;Tuning: maxmemory defaults to 0 (unlimited). For low-memory systems, set to 256mb via Post Arguments. appendonly is enabled for job queue persistence across restarts.&#13;&#13;Note: Immich officially uses Valkey (not Redis) since their docker-compose.yml references valkey/valkey:9.</Overview>
   <Category>Network:Management Tools: Status:Stable</Category>
   <WebUI/>
   <TemplateURL>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/immich-valkey.xml</TemplateURL>
   <Icon>https://valkey.io/img/favicon/apple-touch-icon.png</Icon>
   <ExtraParams>--health-cmd="valkey-cli ping || exit 1" --health-interval=10s --health-retries=5 --health-start-period=10s --health-timeout=5s</ExtraParams>
-  <PostArgs/>
+  <PostArgs>valkey-server --maxmemory 0 --appendonly yes --tcp-keepalive 60</PostArgs>
   <CPUset/>
   <DonateText/>
   <DonateLink/>
   <Requires>Must be on the same Docker network as the immich-server container.</Requires>
 
   <!-- Volume -->
-  <Config Name="Path: Data" Target="/data" Default="/mnt/user/appdata/immich-valkey/" Mode="rw" Description="Persistent Valkey data directory." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/immich-valkey/</Config>
+  <Config Name="Path: Data" Target="/data" Default="/mnt/user/appdata/immich-valkey/" Mode="rw" Description="Persistent Valkey data directory. Stores RDB snapshots and AOF logs for job queue persistence." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/immich-valkey/</Config>
 
   <!-- Separator: System -->
   <Config Name="--- System ---" Target="" Default="" Mode="" Description="General settings." Type="Variable" Display="always" Required="false" Mask="false"/>
   <Config Name="Variable: TZ" Target="TZ" Default="Europe/Berlin" Mode="" Description="Timezone. See: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List" Type="Variable" Display="always" Required="false" Mask="false">Europe/Berlin</Config>
+
+  <!-- Separator: Advanced -->
+  <Config Name="--- Advanced (Post Arguments) ---" Target="" Default="" Mode="" Description="Valkey tuning. These values are set via Post Arguments (not env vars). To change them, edit the Post Arguments field above." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="Info: maxmemory" Target="" Default="" Mode="" Description="Current: 0 (unlimited). For low-memory systems, change to 256mb in Post Arguments. Immich uses Valkey only for job queues (BullMQ) and pub/sub, not as primary storage." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="Info: appendonly" Target="" Default="" Mode="" Description="Current: yes. Enables Append-Only File persistence. Ensures background jobs survive container restarts. Set to 'no' to disable persistence (not recommended)." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="Info: tcp-keepalive" Target="" Default="" Mode="" Description="Current: 60 seconds (default: 300). Faster detection of dead connections in Docker networks." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="Info: Storage sizing" Target="" Default="" Mode="" Description="Recommended data volume size: Small (&lt;10k photos): 1-2GB. Medium (10k-50k): 2-5GB. Large (&gt;50k): 5-10GB. Stores job queue state and AOF logs." Type="Variable" Display="advanced" Required="false" Mask="false"/>
 </Container>
