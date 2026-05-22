@@ -59,7 +59,5 @@
 
   <!-- Separator: Advanced -->
   <Config Name="--- Advanced ---" Target="" Default="" Mode="" Description="Advanced settings. Only change if you know what you are doing." Type="Variable" Display="advanced" Required="false" Mask="false"/>
-  <Config Name="DB_VECTOR_EXTENSION" Target="DB_VECTOR_EXTENSION" Default="" Mode="" Description="Force vector extension: vectorchord, pgvector, or pgvecto.rs. Leave empty for auto-detection (recommended)." Type="Variable" Display="advanced" Required="false" Mask="false"/>
   <Config Name="IMMICH_LOG_LEVEL" Target="IMMICH_LOG_LEVEL" Default="log" Mode="" Description="Log verbosity: verbose, debug, log, warn, error" Type="Variable" Display="advanced" Required="false" Mask="false">log</Config>
-  <Config Name="IMMICH_TRUSTED_PROXIES" Target="IMMICH_TRUSTED_PROXIES" Default="" Mode="" Description="Comma-separated trusted proxy IPs (for reverse proxy setups)" Type="Variable" Display="advanced" Required="false" Mask="false"/>
 </Container>
