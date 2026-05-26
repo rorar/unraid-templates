@@ -35,6 +35,11 @@
   <Config Name="DB_PASSWORD" Target="DB_PASSWORD" Default="postgres" Mode="" Description="Database password (must match DB container)." Type="Variable" Display="always" Required="true" Mask="true">postgres</Config>
   <Config Name="DB_DATABASE_NAME" Target="DB_DATABASE_NAME" Default="immich" Mode="" Description="Database name (must match DB container)." Type="Variable" Display="always" Required="true" Mask="false">immich</Config>
 
+  <!-- Separator: User & Permissions -->
+  <Config Name="--- User &amp; Permissions ---" Target="" Default="" Mode="" Description="Set PUID/PGID to match your Unraid user. Find yours with: id $user" Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="Variable: PUID" Target="PUID" Default="99" Description="User ID to run the container as (default: 99 for nobody)." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="Variable: PGID" Target="PGID" Default="100" Description="Group ID to run the container as (default: 100 for users)." Type="Variable" Display="always" Required="false" Mask="false"/>
+
   <!-- Separator: System -->
   <Config Name="--- System ---" Target="" Default="" Mode="" Description="General settings." Type="Variable" Display="always" Required="false" Mask="false"/>
   <Config Name="Variable: TZ" Target="TZ" Default="Europe/Berlin" Mode="" Description="Timezone. See: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List" Type="Variable" Display="always" Required="false" Mask="false">Europe/Berlin</Config>
