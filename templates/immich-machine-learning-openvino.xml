@@ -14,7 +14,7 @@
   <TemplateURL>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/immich-machine-learning-openvino.xml</TemplateURL>
   <Icon>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/docker_icons/immich-ml-logo.png</Icon>
   <ExtraParams>--device-cgroup-rule="c 189:* rmw"</ExtraParams>
-  <Requires>Requires Intel iGPU with /dev/dri available. Must be on the same Docker network as the immich-server container.</Requires>
+  <Requires>Requires Intel iGPU with /dev/dri available. Must be on the same Docker network as the immich-server container.&#13;&#13;Full setup guide: https://rorar.github.io/immich-unraid-manual/</Requires>
 
   <!-- GPU Device -->
   <Config Name="Device: Intel iGPU" Target="/dev/dri" Default="/dev/dri" Mode="" Description="Intel integrated GPU device. Required for OpenVINO acceleration." Type="Device" Display="always" Required="true" Mask="false">/dev/dri</Config>

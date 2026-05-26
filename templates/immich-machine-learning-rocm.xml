@@ -14,7 +14,7 @@
   <TemplateURL>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/immich-machine-learning-rocm.xml</TemplateURL>
   <Icon>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/docker_icons/immich-ml-logo.png</Icon>
   <ExtraParams>--group-add video</ExtraParams>
-  <Requires>Requires AMD GPU (Polaris or newer) with amdgpu driver and /dev/dri + /dev/kfd available.&#13;If /dev/dri is missing, ensure the GPU kernel module is loaded (modprobe amdgpu).&#13;AMD users may need the RadeonTOP plugin to enable /dev/dri.&#13;&#13;Must be on the same Docker network as the immich-server container.</Requires>
+  <Requires>Requires AMD GPU (Polaris or newer) with amdgpu driver and /dev/dri + /dev/kfd available.&#13;If /dev/dri is missing, ensure the GPU kernel module is loaded (modprobe amdgpu).&#13;AMD users may need the RadeonTOP plugin to enable /dev/dri.&#13;&#13;Must be on the same Docker network as the immich-server container.&#13;&#13;Full setup guide: https://rorar.github.io/immich-unraid-manual/</Requires>
 
   <!-- GPU Devices -->
   <Config Name="Device: KFD" Target="/dev/kfd" Default="/dev/kfd" Mode="" Description="AMD Kernel Fusion Driver. Required for ROCm." Type="Device" Display="always" Required="true" Mask="false">/dev/kfd</Config>

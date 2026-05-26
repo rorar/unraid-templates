@@ -15,7 +15,7 @@
   <Icon>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/docker_icons/valkey-logo.png</Icon>
   <ExtraParams>--health-cmd="valkey-cli ping || exit 1" --health-interval=10s --health-retries=5 --health-start-period=10s --health-timeout=5s</ExtraParams>
   <PostArgs>valkey-server --maxmemory 0 --appendonly yes --tcp-keepalive 60</PostArgs>
-  <Requires>Must be on the same Docker network as the immich-server container.</Requires>
+  <Requires>Must be on the same Docker network as the immich-server container.&#13;&#13;Full setup guide: https://rorar.github.io/immich-unraid-manual/</Requires>
 
   <!-- Volume -->
   <Config Name="Path: Data" Target="/data" Default="/mnt/user/appdata/immich-valkey/" Mode="rw" Description="Persistent Valkey data directory. Stores RDB snapshots and AOF logs for job queue persistence." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/immich-valkey/</Config>

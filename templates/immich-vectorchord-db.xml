@@ -15,7 +15,7 @@
   <Icon>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/docker_icons/vectorchord-logo.png</Icon>
   <ExtraParams>--shm-size=128m --health-cmd="pg_isready -U postgres" --health-interval=10s --health-retries=5 --health-start-period=30s --health-timeout=5s</ExtraParams>
   <PostArgs>postgres -c shared_preload_libraries=vchord,vector -c shared_buffers=512MB -c max_wal_size=5GB -c wal_compression=on -c work_mem=16MB -c effective_io_concurrency=200 -c random_page_cost=1.2 -c autovacuum_vacuum_scale_factor=0.1 -c autovacuum_analyze_scale_factor=0.05 -c autovacuum_vacuum_cost_limit=1000</PostArgs>
-  <Requires>Database files must reside on locally attached storage (SSD/NVMe), not on a remote-mounted filesystem (e.g. NFS/SMB from another machine). Used as the database backend for Immich.</Requires>
+  <Requires>Database files must reside on locally attached storage (SSD/NVMe), not on a remote-mounted filesystem (e.g. NFS/SMB from another machine). Used as the database backend for Immich.&#13;&#13;Full setup guide: https://rorar.github.io/immich-unraid-manual/</Requires>
 
   <!-- Separator: Database -->
   <Config Name="--- Database ---" Target="" Default="" Mode="" Description="Core PostgreSQL settings for Immich." Type="Variable" Display="always" Required="false" Mask="false"/>

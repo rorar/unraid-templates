@@ -14,7 +14,7 @@
   <TemplateURL>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/immich-power-tools.xml</TemplateURL>
   <Icon>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/docker_icons/immich-power-tools-logo.png</Icon>
   <ExtraParams/>
-  <Requires>Requires immich-server and immich-vectorchord-db on the same Docker network (immich_internal). Create an API key in Immich with ALL permissions: Account Icon → Account Settings → API Keys → New API Key → Select All → Create.</Requires>
+  <Requires>Requires immich-server and immich-vectorchord-db on the same Docker network (immich_internal). Create an API key in Immich with ALL permissions: Account Icon → Account Settings → API Keys → New API Key → Select All → Create.&#13;&#13;Full setup guide: https://rorar.github.io/immich-unraid-manual/</Requires>
 
   <!-- Port -->
   <Config Name="Port: Web UI" Target="3000" Default="3000" Mode="tcp" Description="Power Tools web interface port." Type="Port" Display="always" Required="true" Mask="false">3000</Config>

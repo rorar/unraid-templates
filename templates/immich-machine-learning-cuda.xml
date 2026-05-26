@@ -14,7 +14,7 @@
   <TemplateURL>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/immich-machine-learning-cuda.xml</TemplateURL>
   <Icon>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/docker_icons/immich-ml-logo.png</Icon>
   <ExtraParams>--runtime=nvidia --gpus=all</ExtraParams>
-  <Requires>Requires NVIDIA GPU (Pascal or newer) and NVIDIA Container Toolkit. Must be on the same Docker network as the immich-server container.</Requires>
+  <Requires>Requires NVIDIA GPU (Pascal or newer) and NVIDIA Container Toolkit. Must be on the same Docker network as the immich-server container.&#13;&#13;Full setup guide: https://rorar.github.io/immich-unraid-manual/</Requires>
 
   <!-- Volume -->
   <Config Name="Path: Model Cache" Target="/cache" Default="/mnt/user/appdata/immich/model-cache/" Mode="rw" Description="ML model cache directory. Models are downloaded on first use (several GB)." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/immich/model-cache/</Config>
