@@ -12,7 +12,7 @@
   <Category>Network:Management Tools: Status:Stable</Category>
   <WebUI/>
   <TemplateURL>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/immich-valkey.xml</TemplateURL>
-  <Icon>https://valkey.io/img/favicon/apple-touch-icon.png</Icon>
+  <Icon>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/docker_icons/valkey-logo.png</Icon>
   <ExtraParams>--health-cmd="valkey-cli ping || exit 1" --health-interval=10s --health-retries=5 --health-start-period=10s --health-timeout=5s</ExtraParams>
   <PostArgs>valkey-server --maxmemory 0 --appendonly yes --tcp-keepalive 60</PostArgs>
   <Requires>Must be on the same Docker network as the immich-server container.</Requires>

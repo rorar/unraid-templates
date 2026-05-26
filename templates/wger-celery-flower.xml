@@ -12,7 +12,7 @@
   <Category>Tools:</Category>
   <WebUI>http://[IP]:[PORT:5555]</WebUI>
   <TemplateURL>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/wger-celery-flower.xml</TemplateURL>
-  <Icon>https://raw.githubusercontent.com/wger-project/wger/master/wger/core/static/images/logos/logo.png</Icon>
+  <Icon>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/docker_icons/wger-logo.png</Icon>
   <ExtraParams>--entrypoint /start-flower</ExtraParams>
   <Date>2026-05-26</Date>
   <Requires>Part of the wger stack. Must be on the same Docker network (wger_network) as wger-server, wger-db, and wger-redis.</Requires>

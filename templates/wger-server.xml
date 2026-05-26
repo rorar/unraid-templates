@@ -12,7 +12,7 @@
   <Category>Productivity: Tools:</Category>
   <WebUI>http://[IP]:[PORT:8555]</WebUI>
   <TemplateURL>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/wger-server.xml</TemplateURL>
-  <Icon>https://raw.githubusercontent.com/wger-project/wger/master/wger/core/static/images/logos/logo.png</Icon>
+  <Icon>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/docker_icons/wger-logo.png</Icon>
   <ExtraParams>--health-cmd="wget --no-verbose --tries=1 --spider http://localhost:8000" --health-interval=10s --health-retries=5 --health-start-period=300s --health-timeout=5s</ExtraParams>
   <Date>2026-05-26</Date>
   <Requires>Requires wger-db, wger-redis, and wger-nginx containers on the same Docker network (wger_network). Optional: wger-celery-worker, wger-celery-beat, wger-celery-flower.</Requires>

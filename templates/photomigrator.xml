@@ -14,7 +14,7 @@
     <Overview>PhotoMigrator lets you interact with and migrate between photo services such as Google Photos, Synology Photos, Immich Photos, NextCloud Photos, and Google Takeout. Features include automatic migration between services/accounts, Google Takeout analysis with EXIF metadata embedding, album/asset management (upload, download, delete, rename), library organization (duplicates, folder structures), and multi-account support. Includes a web interface (FastAPI) and CLI.&#13;&#13;For setup instructions and documentation, see: https://github.com/jaimetur/PhotoMigrator</Overview>
     <WebUI>http://[IP]:[PORT:6078]</WebUI>
     <TemplateURL>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/photomigrator.xml</TemplateURL>
-    <Icon>https://raw.githubusercontent.com/jaimetur/PhotoMigrator/main/assets/logos/logo.png</Icon>
+    <Icon>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/docker_icons/photomigrator-logo.png</Icon>
     <Date>2026-05-18</Date>
     <Changes>https://github.com/jaimetur/PhotoMigrator/blob/main/CHANGELOG.md</Changes>
     <Requires>Create volume paths before first start. On first run the container will generate default Config.ini and docker.conf in the config directory.</Requires>

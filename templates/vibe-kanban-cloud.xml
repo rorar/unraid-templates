@@ -14,7 +14,7 @@
     <Overview>Deploy Vibe Kanban Cloud on UnRAID. This is a true Docker-in-Docker wrapper that runs the entire Cloud stack (remote-server, Postgres, ElectricSQL, Caddy).&#13;&#13;Important: You MUST use Privileged mode.&#13;&#13;For Local setups without domain, enter your local IP in DOMAIN and it will auto-generate an SSL cert you can find in your appdata.&#13;&#13;For External proxies (Nginx/Traefik), set USE_EXTERNAL_PROXY to true and map the External App Port.</Overview>
     <WebUI>http://[IP]:[PORT:180]/</WebUI>
     <TemplateURL>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/vibe-kanban-cloud.xml</TemplateURL>
-    <Icon>https://raw.githubusercontent.com/BloopAI/vibe-kanban/main/crates/web/public/logo.png</Icon>
+    <Icon>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/docker_icons/vibe-kanban-logo.png</Icon>
     <Date>2026-04-30</Date>
     <Changes></Changes>
     <Requires>This container requires Privileged mode to run its internal Docker daemon (True Docker-in-Docker).</Requires>

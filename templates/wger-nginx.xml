@@ -12,7 +12,7 @@
   <Category>Network:Proxy</Category>
   <WebUI>http://[IP]:[PORT:8557]</WebUI>
   <TemplateURL>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/wger-nginx.xml</TemplateURL>
-  <Icon>https://raw.githubusercontent.com/wger-project/wger/master/wger/core/static/images/logos/logo.png</Icon>
+  <Icon>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/docker_icons/wger-logo.png</Icon>
   <ExtraParams>--health-cmd="service nginx status" --health-interval=10s --health-retries=5 --health-start-period=30s --health-timeout=5s</ExtraParams>
   <Date>2026-05-26</Date>
   <Requires>Part of the wger stack. Must be on the same Docker network (wger_network) as wger-server.</Requires>

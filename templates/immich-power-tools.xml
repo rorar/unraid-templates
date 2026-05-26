@@ -12,7 +12,7 @@
   <Category>MediaApp:Photos Tools: Status:Stable</Category>
   <WebUI>http://[IP]:[PORT:3000]</WebUI>
   <TemplateURL>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/immich-power-tools.xml</TemplateURL>
-  <Icon>https://raw.githubusercontent.com/nwithan8/unraid_templates/master/images/immich-power-tools-icon.png</Icon>
+  <Icon>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/docker_icons/immich-power-tools-logo.png</Icon>
   <ExtraParams/>
   <Requires>Requires immich-server and immich-vectorchord-db on the same Docker network (immich_internal). Create an API key in Immich with ALL permissions: Account Icon → Account Settings → API Keys → New API Key → Select All → Create.</Requires>
 

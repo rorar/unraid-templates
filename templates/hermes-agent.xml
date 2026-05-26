@@ -16,7 +16,7 @@
     <Overview>Hermes Agent is a self-improving AI agent built by Nous Research. Features a built-in learning loop, memory system, and supports multiple messaging platforms (Telegram, Discord, Slack, WhatsApp, Matrix, Email, etc.). Stores all config, memory, sessions, and skills in /opt/data. Access the web dashboard at the same port as the gateway API (default: 9119).&#13;&#13;For detailed setup instructions, see the official docs: https://hermes-agent.nousresearch.com/docs</Overview>
     <WebUI>http://[IP]:[PORT:9119]</WebUI>
     <TemplateURL>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/hermes-agent.xml</TemplateURL>
-    <Icon>https://raw.githubusercontent.com/NousResearch/hermes-agent/main/assets/banner.png</Icon>
+    <Icon>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/docker_icons/hermes-agent-logo.png</Icon>
     <Date>2026-04-22</Date>
     <Changes></Changes>
     <Requires>Shared memory is set to 1GB for Playwright browser automation. If you run many concurrent browser tasks, increase --shm-size to 2g or 4g in Extra Parameters. To edit Extra Parameters, switch Basic View --> Advanced View.</Requires>
