@@ -33,12 +33,15 @@ Docker container templates for [Unraid Community Applications](https://ca.unraid
 
 #### Setup Notes
 
+> **New to Immich on Unraid?** Check out the **[Immich Unraid Manual](https://rorar.github.io/immich-unraid-manual/)** -- a complete step-by-step guide covering installation, GPU transcoding, storage layout, and troubleshooting. ([Source](https://github.com/rorar/immich-unraid-manual))
+
 1. All Immich containers must be on the same Docker network (`immich_internal`)
 2. Storage is split: HDD (Array) for uploads/backups, SSD (Cache) for thumbnails/encoded video
 3. Create two Unraid shares before deploying: `immich` (Array) and `immich-gen` (Cache)
 
 #### Documentation
 
+- **[Immich Unraid Manual](https://rorar.github.io/immich-unraid-manual/)** -- Complete Unraid setup guide
 - [Official Docs](https://docs.immich.app)
 - [GitHub Repository](https://github.com/immich-app/immich)
 
