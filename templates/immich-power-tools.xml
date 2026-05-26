@@ -13,7 +13,7 @@
   <WebUI>http://[IP]:[PORT:3000]</WebUI>
   <TemplateURL>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/immich-power-tools.xml</TemplateURL>
   <Icon>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/docker_icons/immich-power-tools-logo.png</Icon>
-  <ExtraParams/>
+  <ExtraParams>--user 99:100</ExtraParams>
   <Requires>Requires immich-server and immich-vectorchord-db on the same Docker network (immich_internal). Create an API key in Immich with ALL permissions: Account Icon → Account Settings → API Keys → New API Key → Select All → Create.&#13;&#13;Full setup guide: https://rorar.github.io/immich-unraid-manual/</Requires>
 
   <!-- Port -->
@@ -34,11 +34,6 @@
   <Config Name="DB_USERNAME" Target="DB_USERNAME" Default="postgres" Mode="" Description="Database username (must match DB container)." Type="Variable" Display="always" Required="true" Mask="false">postgres</Config>
   <Config Name="DB_PASSWORD" Target="DB_PASSWORD" Default="postgres" Mode="" Description="Database password (must match DB container)." Type="Variable" Display="always" Required="true" Mask="true">postgres</Config>
   <Config Name="DB_DATABASE_NAME" Target="DB_DATABASE_NAME" Default="immich" Mode="" Description="Database name (must match DB container)." Type="Variable" Display="always" Required="true" Mask="false">immich</Config>
-
-  <!-- Separator: User & Permissions -->
-  <Config Name="--- User &amp; Permissions ---" Target="" Default="" Mode="" Description="Set PUID/PGID to match your Unraid user. Find yours with: id $user" Type="Variable" Display="always" Required="false" Mask="false"/>
-  <Config Name="Variable: PUID" Target="PUID" Default="99" Description="User ID to run the container as (default: 99 for nobody)." Type="Variable" Display="always" Required="false" Mask="false"/>
-  <Config Name="Variable: PGID" Target="PGID" Default="100" Description="Group ID to run the container as (default: 100 for users)." Type="Variable" Display="always" Required="false" Mask="false"/>
 
   <!-- Separator: System -->
   <Config Name="--- System ---" Target="" Default="" Mode="" Description="General settings." Type="Variable" Display="always" Required="false" Mask="false"/>
