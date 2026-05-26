@@ -4,7 +4,6 @@
   <Repository>ghcr.io/immich-power-tools/immich-power-tools:latest</Repository>
   <Registry>https://github.com/immich-power-tools/immich-power-tools/pkgs/container/immich-power-tools</Registry>
   <Network>immich_internal</Network>
-  <MyIP/>
   <Shell>sh</Shell>
   <Privileged>false</Privileged>
   <Support>https://github.com/immich-power-tools/immich-power-tools/issues</Support>
@@ -15,10 +14,6 @@
   <TemplateURL>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/immich-power-tools.xml</TemplateURL>
   <Icon>https://raw.githubusercontent.com/nwithan8/unraid_templates/master/images/immich-power-tools-icon.png</Icon>
   <ExtraParams/>
-  <PostArgs/>
-  <CPUset/>
-  <DonateText/>
-  <DonateLink/>
   <Requires>Requires immich-server and immich-vectorchord-db on the same Docker network (immich_internal). Create an API key in Immich with ALL permissions: Account Icon → Account Settings → API Keys → New API Key → Select All → Create.</Requires>
 
   <!-- Port -->

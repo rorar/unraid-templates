@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>wger-celery-flower</Name>
+  <Repository>wger/server:latest</Repository>
+  <Registry>https://registry.hub.docker.com/r/wger/server</Registry>
+  <Network>wger_network</Network>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/wger-project/docker/issues</Support>
+  <Project>https://wger.de</Project>
+  <Overview>Flower is a web-based monitoring and management tool for Celery clusters. This template starts the Flower service for the wger application to monitor background tasks.</Overview>
+  <Category>Tools:</Category>
+  <WebUI>http://[IP]:[PORT:5555]</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/wger-celery-flower.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/wger-project/wger/master/wger/core/static/images/logos/logo.png</Icon>
+  <ExtraParams>--entrypoint /start-flower</ExtraParams>
+  <Date>2026-05-26</Date>
+  <Requires>Part of the wger stack. Must be on the same Docker network (wger_network) as wger-server, wger-db, and wger-redis.</Requires>
+  <Config Name="Flower WebUI Port" Target="5555" Default="5555" Mode="tcp" Description="Port for the Flower web interface" Type="Port" Display="always" Required="true" Mask="false">8559</Config>
+  <Config Name="SECRET_KEY" Target="SECRET_KEY" Default="wger-docker-supersecret-key-1234567890!@#$%^&amp;amp;*(-_)" Mode="" Description="Django SECRET_KEY &#x2013; must match wger-server. CHANGE THIS!" Type="Variable" Display="always" Required="true" Mask="false">wger-docker-supersecret-key-1234567890!@#$%^&amp;*(-_)</Config>
+  <Config Name="SIGNING_KEY" Target="SIGNING_KEY" Default="wger-docker-secret-jwtkey-1234567890!@#$%^&amp;amp;*(-_=+)" Mode="" Description="JWT signing key &#x2013; must match wger-server. CHANGE THIS!" Type="Variable" Display="always" Required="true" Mask="false">wger-docker-secret-jwtkey-1234567890!@#$%^&amp;*(-_=+)</Config>
+  <Config Name="TIME_ZONE" Target="TIME_ZONE" Default="Europe/Berlin" Mode="" Description="Server timezone" Type="Variable" Display="always" Required="true" Mask="false">Europe/Berlin</Config>
+  <Config Name="DJANGO_DB_HOST" Target="DJANGO_DB_HOST" Default="wger-db" Mode="" Description="PostgreSQL database container hostname" Type="Variable" Display="always" Required="true" Mask="false">wger-db</Config>
+  <Config Name="DJANGO_DB_PORT" Target="DJANGO_DB_PORT" Default="5432" Mode="" Description="Database port" Type="Variable" Display="always" Required="false" Mask="false">5432</Config>
+  <Config Name="CELERY_BROKER" Target="CELERY_BROKER" Default="redis://wger-redis:6379/2" Mode="" Description="Celery broker URL (Redis)" Type="Variable" Display="always" Required="true" Mask="false">redis://wger-redis:6379/2</Config>
+  <Config Name="CELERY_BACKEND" Target="CELERY_BACKEND" Default="redis://wger-redis:6379/2" Mode="" Description="Celery result backend URL (Redis)" Type="Variable" Display="always" Required="true" Mask="false">redis://wger-redis:6379/2</Config>
+  <Config Name="DJANGO_MEDIA_ROOT" Target="/home/wger/media" Default="/mnt/user/appdata/wger/media" Mode="rw" Description="Path to media files" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/wger/media</Config>
+  <Config Name="PUID" Target="PUID" Default="99" Mode="" Description="User ID" Type="Variable" Display="always" Required="false" Mask="false">99</Config>
+  <Config Name="PGID" Target="PGID" Default="100" Mode="" Description="Group ID" Type="Variable" Display="always" Required="false" Mask="false">100</Config>
+  <Config Name="UMASK" Target="UMASK" Default="022" Mode="" Description="File creation mask" Type="Variable" Display="always" Required="false" Mask="false">022</Config>
+  <Config Name="CELERY_FLOWER_PASSWORD" Target="CELERY_FLOWER_PASSWORD" Default="adminadmin" Mode="" Description="Password for Celery Flower web interface" Type="Variable" Display="advanced" Required="true" Mask="false">adminadmin</Config>
+</Container>

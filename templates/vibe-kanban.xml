@@ -2,7 +2,7 @@
 <Container version="2">
     <Name>vibe-kanban</Name>
     <Beta>false</Beta>
-    <Category>Development: AI:</Category>
+    <Category>Productivity: Tools: AI:</Category>
     <Repository>ghcr.io/rorar/vibe-kanban-docker:latest</Repository>
     <Registry>https://github.com/rorar/vibe-kanban-docker/pkgs/container/vibe-kanban-docker</Registry>
     <Network>bridge</Network>

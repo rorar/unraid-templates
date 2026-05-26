@@ -4,7 +4,6 @@
   <Repository>ghcr.io/immich-app/immich-machine-learning:release</Repository>
   <Registry>https://github.com/immich-app/immich/pkgs/container/immich-machine-learning</Registry>
   <Network>immich_internal</Network>
-  <MyIP/>
   <Shell>bash</Shell>
   <Privileged>false</Privileged>
   <Support>https://github.com/immich-app/immich/issues</Support>
@@ -15,10 +14,6 @@
   <TemplateURL>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/immich-machine-learning.xml</TemplateURL>
   <Icon>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/docker_icons/immich-ml-logo.png</Icon>
   <ExtraParams/>
-  <PostArgs/>
-  <CPUset/>
-  <DonateText/>
-  <DonateLink/>
   <Requires>Must be on the same Docker network as the immich-server container. The server connects to this service on port 3003 by container name.</Requires>
 
   <!-- Volume -->

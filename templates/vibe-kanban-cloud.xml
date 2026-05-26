@@ -2,7 +2,7 @@
 <Container version="2">
     <Name>vibe-kanban-cloud</Name>
     <Beta>false</Beta>
-    <Category>Productivity: Tools: Utilities:</Category>
+    <Category>Productivity: Tools:</Category>
     <Repository>ghcr.io/rorar/vibe-kanban-cloud:latest</Repository>
     <Registry>https://github.com/rorar/vibe-kanban-cloud-docker</Registry>
     <Network>bridge</Network>

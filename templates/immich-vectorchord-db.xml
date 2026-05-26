@@ -4,21 +4,17 @@
   <Repository>tensorchord/vchord-postgres:pg18-v1.1.1</Repository>
   <Registry>https://hub.docker.com/r/tensorchord/vchord-postgres</Registry>
   <Network>immich_internal</Network>
-  <MyIP/>
   <Shell>bash</Shell>
   <Privileged>false</Privileged>
   <Support>https://github.com/tensorchord/VectorChord/issues</Support>
   <Project>https://github.com/tensorchord/VectorChord</Project>
   <Overview>EXPERIMENTAL: PostgreSQL 18.3 with VectorChord 1.1.1 and pgvector 0.8.2 for Immich.&#13;&#13;VectorChord is the successor to pgvecto.rs and uses RaBitQ compression for efficient vector search. Immich uses these extensions for face recognition (face_index) and CLIP-based image search (clip_index).&#13;&#13;This image uses the official TensorChord image with an optimized PostgreSQL configuration (based on Immich defaults: 512MB shared_buffers, SSD-optimized I/O parameters).&#13;&#13;SSD vs HDD: This template ships with SSD-tuned settings (effective_io_concurrency=200, random_page_cost=1.2). If your database runs on an HDD, edit the Post Arguments and remove these two parameters to use PostgreSQL defaults.&#13;&#13;Note: The official Immich image is ghcr.io/immich-app/postgres &#x2013; this template uses the latest VectorChord version directly from TensorChord instead. Watch the Immich base-images repo for configuration updates:&#13;&#13;SSD config: https://github.com/immich-app/base-images/blob/main/postgres/postgresql.ssd.conf&#13;HDD config: https://github.com/immich-app/base-images/blob/main/postgres/postgresql.hdd.conf&#13;Version matrix: https://github.com/immich-app/base-images/blob/main/postgres/versions.yaml</Overview>
-  <Category>Network:Management Productivity: Tools:Utilities Status:Beta</Category>
+  <Category>Tools: Status:Beta</Category>
   <WebUI/>
   <TemplateURL>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/immich-vectorchord-db.xml</TemplateURL>
   <Icon>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/docker_icons/vectorchord-logo.png</Icon>
   <ExtraParams>--shm-size=128m --health-cmd="pg_isready -U postgres" --health-interval=10s --health-retries=5 --health-start-period=30s --health-timeout=5s</ExtraParams>
   <PostArgs>postgres -c shared_preload_libraries=vchord,vector -c shared_buffers=512MB -c max_wal_size=5GB -c wal_compression=on -c work_mem=16MB -c effective_io_concurrency=200 -c random_page_cost=1.2 -c autovacuum_vacuum_scale_factor=0.1 -c autovacuum_analyze_scale_factor=0.05 -c autovacuum_vacuum_cost_limit=1000</PostArgs>
-  <CPUset/>
-  <DonateText/>
-  <DonateLink/>
   <Requires>Database files must reside on locally attached storage (SSD/NVMe), not on a remote-mounted filesystem (e.g. NFS/SMB from another machine). Used as the database backend for Immich.</Requires>
 
   <!-- Separator: Database -->

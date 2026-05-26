@@ -4,7 +4,6 @@
   <Repository>ghcr.io/immich-app/immich-machine-learning:release-rocm</Repository>
   <Registry>https://github.com/immich-app/immich/pkgs/container/immich-machine-learning</Registry>
   <Network>immich_internal</Network>
-  <MyIP/>
   <Shell>bash</Shell>
   <Privileged>false</Privileged>
   <Support>https://github.com/immich-app/immich/issues</Support>
@@ -15,10 +14,6 @@
   <TemplateURL>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/immich-machine-learning-rocm.xml</TemplateURL>
   <Icon>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/docker_icons/immich-ml-logo.png</Icon>
   <ExtraParams>--group-add video</ExtraParams>
-  <PostArgs/>
-  <CPUset/>
-  <DonateText/>
-  <DonateLink/>
   <Requires>Requires AMD GPU (Polaris or newer) with amdgpu driver and /dev/dri + /dev/kfd available.&#13;If /dev/dri is missing, ensure the GPU kernel module is loaded (modprobe amdgpu).&#13;AMD users may need the RadeonTOP plugin to enable /dev/dri.&#13;&#13;Must be on the same Docker network as the immich-server container.</Requires>
 
   <!-- GPU Devices -->

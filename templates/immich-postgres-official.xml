@@ -4,21 +4,16 @@
   <Repository>ghcr.io/immich-app/postgres:18-vectorchord0.5.3-pgvector0.8.1</Repository>
   <Registry>https://github.com/immich-app/base-images/pkgs/container/postgres</Registry>
   <Network>immich_internal</Network>
-  <MyIP/>
   <Shell>bash</Shell>
   <Privileged>false</Privileged>
   <Support>https://github.com/immich-app/immich/issues</Support>
   <Project>https://immich.app</Project>
   <Overview>Official Immich PostgreSQL 18 with VectorChord 0.5.3 and pgvector 0.8.1.&#13;&#13;This is the official database image from the Immich team with a built-in optimized PostgreSQL configuration (512MB shared_buffers, SSD/HDD auto-tuning, WAL compression). No manual tuning via Post Arguments needed.&#13;&#13;SSD vs HDD: Set the DB_STORAGE_TYPE variable to HDD if your database is not on an SSD. Defaults to SSD.&#13;&#13;VectorChord is the successor to pgvecto.rs and uses RaBitQ compression for efficient vector search. Immich uses these extensions for face recognition (face_index) and CLIP-based image search (clip_index).&#13;&#13;Watch the Immich base-images repo for updates:&#13;Version matrix: https://github.com/immich-app/base-images/blob/main/postgres/versions.yaml&#13;SSD config: https://github.com/immich-app/base-images/blob/main/postgres/postgresql.ssd.conf&#13;HDD config: https://github.com/immich-app/base-images/blob/main/postgres/postgresql.hdd.conf</Overview>
-  <Category>Network:Management Productivity: Tools:Utilities Status:Stable</Category>
+  <Category>Tools: Status:Stable</Category>
   <WebUI/>
   <TemplateURL>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/immich-postgres-official.xml</TemplateURL>
   <Icon>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/docker_icons/vectorchord-logo.png</Icon>
   <ExtraParams>--shm-size=128m --health-cmd="pg_isready -U postgres" --health-interval=10s --health-retries=5 --health-start-period=30s --health-timeout=5s</ExtraParams>
-  <PostArgs/>
-  <CPUset/>
-  <DonateText/>
-  <DonateLink/>
   <Requires>Database files must reside on locally attached storage (SSD/NVMe), not on a remote-mounted filesystem (e.g. NFS/SMB from another machine). Used as the database backend for Immich.</Requires>
 
   <!-- Separator: Database -->

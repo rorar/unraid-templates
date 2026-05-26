@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>wger-server</Name>
+  <Repository>wger/server:latest</Repository>
+  <Registry>https://registry.hub.docker.com/r/wger/server</Registry>
+  <Network>wger_network</Network>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/wger-project/docker/issues</Support>
+  <Project>https://wger.de</Project>
+  <Overview>wger (Workout Manager) is a free, open-source web application for managing workouts, nutrition plans, and training logs. This container is the backend application server for the multi-container WGER stack.</Overview>
+  <Category>Productivity: Tools:</Category>
+  <WebUI>http://[IP]:[PORT:8555]</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/wger-server.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/wger-project/wger/master/wger/core/static/images/logos/logo.png</Icon>
+  <ExtraParams>--health-cmd="wget --no-verbose --tries=1 --spider http://localhost:8000" --health-interval=10s --health-retries=5 --health-start-period=300s --health-timeout=5s</ExtraParams>
+  <Date>2026-05-26</Date>
+  <Requires>Requires wger-db, wger-redis, and wger-nginx containers on the same Docker network (wger_network). Optional: wger-celery-worker, wger-celery-beat, wger-celery-flower.</Requires>
+  <Config Name="PORT" Target="8000" Default="8555" Mode="tcp" Description="WebUI port for the wger server (container port 8000)" Type="Port" Display="always" Required="true" Mask="false">8555</Config>
+  <Config Name="DJANGO_DB_ENGINE" Target="DJANGO_DB_ENGINE" Default="django.db.backends.postgresql" Mode="" Description="Database engine, e.g. django.db.backends.postgresql" Type="Variable" Display="always" Required="true" Mask="false">django.db.backends.postgresql</Config>
+  <Config Name="DJANGO_DB_DATABASE" Target="DJANGO_DB_DATABASE" Default="wger" Mode="" Description="PostgreSQL database name" Type="Variable" Display="always" Required="true" Mask="false">wger</Config>
+  <Config Name="DJANGO_DB_USER" Target="DJANGO_DB_USER" Default="wger" Mode="" Description="Database username" Type="Variable" Display="always" Required="true" Mask="false">wger</Config>
+  <Config Name="DJANGO_DB_PASSWORD" Target="DJANGO_DB_PASSWORD" Default="" Mode="" Description="Database password" Type="Variable" Display="always" Required="true" Mask="true">wger</Config>
+  <Config Name="DJANGO_DB_HOST" Target="DJANGO_DB_HOST" Default="wger-db" Mode="" Description="Database container hostname (must match your wger-db container name)" Type="Variable" Display="always" Required="true" Mask="false">wger-db</Config>
+  <Config Name="DJANGO_DB_PORT" Target="DJANGO_DB_PORT" Default="5432" Mode="" Description="PostgreSQL database port" Type="Variable" Display="always" Required="true" Mask="false">5432</Config>
+  <Config Name="TIME_ZONE" Target="TIME_ZONE" Default="Europe/Berlin" Mode="" Description="Server timezone. See: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones" Type="Variable" Display="always" Required="true" Mask="false">Europe/Berlin</Config>
+  <Config Name="SITE_URL" Target="SITE_URL" Default="http://localhost" Mode="" Description="Base URL of the application, e.g. http://your-server-ip:8555" Type="Variable" Display="always" Required="true" Mask="false">http://localhost</Config>
+  <Config Name="DJANGO_STATIC_ROOT" Target="/home/wger/static" Default="/mnt/user/appdata/wger/static/" Mode="rw" Description="Path for static files" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/wger/static/</Config>
+  <Config Name="DJANGO_MEDIA_ROOT" Target="/home/wger/media" Default="/mnt/user/appdata/wger/media/" Mode="rw" Description="Path for media files (uploaded images, etc.)" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/wger/media/</Config>
+  <Config Name="SECRET_KEY" Target="SECRET_KEY" Default="" Mode="" Description="Django SECRET_KEY &#x2013; 50 characters, generate with a secure random generator. CHANGE THIS!" Type="Variable" Display="always" Required="true" Mask="false">wger-docker-supersecret-key-1234567890!@#$%^&amp;*(-_)</Config>
+  <Config Name="SIGNING_KEY" Target="SIGNING_KEY" Default="" Mode="" Description="JWT signing key &#x2013; must differ from SECRET_KEY. CHANGE THIS!" Type="Variable" Display="always" Required="true" Mask="false">wger-docker-secret-jwtkey-1234567890!@#$%^&amp;*(-_=+)</Config>
+  <Config Name="ALLOW_REGISTRATION" Target="ALLOW_REGISTRATION" Default="True" Mode="" Description="Allow new user registration (True/False)" Type="Variable" Display="always" Required="false" Mask="false">True</Config>
+  <Config Name="ALLOW_GUEST_USERS" Target="ALLOW_GUEST_USERS" Default="True" Mode="" Description="Allow guest access (True/False)" Type="Variable" Display="always" Required="false" Mask="false">True</Config>
+  <Config Name="ALLOW_UPLOAD_VIDEOS" Target="ALLOW_UPLOAD_VIDEOS" Default="True" Mode="" Description="Allow video uploads (True/False)" Type="Variable" Display="always" Required="false" Mask="false">True</Config>
+  <Config Name="MIN_ACCOUNT_AGE_TO_TRUST" Target="MIN_ACCOUNT_AGE_TO_TRUST" Default="21" Mode="" Description="Minimum account age in days before user is trusted" Type="Variable" Display="always" Required="false" Mask="false">21</Config>
+  <Config Name="SYNC_EXERCISES_CELERY" Target="SYNC_EXERCISES_CELERY" Default="True" Mode="" Description="Sync exercises in background via Celery" Type="Variable" Display="always" Required="false" Mask="false">True</Config>
+  <Config Name="SYNC_EXERCISE_IMAGES_CELERY" Target="SYNC_EXERCISE_IMAGES_CELERY" Default="True" Mode="" Description="Sync exercise images in background" Type="Variable" Display="always" Required="false" Mask="false">True</Config>
+  <Config Name="SYNC_EXERCISE_VIDEOS_CELERY" Target="SYNC_EXERCISE_VIDEOS_CELERY" Default="True" Mode="" Description="Sync exercise videos in background" Type="Variable" Display="always" Required="false" Mask="false">True</Config>
+  <Config Name="SYNC_INGREDIENTS_CELERY" Target="SYNC_INGREDIENTS_CELERY" Default="True" Mode="" Description="Sync ingredients in background" Type="Variable" Display="always" Required="false" Mask="false">True</Config>
+  <Config Name="DOWNLOAD_INGREDIENTS_FROM" Target="DOWNLOAD_INGREDIENTS_FROM" Default="WGER" Mode="" Description="Source for ingredient data, e.g. 'WGER'" Type="Variable" Display="always" Required="false" Mask="false">WGER</Config>
+  <Config Name="USE_CELERY" Target="USE_CELERY" Default="True" Mode="" Description="Enable Celery for background tasks (True/False)" Type="Variable" Display="always" Required="false" Mask="false">True</Config>
+  <Config Name="PUID" Target="PUID" Default="99" Mode="" Description="User ID" Type="Variable" Display="always" Required="false" Mask="false">99</Config>
+  <Config Name="PGID" Target="PGID" Default="100" Mode="" Description="Group ID" Type="Variable" Display="always" Required="false" Mask="false">100</Config>
+  <Config Name="UMASK" Target="UMASK" Default="022" Mode="" Description="File creation mask" Type="Variable" Display="always" Required="false" Mask="false">022</Config>
+  <Config Name="DJANGO_DEBUG" Target="DJANGO_DEBUG" Default="True" Mode="" Description="Django debug mode (required for wger to run correctly)" Type="Variable" Display="advanced" Required="false" Mask="false">True</Config>
+  <Config Name="CELERY_BROKER" Target="CELERY_BROKER" Default="redis://wger-redis:6379/2" Mode="" Description="Celery broker URL (Redis)" Type="Variable" Display="advanced" Required="false" Mask="false">redis://wger-redis:6379/2</Config>
+  <Config Name="CELERY_BACKEND" Target="CELERY_BACKEND" Default="redis://wger-redis:6379/2" Mode="" Description="Celery result backend URL (Redis)" Type="Variable" Display="advanced" Required="false" Mask="false">redis://wger-redis:6379/2</Config>
+  <Config Name="CELERY_FLOWER_PASSWORD" Target="CELERY_FLOWER_PASSWORD" Default="adminadmin" Mode="" Description="Password for Celery Flower monitoring UI" Type="Variable" Display="advanced" Required="false" Mask="false">adminadmin</Config>
+  <Config Name="DJANGO_CACHE_BACKEND" Target="DJANGO_CACHE_BACKEND" Default="django_redis.cache.RedisCache" Mode="" Description="Cache backend class" Type="Variable" Display="advanced" Required="false" Mask="false">django_redis.cache.RedisCache</Config>
+  <Config Name="DJANGO_CACHE_LOCATION" Target="DJANGO_CACHE_LOCATION" Default="redis://wger-redis:6379/1" Mode="" Description="Django cache URL (Redis)" Type="Variable" Display="advanced" Required="false" Mask="false">redis://wger-redis:6379/1</Config>
+  <Config Name="DJANGO_CACHE_TIMEOUT" Target="DJANGO_CACHE_TIMEOUT" Default="1296000" Mode="" Description="Cache timeout in seconds (15 days)" Type="Variable" Display="advanced" Required="false" Mask="false">1296000</Config>
+  <Config Name="DJANGO_CACHE_CLIENT_CLASS" Target="DJANGO_CACHE_CLIENT_CLASS" Default="django_redis.client.DefaultClient" Mode="" Description="Redis cache client class" Type="Variable" Display="advanced" Required="false" Mask="false">django_redis.client.DefaultClient</Config>
+  <Config Name="ENABLE_EMAIL" Target="ENABLE_EMAIL" Default="False" Mode="" Description="Enable SMTP email notifications (True/False)" Type="Variable" Display="advanced" Required="false" Mask="false">False</Config>
+  <Config Name="EMAIL_HOST" Target="EMAIL_HOST" Default="" Mode="" Description="SMTP server address" Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="EMAIL_PORT" Target="EMAIL_PORT" Default="" Mode="" Description="SMTP server port" Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="EMAIL_HOST_USER" Target="EMAIL_HOST_USER" Default="" Mode="" Description="SMTP server username" Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="EMAIL_HOST_PASSWORD" Target="EMAIL_HOST_PASSWORD" Default="" Mode="" Description="SMTP server password" Type="Variable" Display="advanced" Required="false" Mask="true"/>
+  <Config Name="EMAIL_USE_TLS" Target="EMAIL_USE_TLS" Default="False" Mode="" Description="Enable TLS for email (True/False)" Type="Variable" Display="advanced" Required="false" Mask="false">True</Config>
+  <Config Name="EMAIL_USE_SSL" Target="EMAIL_USE_SSL" Default="False" Mode="" Description="Enable SSL for email (True/False)" Type="Variable" Display="advanced" Required="false" Mask="false">False</Config>
+  <Config Name="FROM_EMAIL" Target="FROM_EMAIL" Default="wger Workout Manager " Mode="" Description="Sender address for system emails" Type="Variable" Display="advanced" Required="false" Mask="false">wger Workout Manager wger@example.com</Config>
+</Container>

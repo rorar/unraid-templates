@@ -4,7 +4,6 @@
   <Repository>valkey/valkey:latest</Repository>
   <Registry>https://hub.docker.com/r/valkey/valkey</Registry>
   <Network>immich_internal</Network>
-  <MyIP/>
   <Shell>sh</Shell>
   <Privileged>false</Privileged>
   <Support>https://github.com/valkey-io/valkey/issues</Support>
@@ -16,9 +15,6 @@
   <Icon>https://valkey.io/img/favicon/apple-touch-icon.png</Icon>
   <ExtraParams>--health-cmd="valkey-cli ping || exit 1" --health-interval=10s --health-retries=5 --health-start-period=10s --health-timeout=5s</ExtraParams>
   <PostArgs>valkey-server --maxmemory 0 --appendonly yes --tcp-keepalive 60</PostArgs>
-  <CPUset/>
-  <DonateText/>
-  <DonateLink/>
   <Requires>Must be on the same Docker network as the immich-server container.</Requires>
 
   <!-- Volume -->

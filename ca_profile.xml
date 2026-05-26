@@ -1,0 +1,13 @@
+<CommunityApplications>
+  <Profile>
+Docker templates for self-hosted applications: **Immich** (photo and video management),
+**Hermes Agent** (self-improving AI assistant), **Vibe Kanban** (AI-first project management),
+**PhotoMigrator** (photo service migration), and **WGER** (fitness tracker and workout manager).
+
+Each multi-container stack includes all required components (database, cache, workers, proxy).
+
+For issues, open a ticket at https://github.com/rorar/unraid-templates/issues
+  </Profile>
+  <Icon>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/docker_icons/immich-logo.png</Icon>
+  <WebPage>https://github.com/rorar/unraid-templates</WebPage>
+</CommunityApplications>

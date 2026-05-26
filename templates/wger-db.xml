@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>wger-db</Name>
+  <Repository>postgres:15-alpine</Repository>
+  <Registry>https://registry.hub.docker.com/_/postgres</Registry>
+  <Network>wger_network</Network>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/wger-project/docker/issues</Support>
+  <Project>https://wger.de</Project>
+  <Overview>PostgreSQL database server for the wger application. Persistent data is stored in the configured host directory.</Overview>
+  <Category>Tools:</Category>
+  <WebUI/>
+  <TemplateURL>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/wger-db.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/wger-project/wger/master/wger/core/static/images/logos/logo.png</Icon>
+  <ExtraParams>--health-cmd="pg_isready -U wger" --health-interval=10s --health-retries=5 --health-start-period=30s --health-timeout=5s</ExtraParams>
+  <Date>2026-05-26</Date>
+  <Requires>Part of the wger stack. Must be on the same Docker network (wger_network) as wger-server.</Requires>
+  <Config Name="PORT" Target="5432" Default="5432" Mode="tcp" Description="PostgreSQL database port" Type="Port" Display="always" Required="true" Mask="false">5432</Config>
+  <Config Name="POSTGRES_USER" Target="POSTGRES_USER" Default="wger" Mode="" Description="Database username" Type="Variable" Display="always" Required="true" Mask="false">wger</Config>
+  <Config Name="POSTGRES_PASSWORD" Target="POSTGRES_PASSWORD" Default="wger" Mode="" Description="Database password" Type="Variable" Display="always" Required="true" Mask="true">wger</Config>
+  <Config Name="POSTGRES_DB" Target="POSTGRES_DB" Default="wger" Mode="" Description="Database name" Type="Variable" Display="always" Required="true" Mask="false">wger</Config>
+  <Config Name="DB_DATA" Target="/var/lib/postgresql/data" Default="/mnt/user/appdata/wger/db/" Mode="rw" Description="Persistent data directory" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/wger/db/</Config>
+  <Config Name="Variable: TZ" Target="TZ" Default="Europe/Berlin" Mode="" Description="Timezone. See: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones" Type="Variable" Display="always" Required="false" Mask="false">Europe/Berlin</Config>
+  <Config Name="PUID" Target="PUID" Default="99" Mode="" Description="User ID" Type="Variable" Display="always" Required="false" Mask="false">99</Config>
+  <Config Name="PGID" Target="PGID" Default="100" Mode="" Description="Group ID" Type="Variable" Display="always" Required="false" Mask="false">100</Config>
+  <Config Name="UMASK" Target="UMASK" Default="022" Mode="" Description="File creation mask" Type="Variable" Display="always" Required="false" Mask="false">022</Config>
+</Container>

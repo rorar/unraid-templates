@@ -94,10 +94,6 @@
     <Config Name="Variable: TAVILY_API_KEY" Target="TAVILY_API_KEY" Default="" Description="Tavily API key for AI-native web search, extract, and crawl." Type="Variable" Display="advanced" Required="false" Mask="true"/>
     <Config Name="Variable: EXA_API_KEY" Target="EXA_API_KEY" Default="" Description="Exa API key for AI-native web search and content retrieval." Type="Variable" Display="advanced" Required="false" Mask="true"/>
 
-    <!-- Tool API Keys -->
-    <Config Name="Variable: TAVILY_API_KEY" Target="TAVILY_API_KEY" Default="" Description="Tavily API key for AI-native web search, extract, and crawl." Type="Variable" Display="advanced" Required="false" Mask="true"/>
-    <Config Name="Variable: EXA_API_KEY" Target="EXA_API_KEY" Default="" Description="Exa API key for AI-native web search and content retrieval." Type="Variable" Display="advanced" Required="false" Mask="true"/>
-
     <!-- User & Permissions (Advanced) -->
     <Config Name="--- User &amp; Permissions ---" Target="" Default="" Mode="" Description="Docs: https://hermes-agent.nousresearch.com/docs" Type="Variable" Display="advanced" Required="false" Mask="false"/>
     <Config Name="Variable: SUDO_PASSWORD" Target="SUDO_PASSWORD" Default="" Description="Sudo password for the container (stored in plaintext - use with caution)." Type="Variable" Display="advanced" Required="false" Mask="true"/>

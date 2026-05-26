@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>wger-redis</Name>
+  <Repository>redis</Repository>
+  <Registry>https://registry.hub.docker.com/_/redis/</Registry>
+  <Network>wger_network</Network>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/wger-project/docker/issues</Support>
+  <Project>https://redis.io/</Project>
+  <Overview>Redis is used as cache and Celery message broker for the wger application.</Overview>
+  <Category>Tools:</Category>
+  <WebUI/>
+  <TemplateURL>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/wger-redis.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/wger-project/wger/master/wger/core/static/images/logos/logo.png</Icon>
+  <ExtraParams>--health-cmd="redis-cli ping" --health-interval=10s --health-retries=5 --health-start-period=30s --health-timeout=5s</ExtraParams>
+  <PostArgs>redis-server /usr/local/etc/redis/redis.conf</PostArgs>
+  <Date>2026-05-26</Date>
+  <Requires>Part of the wger stack. Must be on the same Docker network (wger_network) as wger-server.</Requires>
+  <Config Name="PORT" Target="6379" Default="6379" Mode="tcp" Description="Redis port" Type="Port" Display="always" Required="true" Mask="false">6379</Config>
+  <Config Name="REDIS_DATA" Target="/data" Default="/mnt/user/appdata/wger/redis/" Mode="rw" Description="Persistent Redis data directory" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/wger/redis/</Config>
+  <Config Name="REDIS_CONF" Target="/usr/local/etc/redis/" Default="/mnt/user/appdata/wger/redis/" Mode="rw" Description="Redis configuration directory" Type="Path" Display="always" Required="false" Mask="false">/mnt/user/appdata/wger/redis/</Config>
+  <Config Name="PUID" Target="PUID" Default="99" Mode="" Description="User ID" Type="Variable" Display="always" Required="false" Mask="false">99</Config>
+  <Config Name="PGID" Target="PGID" Default="100" Mode="" Description="Group ID" Type="Variable" Display="always" Required="false" Mask="false">100</Config>
+  <Config Name="UMASK" Target="UMASK" Default="022" Mode="" Description="File creation mask" Type="Variable" Display="always" Required="false" Mask="false">022</Config>
+</Container>
