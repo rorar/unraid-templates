@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>logseq-selfhost-sync</Name>
+  <Repository>ghcr.io/yshalsager/logseq-selfhost-sync:latest</Repository>
+  <Registry>https://github.com/users/yshalsager/packages/container/package/logseq-selfhost-sync</Registry>
+  <Network>bridge</Network>
+  <Shell>bash</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/yshalsager/logseq-selfhost/issues</Support>
+  <Project>https://logseq.com</Project>
+  <Overview>Logseq Sync Server &#x2013; self-hosted Logseq database synchronization service using the Node Adapter. Provides a private, self-hosted alternative to Logseq's official sync service for managing note synchronization across devices.</Overview>
+  <Category>Productivity:Other Status:Stable</Category>
+  <WebUI>http://[IP]:[PORT:8787]</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/logseq-selfhost-sync.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/docker_icons/logseq-logo.png</Icon>
+  <ExtraParams>--read-only --tmpfs /tmp --cap-drop=ALL --security-opt=no-new-privileges:true</ExtraParams>
+  <Requires>Create a backup of your local graph first before syncing! Optionally use with a) Tailscale by changing "DB_SYNC_BASE_URL=http://&lt;your.tailscale.ip&gt;:8787", b) cloudflared + authentication, c) reverse proxy (Nginx Proxy Manager, Traefik) for HTTPS. Cognito credentials are required for JWT validation unless customized.</Requires>
+
+  <!-- Port -->
+  <Config Name="Port: Sync Service" Target="8787" Default="8787" Mode="tcp" Description="Logseq Sync Server API port" Type="Port" Display="always" Required="true" Mask="false"/>
+
+  <!-- Separator: Storage -->
+  <Config Name="--- Storage ---" Target="" Default="" Mode="" Description="Data storage for synchronization database and assets." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="Volume: Sync Data" Target="/app/data" Default="/mnt/user/appdata/logseq-selfhost-sync/" Mode="rw" Description="Logseq sync database and asset storage. Persists graph data and user information. Using an own share on a trusted drive is recommended!" Type="Path" Display="always" Required="true" Mask="false"/>
+
+  <!-- Separator: Sync Configuration -->
+  <Config Name="--- Sync Configuration ---" Target="" Default="" Mode="" Description="Core synchronization service settings." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="SYNC_PORT" Target="SYNC_PORT" Default="8787" Mode="" Description="Container port for sync service (should match Port above)" Type="Variable" Display="always" Required="false" Mask="false">8787</Config>
+  <Config Name="DB_SYNC_PORT" Target="DB_SYNC_PORT" Default="8787" Mode="" Description="Database sync service port" Type="Variable" Display="always" Required="false" Mask="false">8787</Config>
+  <Config Name="DB_SYNC_BASE_URL" Target="DB_SYNC_BASE_URL" Default="http://localhost:8787" Mode="" Description="Public URL for the sync service. For Tailscale: http://&lt;your.tailscale.ip&gt;:8787. For reverse proxy: use HTTPS URL. See Requires section for options." Type="Variable" Display="always" Required="true" Mask="false">http://localhost:8787</Config>
+  <Config Name="DB_SYNC_DATA_DIR" Target="DB_SYNC_DATA_DIR" Default="/app/data" Mode="" Description="Path to data directory inside container" Type="Variable" Display="always" Required="false" Mask="false">|/app/data</Config>
+  <Config Name="DB_SYNC_STORAGE_DRIVER" Target="DB_SYNC_STORAGE_DRIVER" Default="sqlite" Mode="" Description="Storage driver (sqlite or postgresql)" Type="Variable" Display="always" Required="false" Mask="false">sqlite</Config>
+  <Config Name="DB_SYNC_ASSETS_DRIVER" Target="DB_SYNC_ASSETS_DRIVER" Default="filesystem" Mode="" Description="Assets storage driver (filesystem or s3)" Type="Variable" Display="always" Required="false" Mask="false">filesystem</Config>
+  <Config Name="DB_SYNC_LOG_LEVEL" Target="DB_SYNC_LOG_LEVEL" Default="info" Mode="" Description="Log verbosity: debug, info, warn, error" Type="Variable" Display="always" Required="false" Mask="false">info</Config>
+
+  <!-- Separator: Cognito Authentication -->
+  <Config Name="--- Cognito Authentication ---" Target="" Default="" Mode="" Description="Logseq Cognito OAuth2 credentials for JWT validation. These are standard Logseq public values." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="COGNITO_ISSUER" Target="COGNITO_ISSUER" Default="https://cognito-idp.us-east-1.amazonaws.com/us-east-1_dtagLnju8" Mode="" Description="Cognito issuer URL for JWT validation" Type="Variable" Display="advanced" Required="true" Mask="false">https://cognito-idp.us-east-1.amazonaws.com/us-east-1_dtagLnju8</Config>
+  <Config Name="COGNITO_CLIENT_ID" Target="COGNITO_CLIENT_ID" Default="69cs1lgme7p8kbgld8n5kseii6" Mode="" Description="Cognito client ID for JWT validation" Type="Variable" Display="advanced" Required="true" Mask="false">69cs1lgme7p8kbgld8n5kseii6</Config>
+  <Config Name="COGNITO_JWKS_URL" Target="COGNITO_JWKS_URL" Default="https://cognito-idp.us-east-1.amazonaws.com/us-east-1_dtagLnju8/.well-known/jwks.json" Mode="" Description="Cognito JWKS URL for JWT key validation" Type="Variable" Display="advanced" Required="true" Mask="false">https://cognito-idp.us-east-1.amazonaws.com/us-east-1_dtagLnju8/.well-known/jwks.json</Config>
+
+  <!-- Separator: Advanced -->
+  <Config Name="--- Advanced ---" Target="" Default="" Mode="" Description="Advanced security and administration settings. Only modify if you know what you are doing." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="DB_SYNC_ADMIN_TOKEN" Target="DB_SYNC_ADMIN_TOKEN" Default="" Mode="" Description="Optional: Long random secret for hardening maintenance/admin endpoints. Leave empty to disable." Type="Variable" Display="advanced" Required="false" Mask="true"/>
+
+</Container>
