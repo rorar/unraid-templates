@@ -12,7 +12,7 @@
   <Category>Productivity:Other Status:Stable</Category>
   <WebUI>http://[IP]:[PORT:8787]</WebUI>
   <TemplateURL>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/logseq-selfhost-sync.xml</TemplateURL>
-  <Icon>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/docker_icons/logseq-logo.png</Icon>
+  <Icon>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/docker_icons/logseq-selfhost-sync.png</Icon>
   <ExtraParams>--read-only --tmpfs /tmp --cap-drop=ALL --security-opt=no-new-privileges:true</ExtraParams>
   <Requires>Create a backup of your local graph first before syncing! Optionally use with a) Tailscale by changing "DB_SYNC_BASE_URL=http://&lt;your.tailscale.ip&gt;:8787", b) cloudflared + authentication, c) reverse proxy (Nginx Proxy Manager, Traefik) for HTTPS. Cognito credentials are required for JWT validation unless customized.</Requires>
 
