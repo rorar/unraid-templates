@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <Container version="2">
-  <Name>immich-server</Name>
+  <Name>immich-server-nvenc</Name>
   <Repository>ghcr.io/immich-app/immich-server:release</Repository>
   <Registry>https://github.com/immich-app/immich/pkgs/container/immich-server</Registry>
   <Network>immich_internal</Network>
