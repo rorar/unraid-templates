@@ -14,7 +14,7 @@
   <TemplateURL>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/immich-machine-learning.xml</TemplateURL>
   <Icon>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/docker_icons/immich-ml-logo.png</Icon>
   <ExtraParams/>
-  <Requires>Must be on the same Docker network as the immich-server container. The server connects to this service on port 3003 by container name.&#13;&#13;Full setup guide: https://rorar.github.io/immich-unraid-manual/</Requires>
+  <Requires>This template uses your CPU for machine learning. For hardware accelerated ML, use one of the template that fits your (i)GPU. Must be on the same Docker network as the immich-server container. The server connects to this service on port 3003 by container name.&#13;&#13;Full setup guide: https://rorar.github.io/immich-unraid-manual/</Requires>
 
   <!-- Volume -->
   <Config Name="Path: Model Cache" Target="/cache" Default="/mnt/user/appdata/immich/model-cache/" Mode="rw" Description="ML model cache directory. Models are downloaded on first use (several GB)." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/immich/model-cache/</Config>
