@@ -14,14 +14,14 @@
   <TemplateURL>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/logseq-selfhost-sync.xml</TemplateURL>
   <Icon>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/docker_icons/logseq-selfhost-sync.png</Icon>
   <ExtraParams>--user 99:100 --tmpfs /tmp --cap-drop=ALL --security-opt=no-new-privileges:true</ExtraParams>
-  <Requires>Create a backup of your local graph first before syncing! Optionally use with a) Tailscale by changing "DB_SYNC_BASE_URL=http://&lt;your.tailscale.ip&gt;:8787", b) cloudflared + authentication, c) reverse proxy (Nginx Proxy Manager, Traefik) for HTTPS. Cognito credentials are required for JWT validation unless customized.</Requires>
+  <Requires>Sync is an beta Logseq feature and only available on Nightly builds at the moment. Create a backup of your local graph first before syncing! Optionally use with a) Tailscale by changing "DB_SYNC_BASE_URL=http://&lt;your.tailscale.ip&gt;:8787", b) cloudflared + authentication, c) reverse proxy (Nginx Proxy Manager, Traefik) for HTTPS. Cognito credentials are required for JWT validation unless customized.</Requires>
 
   <!-- Port -->
   <Config Name="Port: Sync Service" Target="8787" Default="8787" Mode="tcp" Description="Logseq Sync Server API port" Type="Port" Display="always" Required="true" Mask="false"/>
 
   <!-- Separator: Storage -->
   <Config Name="--- Storage ---" Target="" Default="" Mode="" Description="Data storage for synchronization database and assets." Type="Variable" Display="always" Required="false" Mask="false"/>
-  <Config Name="Volume: Sync Data" Target="/app/data" Default="/mnt/user/appdata/logseq-selfhost-sync/" Mode="rw" Description="Logseq sync database and asset storage. Persists graph data and user information. Using an own share on a trusted drive is recommended!" Type="Path" Display="always" Required="true" Mask="false"/>
+  <Config Name="Volume: Sync Data" Target="/app/data" Default="/mnt/user/appdata/logseq-selfhost-sync/" Mode="rw" Description="Logseq sync database and asset storage. Persists graph data and user information. Using an own share with Custom SMB-Shares Plugin (for specials Chars and Umlauts) on a trusted drive is recommended!" Type="Path" Display="always" Required="true" Mask="false"/>
 
   <!-- Separator: Sync Configuration -->
   <Config Name="--- Sync Configuration ---" Target="" Default="" Mode="" Description="Core synchronization service settings." Type="Variable" Display="always" Required="false" Mask="false"/>
