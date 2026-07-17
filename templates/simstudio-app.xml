@@ -23,8 +23,8 @@
   <Config Name="--- Database ---" Target="" Default="" Mode="" Description="PostgreSQL connection settings. Must match simstudio-db configuration." Type="Variable" Display="always" Required="false" Mask="false"/>
   <Config Name="DATABASE_URL" Target="DATABASE_URL" Default="postgresql://postgres:postgres@simstudio-db:5432/simstudio" Mode="" Description="PostgreSQL connection URL (format: postgresql://user:password@host:port/database). Must match simstudio-db." Type="Variable" Display="always" Required="true" Mask="true">postgresql://postgres:postgres@simstudio-db:5432/simstudio</Config>
 
-  <!-- Separator: Authentication & Security -->
-  <Config Name="--- Authentication & Security ---" Target="" Default="" Mode="" Description="Authentication and security configuration." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <!-- Separator: Authentication &amp; Security -->
+  <Config Name="--- Authentication &amp; Security ---" Target="" Default="" Mode="" Description="Authentication and security configuration." Type="Variable" Display="always" Required="false" Mask="false"/>
   <Config Name="BETTER_AUTH_SECRET" Target="BETTER_AUTH_SECRET" Default="" Mode="" Description="Authentication secret key (shared with simstudio-realtime). Must be 32+ characters. Generate: openssl rand -base64 32" Type="Variable" Display="always" Required="true" Mask="true"/>
   <Config Name="BETTER_AUTH_URL" Target="BETTER_AUTH_URL" Default="http://localhost:3000" Mode="" Description="Base URL for authentication (same as NEXT_PUBLIC_APP_URL)" Type="Variable" Display="always" Required="true" Mask="false">http://localhost:3000</Config>
   <Config Name="INTERNAL_API_SECRET" Target="INTERNAL_API_SECRET" Default="" Mode="" Description="Secret for internal service-to-service communication (shared with simstudio-realtime). Generate: openssl rand -base64 32" Type="Variable" Display="always" Required="true" Mask="true"/>
@@ -36,8 +36,8 @@
   <Config Name="NEXT_PUBLIC_APP_URL" Target="NEXT_PUBLIC_APP_URL" Default="http://localhost:3000" Mode="" Description="Public application URL (e.g., http://your-server-ip:3000 or https://simstudio.example.com). Used by browser clients." Type="Variable" Display="always" Required="true" Mask="false">http://localhost:3000</Config>
   <Config Name="TRUSTED_ORIGINS" Target="TRUSTED_ORIGINS" Default="" Mode="" Description="Comma-separated list of additional trusted origins for authentication (e.g., apex + www, aliases, reverse-proxy IPs). Leave empty to use only NEXT_PUBLIC_APP_URL." Type="Variable" Display="advanced" Required="false" Mask="false"/>
 
-  <!-- Separator: Realtime & WebSocket -->
-  <Config Name="--- Realtime & WebSocket ---" Target="" Default="" Mode="" Description="Real-time communication settings." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <!-- Separator: Realtime &amp; WebSocket -->
+  <Config Name="--- Realtime &amp; WebSocket ---" Target="" Default="" Mode="" Description="Real-time communication settings." Type="Variable" Display="always" Required="false" Mask="false"/>
   <Config Name="SOCKET_SERVER_URL" Target="SOCKET_SERVER_URL" Default="http://simstudio-realtime:3002" Mode="" Description="Internal URL for WebSocket server (container-to-container)" Type="Variable" Display="always" Required="true" Mask="false">http://simstudio-realtime:3002</Config>
   <Config Name="NEXT_PUBLIC_SOCKET_URL" Target="NEXT_PUBLIC_SOCKET_URL" Default="" Mode="" Description="Public WebSocket URL for browser clients. Leave empty to use page origin (requires reverse proxy to route /socket.io). Set explicitly if realtime is on different host:port (e.g., wss://socket.example.com)." Type="Variable" Display="advanced" Required="false" Mask="false"/>
 
@@ -51,7 +51,7 @@
   <Config Name="SIM_AGENT_API_URL" Target="SIM_AGENT_API_URL" Default="" Mode="" Description="URL for Sim Agent API (e.g., http://agent-service:port)" Type="Variable" Display="always" Required="false" Mask="false"/>
   <Config Name="OLLAMA_URL" Target="OLLAMA_URL" Default="http://localhost:11434" Mode="" Description="Ollama API endpoint for local LLM inference (optional)" Type="Variable" Display="advanced" Required="false" Mask="false">http://localhost:11434</Config>
 
-  <!-- Separator: Performance & Admission Control -->
+  <!-- Separator: Performance &amp; Admission Control -->
   <Config Name="--- Performance ---" Target="" Default="" Mode="" Description="Performance tuning and resource limits." Type="Variable" Display="advanced" Required="false" Mask="false"/>
   <Config Name="ADMISSION_GATE_MAX_INFLIGHT" Target="ADMISSION_GATE_MAX_INFLIGHT" Default="500" Mode="" Description="Maximum number of concurrent inflight requests to the admission gate" Type="Variable" Display="advanced" Required="false" Mask="false">500</Config>
 
