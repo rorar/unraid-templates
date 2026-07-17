@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>simstudio-db</Name>
+  <Repository>pgvector/pgvector:pg17</Repository>
+  <Registry>https://hub.docker.com/r/pgvector/pgvector</Registry>
+  <Network>simstudio_network</Network>
+  <Shell>bash</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/pgvector/pgvector/issues</Support>
+  <Project>https://pgvector.org</Project>
+  <Overview>PostgreSQL 17 with pgvector extension for Sim Studio vector embeddings and semantic search. This is the required database backend for Sim Studio.&#13;&#13;pgvector enables fast similarity search on embeddings and is essential for AI-powered features like semantic search and vector similarity matching in Sim Studio.</Overview>
+  <Category>Database: Status:Stable</Category>
+  <WebUI/>
+  <TemplateURL>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/simstudio-db.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/docker_icons/postgresql-logo.png</Icon>
+  <ExtraParams>--health-cmd="pg_isready -U postgres" --health-interval=10s --health-retries=5 --health-start-period=30s --health-timeout=5s</ExtraParams>
+  <Requires>Database files must reside on locally attached storage (SSD/NVMe recommended), not on remote-mounted filesystems. Used as the database backend for simstudio and realtime services.</Requires>
+
+  <!-- Separator: Database -->
+  <Config Name="--- Database ---" Target="" Default="" Mode="" Description="PostgreSQL settings for Sim Studio." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="POSTGRES_USER" Target="POSTGRES_USER" Default="postgres" Mode="" Description="Database superuser username" Type="Variable" Display="always" Required="true" Mask="false">postgres</Config>
+  <Config Name="POSTGRES_PASSWORD" Target="POSTGRES_PASSWORD" Default="postgres" Mode="" Description="Database password. Use strong password. Only A-Za-z0-9 recommended for compatibility." Type="Variable" Display="always" Required="true" Mask="true">postgres</Config>
+  <Config Name="POSTGRES_DB" Target="POSTGRES_DB" Default="simstudio" Mode="" Description="Initial database name" Type="Variable" Display="always" Required="true" Mask="false">simstudio</Config>
+
+  <!-- Port -->
+  <Config Name="Port: PostgreSQL" Target="5432" Default="5432" Mode="tcp" Description="PostgreSQL database port" Type="Port" Display="always" Required="true" Mask="false">5432</Config>
+
+  <!-- Volume -->
+  <Config Name="Path: Database Data" Target="/var/lib/postgresql/data" Default="/mnt/user/appdata/simstudio-db/" Mode="rw" Description="PostgreSQL data directory. Must be on local SSD/NVMe for performance." Type="Path" Display="always" Required="true" Mask="false"/>
+
+  <!-- Separator: System -->
+  <Config Name="--- System ---" Target="" Default="" Mode="" Description="Timezone configuration." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="Variable: TZ" Target="TZ" Default="Europe/Berlin" Mode="" Description="Timezone. See: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List" Type="Variable" Display="always" Required="false" Mask="false">Europe/Berlin</Config>
+  <Config Name="Path: Localtime" Target="/etc/localtime" Default="/etc/localtime" Mode="ro" Description="Timezone sync from host (read-only)" Type="Path" Display="advanced" Required="false" Mask="false"/>
+</Container>
