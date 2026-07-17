@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>simstudio-realtime</Name>
+  <Repository>ghcr.io/simstudioai/realtime:latest</Repository>
+  <Registry>https://github.com/simstudioai/sim/pkgs/container/realtime</Registry>
+  <Network>simstudio_network</Network>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/simstudioai/sim/issues</Support>
+  <Project>https://simstudio.ai</Project>
+  <Overview>Sim Studio Realtime WebSocket Server for live collaboration and real-time updates. This service handles WebSocket connections for collaborative features, live notifications, and real-time data synchronization between clients and the main Sim Studio application.&#13;&#13;Requires: simstudio-db (PostgreSQL), simstudio-valkey (Valkey for session persistence).</Overview>
+  <Category>Development: Status:Stable</Category>
+  <WebUI>http://[IP]:[PORT:3002]/health</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/simstudio-realtime.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/simstudioai/sim/main/apps/sim/public/logo/primary/rounded.png</Icon>
+  <ExtraParams>--health-cmd="curl -fsS http://127.0.0.1:3002/health" --health-interval=90s --health-retries=3 --health-start-period=10s --health-timeout=5s</ExtraParams>
+  <Requires>Requires simstudio-db on the same Docker network (simstudio_network). Requires simstudio-valkey for session persistence and scaling.</Requires>
+
+  <!-- Port -->
+  <Config Name="Port: WebSocket Server" Target="3002" Default="3002" Mode="tcp" Description="Realtime WebSocket server port" Type="Port" Display="always" Required="true" Mask="false">3002</Config>
+
+  <!-- Separator: Database -->
+  <Config Name="--- Database ---" Target="" Default="" Mode="" Description="PostgreSQL connection settings. Must match simstudio-db configuration." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="DATABASE_URL" Target="DATABASE_URL" Default="postgresql://postgres:postgres@simstudio-db:5432/simstudio" Mode="" Description="PostgreSQL connection URL (format: postgresql://user:password@host:port/database)" Type="Variable" Display="always" Required="true" Mask="true">postgresql://postgres:postgres@simstudio-db:5432/simstudio</Config>
+
+  <!-- Separator: Authentication & Security -->
+  <Config Name="--- Authentication & Security ---" Target="" Default="" Mode="" Description="Auth and security configuration for realtime service." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="BETTER_AUTH_SECRET" Target="BETTER_AUTH_SECRET" Default="" Mode="" Description="Authentication secret key (shared with simstudio-app). Must be 32+ characters. Generate: openssl rand -base64 32" Type="Variable" Display="always" Required="true" Mask="true"/>
+  <Config Name="BETTER_AUTH_URL" Target="BETTER_AUTH_URL" Default="http://localhost:3000" Mode="" Description="Base URL for authentication (e.g. http://your-server:3000)" Type="Variable" Display="always" Required="true" Mask="false">http://localhost:3000</Config>
+  <Config Name="INTERNAL_API_SECRET" Target="INTERNAL_API_SECRET" Default="" Mode="" Description="Secret for internal service-to-service communication (shared with simstudio-app). Generate: openssl rand -base64 32" Type="Variable" Display="always" Required="true" Mask="true"/>
+
+  <!-- Separator: Application URLs -->
+  <Config Name="--- Application URLs ---" Target="" Default="" Mode="" Description="Public URLs for the application." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="NEXT_PUBLIC_APP_URL" Target="NEXT_PUBLIC_APP_URL" Default="http://localhost:3000" Mode="" Description="Public URL of the application (used by browser clients)" Type="Variable" Display="always" Required="true" Mask="false">http://localhost:3000</Config>
+
+  <!-- Separator: Valkey Session Storage -->
+  <Config Name="--- Valkey Session Storage ---" Target="" Default="" Mode="" Description="Valkey connection for session persistence and scaling." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="REDIS_URL" Target="REDIS_URL" Default="redis://simstudio-valkey:6379/0" Mode="" Description="Valkey connection URL (format: redis://host:port/db)" Type="Variable" Display="always" Required="true" Mask="false">redis://simstudio-valkey:6379/0</Config>
+
+  <!-- Separator: System -->
+  <Config Name="--- System ---" Target="" Default="" Mode="" Description="Node.js and timezone configuration." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="NODE_ENV" Target="NODE_ENV" Default="production" Mode="" Description="Node.js environment (production/development)" Type="Variable" Display="always" Required="true" Mask="false">production</Config>
+  <Config Name="Variable: TZ" Target="TZ" Default="Europe/Berlin" Mode="" Description="Timezone. See: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List" Type="Variable" Display="always" Required="false" Mask="false">Europe/Berlin</Config>
+
+  <!-- Separator: Advanced -->
+  <Config Name="--- Advanced ---" Target="" Default="" Mode="" Description="Advanced performance and debugging settings." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="LOG_LEVEL" Target="LOG_LEVEL" Default="info" Mode="" Description="Log verbosity: error, warn, info, debug" Type="Variable" Display="advanced" Required="false" Mask="false">info</Config>
+</Container>
