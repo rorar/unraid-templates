@@ -18,7 +18,7 @@
 
   <!-- Separator: Database -->
   <Config Name="--- Database ---" Target="" Default="" Mode="" Description="PostgreSQL connection settings. Must match simstudio-db configuration." Type="Variable" Display="always" Required="false" Mask="false"/>
-  <Config Name="DATABASE_URL" Target="DATABASE_URL" Default="postgresql://postgres:postgres@simstudio-db:5432/simstudio" Mode="" Description="PostgreSQL connection URL (format: postgresql://user:password@host:port/database). Must match simstudio-db." Type="Variable" Display="always" Required="true" Mask="true">postgresql://postgres:postgres@simstudio-db:5432/simstudio</Config>
+  <Config Name="DATABASE_URL" Target="DATABASE_URL" Default="postgresql://postgres:postgres@simstudio-db:5432/simstudio" Mode="" Description="PostgreSQL connection URL (format: postgresql://user:password@host:port/database). Must match simstudio-db." Type="Variable" Display="always" Required="true" Mask="false">postgresql://postgres:postgres@simstudio-db:5432/simstudio</Config>
 
   <!-- Separator: System -->
   <Config Name="--- System ---" Target="" Default="" Mode="" Description="Timezone configuration." Type="Variable" Display="always" Required="false" Mask="false"/>
