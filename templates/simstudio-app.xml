@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>simstudio-app</Name>
+  <Repository>ghcr.io/simstudioai/simstudio:latest</Repository>
+  <Registry>https://github.com/simstudioai/sim/pkgs/container/simstudio</Registry>
+  <Network>simstudio_network</Network>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/simstudioai/sim/issues</Support>
+  <Project>https://simstudio.ai</Project>
+  <Overview>Sim Studio is an AI-powered development environment for building and testing agents. This is the main application server providing the web interface, API, and collaboration features.&#13;&#13;Features: AI agent development, real-time collaboration, semantic search with vector embeddings, and integrated development tools. Requires: simstudio-db (PostgreSQL with pgvector), simstudio-realtime (WebSocket), and simstudio-valkey (session storage).</Overview>
+  <Category>Development: Status:Stable</Category>
+  <WebUI>http://[IP]:[PORT:3000]</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/simstudio-app.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/simstudioai/sim/main/apps/sim/public/logo/primary/rounded.png</Icon>
+  <ExtraParams>--health-cmd="curl -fsS http://127.0.0.1:3000" --health-interval=90s --health-retries=3 --health-start-period=10s --health-timeout=5s</ExtraParams>
+  <Requires>Requires simstudio-db (PostgreSQL), simstudio-realtime (WebSocket), and simstudio-valkey (Redis) on the same Docker network (simstudio_network). All three must be running and healthy before starting simstudio-app.</Requires>
+
+  <!-- Port -->
+  <Config Name="Port: Web UI" Target="3000" Default="3000" Mode="tcp" Description="Sim Studio web interface and API port" Type="Port" Display="always" Required="true" Mask="false">3000</Config>
+
+  <!-- Separator: Database -->
+  <Config Name="--- Database ---" Target="" Default="" Mode="" Description="PostgreSQL connection settings. Must match simstudio-db configuration." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="DATABASE_URL" Target="DATABASE_URL" Default="postgresql://postgres:postgres@simstudio-db:5432/simstudio" Mode="" Description="PostgreSQL connection URL (format: postgresql://user:password@host:port/database). Must match simstudio-db." Type="Variable" Display="always" Required="true" Mask="true">postgresql://postgres:postgres@simstudio-db:5432/simstudio</Config>
+
+  <!-- Separator: Authentication & Security -->
+  <Config Name="--- Authentication & Security ---" Target="" Default="" Mode="" Description="Authentication and security configuration." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="BETTER_AUTH_SECRET" Target="BETTER_AUTH_SECRET" Default="" Mode="" Description="Authentication secret key (shared with simstudio-realtime). Must be 32+ characters. Generate: openssl rand -base64 32" Type="Variable" Display="always" Required="true" Mask="true"/>
+  <Config Name="BETTER_AUTH_URL" Target="BETTER_AUTH_URL" Default="http://localhost:3000" Mode="" Description="Base URL for authentication (same as NEXT_PUBLIC_APP_URL)" Type="Variable" Display="always" Required="true" Mask="false">http://localhost:3000</Config>
+  <Config Name="INTERNAL_API_SECRET" Target="INTERNAL_API_SECRET" Default="" Mode="" Description="Secret for internal service-to-service communication (shared with simstudio-realtime). Generate: openssl rand -base64 32" Type="Variable" Display="always" Required="true" Mask="true"/>
+  <Config Name="ENCRYPTION_KEY" Target="ENCRYPTION_KEY" Default="" Mode="" Description="Data encryption key for sensitive information. Generate: openssl rand -base64 32" Type="Variable" Display="always" Required="true" Mask="true"/>
+  <Config Name="API_ENCRYPTION_KEY" Target="API_ENCRYPTION_KEY" Default="" Mode="" Description="API-specific encryption key. Generate: openssl rand -base64 32" Type="Variable" Display="advanced" Required="false" Mask="true"/>
+
+  <!-- Separator: Application URLs -->
+  <Config Name="--- Application URLs ---" Target="" Default="" Mode="" Description="Public URLs and domain configuration." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="NEXT_PUBLIC_APP_URL" Target="NEXT_PUBLIC_APP_URL" Default="http://localhost:3000" Mode="" Description="Public application URL (e.g., http://your-server-ip:3000 or https://simstudio.example.com). Used by browser clients." Type="Variable" Display="always" Required="true" Mask="false">http://localhost:3000</Config>
+  <Config Name="TRUSTED_ORIGINS" Target="TRUSTED_ORIGINS" Default="" Mode="" Description="Comma-separated list of additional trusted origins for authentication (e.g., apex + www, aliases, reverse-proxy IPs). Leave empty to use only NEXT_PUBLIC_APP_URL." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+
+  <!-- Separator: Realtime & WebSocket -->
+  <Config Name="--- Realtime & WebSocket ---" Target="" Default="" Mode="" Description="Real-time communication settings." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="SOCKET_SERVER_URL" Target="SOCKET_SERVER_URL" Default="http://simstudio-realtime:3002" Mode="" Description="Internal URL for WebSocket server (container-to-container)" Type="Variable" Display="always" Required="true" Mask="false">http://simstudio-realtime:3002</Config>
+  <Config Name="NEXT_PUBLIC_SOCKET_URL" Target="NEXT_PUBLIC_SOCKET_URL" Default="" Mode="" Description="Public WebSocket URL for browser clients. Leave empty to use page origin (requires reverse proxy to route /socket.io). Set explicitly if realtime is on different host:port (e.g., wss://socket.example.com)." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+
+  <!-- Separator: Valkey Session Storage -->
+  <Config Name="--- Valkey Session Storage ---" Target="" Default="" Mode="" Description="Redis/Valkey connection for session persistence." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="REDIS_URL" Target="REDIS_URL" Default="redis://simstudio-valkey:6379/1" Mode="" Description="Valkey connection URL (format: redis://host:port/db)" Type="Variable" Display="always" Required="true" Mask="false">redis://simstudio-valkey:6379/1</Config>
+
+  <!-- Separator: External APIs -->
+  <Config Name="--- External APIs ---" Target="" Default="" Mode="" Description="Third-party API integrations." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="COPILOT_API_KEY" Target="COPILOT_API_KEY" Default="" Mode="" Description="GitHub Copilot API key for AI features" Type="Variable" Display="always" Required="false" Mask="true"/>
+  <Config Name="SIM_AGENT_API_URL" Target="SIM_AGENT_API_URL" Default="" Mode="" Description="URL for Sim Agent API (e.g., http://agent-service:port)" Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="OLLAMA_URL" Target="OLLAMA_URL" Default="http://localhost:11434" Mode="" Description="Ollama API endpoint for local LLM inference (optional)" Type="Variable" Display="advanced" Required="false" Mask="false">http://localhost:11434</Config>
+
+  <!-- Separator: Performance & Admission Control -->
+  <Config Name="--- Performance ---" Target="" Default="" Mode="" Description="Performance tuning and resource limits." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="ADMISSION_GATE_MAX_INFLIGHT" Target="ADMISSION_GATE_MAX_INFLIGHT" Default="500" Mode="" Description="Maximum number of concurrent inflight requests to the admission gate" Type="Variable" Display="advanced" Required="false" Mask="false">500</Config>
+
+  <!-- Separator: System -->
+  <Config Name="--- System ---" Target="" Default="" Mode="" Description="Node.js and timezone configuration." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="NODE_ENV" Target="NODE_ENV" Default="production" Mode="" Description="Node.js environment (production/development)" Type="Variable" Display="always" Required="true" Mask="false">production</Config>
+  <Config Name="Variable: TZ" Target="TZ" Default="Europe/Berlin" Mode="" Description="Timezone. See: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List" Type="Variable" Display="always" Required="false" Mask="false">Europe/Berlin</Config>
+
+  <!-- Separator: Advanced -->
+  <Config Name="--- Advanced ---" Target="" Default="" Mode="" Description="Advanced settings and debugging options." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="LOG_LEVEL" Target="LOG_LEVEL" Default="info" Mode="" Description="Log verbosity: error, warn, info, debug" Type="Variable" Display="advanced" Required="false" Mask="false">info</Config>
+</Container>
