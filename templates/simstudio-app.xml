@@ -3,7 +3,7 @@
   <Name>simstudio-app</Name>
   <Repository>ghcr.io/simstudioai/simstudio:latest</Repository>
   <Registry>https://github.com/simstudioai/sim/pkgs/container/simstudio</Registry>
-  <Network>simstudio_network</Network>
+  <Network>simstudio_internal</Network>
   <Shell>sh</Shell>
   <Privileged>false</Privileged>
   <Support>https://github.com/simstudioai/sim/issues</Support>
@@ -14,7 +14,7 @@
   <TemplateURL>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/simstudio-app.xml</TemplateURL>
   <Icon>https://raw.githubusercontent.com/simstudioai/sim/main/apps/sim/public/logo/primary/rounded.png</Icon>
   <ExtraParams>--health-cmd="curl -fsS http://127.0.0.1:3000" --health-interval=90s --health-retries=3 --health-start-period=10s --health-timeout=5s</ExtraParams>
-  <Requires>Requires simstudio-db (PostgreSQL), simstudio-realtime (WebSocket), and simstudio-valkey (Redis) on the same Docker network (simstudio_network). All three must be running and healthy before starting simstudio-app.</Requires>
+  <Requires>Requires simstudio-db (PostgreSQL), simstudio-realtime (WebSocket), and simstudio-valkey (Redis) on the same Docker network (simstudio_internal). All three must be running and healthy before starting simstudio-app.&#13;&#13;IMPORTANT: Before adding this container, you must create the Docker network 'simstudio_internal' first. Follow these steps in Unraid:&#13;&#13;1. Open Terminal (Go to Main, click Terminal button)&#13;2. Run: docker network create simstudio_internal&#13;3. Go to Settings > Docker&#13;4. Set "Enable Docker" to "No" and click Apply&#13;5. Set "Preserve user defined networks" to "Yes" and click Apply&#13;6. Set "Enable Docker" to "Yes" and click Apply&#13;7. The network is now ready for use with all Sim Studio containers</Requires>
 
   <!-- Port -->
   <Config Name="Port: Web UI" Target="3000" Default="3000" Mode="tcp" Description="Sim Studio web interface and API port" Type="Port" Display="always" Required="true" Mask="false">3000</Config>
