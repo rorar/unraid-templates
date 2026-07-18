@@ -13,7 +13,8 @@
   <WebUI/>
   <TemplateURL>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/simstudio-migrations.xml</TemplateURL>
   <Icon>https://raw.githubusercontent.com/simstudioai/sim/main/apps/sim/public/logo/primary/rounded.png</Icon>
-  <ExtraParams>--restart=no</ExtraParams>
+  <ExtraParams>--restart=no -w /app/packages/db</ExtraParams>
+  <PostArgs>bun run db:migrate</PostArgs>
   <Requires>Requires simstudio-db on the same Docker network (simstudio_internal). Must run and complete successfully before starting simstudio-app and simstudio-realtime. This is a one-time setup container.&#13;&#13;IMPORTANT: Before adding this container, you must create the Docker network 'simstudio_internal' first. Follow these steps in Unraid:&#13;&#13;1. Open Terminal (Go to Main, click Terminal button)&#13;2. Run: docker network create simstudio_internal&#13;3. Go to Settings > Docker&#13;4. Set "Enable Docker" to "No" and click Apply&#13;5. Set "Preserve user defined networks" to "Yes" and click Apply&#13;6. Set "Enable Docker" to "Yes" and click Apply&#13;7. The network is now ready for use with all Sim Studio containers</Requires>
 
   <!-- Separator: Database -->
