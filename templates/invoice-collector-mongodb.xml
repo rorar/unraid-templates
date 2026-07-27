@@ -10,7 +10,7 @@
   <Project>https://www.mongodb.com/</Project>
   <Overview>MongoDB is a cross-platform document-oriented NoSQL database.&#13;&#13;This container provides the MongoDB backend required by invoice-collector. It stores application data and is intended to run on the same Docker network (invoice-collector_internal) as the invoice-collector container.</Overview>
   <Category>Network:Other</Category>
-  <WebUI/>
+  <WebUI></WebUI>
   <TemplateURL>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/invoice-collector-MongoDB.xml</TemplateURL>
   <Icon>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/docker_icons/mongodb-logo.png</Icon>
   <ExtraParams>--hostname=mongodb</ExtraParams>
@@ -19,7 +19,7 @@
 
   <Config Name="MongoDB Data" Target="/data/db" Default="/mnt/user/appdata/invoice-collector-mongodb" Mode="rw" Description="Directory used to store MongoDB database files." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/invoice-collector-mongodb</Config>
 
-  <Config Name="--- System ---" Target="" Default="" Mode="" Description="System configuration." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="--- System ---" Target="" Default="" Mode="" Description="System configuration." Type="Variable" Display="always" Required="false" Mask="false"></Config>
   <Config Name="Variable: TZ" Target="TZ" Default="Europe/Berlin" Mode="" Description="Timezone. See: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List" Type="Variable" Display="always" Required="false" Mask="false">Europe/Berlin</Config>
 
 </Container>
