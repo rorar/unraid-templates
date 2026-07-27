@@ -10,7 +10,7 @@
   <Project>https://immich.app</Project>
   <Overview>Immich Machine Learning service with Intel OpenVINO GPU acceleration.&#13;&#13;Uses Intel iGPU (UHD/Iris Graphics) for ML inference. Works with Intel N100, N150, NUC, and other chips with integrated graphics.&#13;&#13;Handles face recognition, CLIP-based image search, and OCR using GPU-accelerated inference.&#13;&#13;Must be on the same Docker network as the Immich server.</Overview>
   <Category>MediaApp:Photos AI: Status:Stable</Category>
-  <WebUI/>
+  <WebUI></WebUI>
   <TemplateURL>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/immich-machine-learning-openvino.xml</TemplateURL>
   <Icon>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/docker_icons/immich-ml-logo.png</Icon>
   <ExtraParams>--device-cgroup-rule="c 189:* rmw"</ExtraParams>
@@ -26,11 +26,11 @@
   <Config Name="Path: Model Cache" Target="/cache" Default="/mnt/user/appdata/immich/model-cache/" Mode="rw" Description="ML model cache directory. Models are downloaded on first use (several GB)." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/immich/model-cache/</Config>
 
   <!-- Separator: System -->
-  <Config Name="--- System ---" Target="" Default="" Mode="" Description="General settings." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="--- System ---" Target="" Default="" Mode="" Description="General settings." Type="Variable" Display="always" Required="false" Mask="false"</Config>
   <Config Name="Variable: TZ" Target="TZ" Default="Europe/Berlin" Mode="" Description="Timezone. See: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List" Type="Variable" Display="always" Required="false" Mask="false">Europe/Berlin</Config>
 
   <!-- Separator: Advanced -->
-  <Config Name="--- Advanced ---" Target="" Default="" Mode="" Description="Advanced ML settings." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="--- Advanced ---" Target="" Default="" Mode="" Description="Advanced ML settings." Type="Variable" Display="advanced" Required="false" Mask="false"</Config>
   <Config Name="MACHINE_LEARNING_MODEL_TTL" Target="MACHINE_LEARNING_MODEL_TTL" Default="300" Mode="" Description="Seconds of inactivity before unloading models from memory. Set to 0 to keep loaded permanently." Type="Variable" Display="advanced" Required="false" Mask="false">300</Config>
   <Config Name="MACHINE_LEARNING_WORKERS" Target="MACHINE_LEARNING_WORKERS" Default="1" Mode="" Description="Number of ML worker processes. For multi-GPU setups, increase workers and set MACHINE_LEARNING_DEVICE_IDS (e.g. 0,1) to distribute workers across GPUs." Type="Variable" Display="advanced" Required="false" Mask="false">1</Config>
   <Config Name="MACHINE_LEARNING_WORKER_TIMEOUT" Target="MACHINE_LEARNING_WORKER_TIMEOUT" Default="300" Mode="" Description="Seconds before a worker is considered unresponsive. GPU inference can be slow on first run." Type="Variable" Display="advanced" Required="false" Mask="false">300</Config>
