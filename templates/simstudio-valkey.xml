@@ -18,7 +18,7 @@
   <Requires>Must be on the same Docker network (simstudio_internal) as simstudio-realtime and simstudio-app containers.&#13;&#13;Provides session persistence and real-time data synchronization for Sim Studio.&#13;&#13;IMPORTANT: Before adding this container, you must create the Docker network 'simstudio_internal' first. Follow these steps in Unraid:&#13;&#13;1. Open Terminal (Go to Main, click Terminal button)&#13;2. Run: docker network create simstudio_internal&#13;3. Go to Settings > Docker&#13;4. Set "Enable Docker" to "No" and click Apply&#13;5. Set "Preserve user defined networks" to "Yes" and click Apply&#13;6. Set "Enable Docker" to "Yes" and click Apply&#13;7. The network is now ready for use with all Sim Studio containers</Requires>
 
   <!-- Volume -->
-  <Config Name="Path: Data" Target="/data" Default="/mnt/user/appdata/simstudio-valkey/" Mode="rw" Description="Persistent Valkey data directory. Stores RDB snapshots and AOF logs for session persistence and data durability." Type="Path" Display="always" Required="true" Mask="false"/>
+  <Config Name="Path: Data" Target="/data" Default="/mnt/user/appdata/simstudio-valkey/" Mode="rw" Description="Persistent Valkey data directory. Stores RDB snapshots and AOF logs for session persistence and data durability." Type="Path" Display="always" Required="true" Mask="false"></Config>
 
   <!-- Separator: System -->
   <Config Name="--- System ---" Target="" Default="" Mode="" Description="General settings." Type="Variable" Display="always" Required="false" Mask="false"></Config>
