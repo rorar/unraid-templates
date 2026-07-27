@@ -10,14 +10,14 @@
   <Project>https://immich.app</Project>
   <Overview>Official Immich PostgreSQL 18 with VectorChord 0.5.3 and pgvector 0.8.1.&#13;&#13;This is the official database image from the Immich team with a built-in optimized PostgreSQL configuration (512MB shared_buffers, SSD/HDD auto-tuning, WAL compression). No manual tuning via Post Arguments needed.&#13;&#13;SSD vs HDD: Set the DB_STORAGE_TYPE variable to HDD if your database is not on an SSD. Defaults to SSD.&#13;&#13;VectorChord is the successor to pgvecto.rs and uses RaBitQ compression for efficient vector search. Immich uses these extensions for face recognition (face_index) and CLIP-based image search (clip_index).&#13;&#13;Watch the Immich base-images repo for updates:&#13;Version matrix: https://github.com/immich-app/base-images/blob/main/postgres/versions.yaml&#13;SSD config: https://github.com/immich-app/base-images/blob/main/postgres/postgresql.ssd.conf&#13;HDD config: https://github.com/immich-app/base-images/blob/main/postgres/postgresql.hdd.conf</Overview>
   <Category>Tools: Status:Stable</Category>
-  <WebUI/>
+  <WebUI></WebUI>
   <TemplateURL>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/immich-postgres-official.xml</TemplateURL>
   <Icon>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/docker_icons/vectorchord-logo.png</Icon>
   <ExtraParams>--shm-size=128m --health-cmd="pg_isready -U postgres" --health-interval=10s --health-retries=5 --health-start-period=30s --health-timeout=5s</ExtraParams>
   <Requires>Database files must reside on locally attached storage (SSD/NVMe), not on a remote-mounted filesystem (e.g. NFS/SMB from another machine). Used as the database backend for Immich.&#13;&#13;Full setup guide: https://rorar.github.io/immich-unraid-manual/</Requires>
 
   <!-- Separator: Database -->
-  <Config Name="--- Database ---" Target="" Default="" Mode="" Description="Core PostgreSQL settings for Immich." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="--- Database ---" Target="" Default="" Mode="" Description="Core PostgreSQL settings for Immich." Type="Variable" Display="always" Required="false" Mask="false"></Config>
   <Config Name="POSTGRES_USER" Target="POSTGRES_USER" Default="postgres" Mode="" Description="Database username" Type="Variable" Display="always" Required="true" Mask="false">postgres</Config>
   <Config Name="POSTGRES_PASSWORD" Target="POSTGRES_PASSWORD" Default="postgres" Mode="" Description="Database password &#x2013; please change! Use only A-Za-z0-9, no special characters. Generate a secure one in the Unraid terminal: openssl rand -base64 32 | tr -dc A-Za-z0-9 | head -c 32" Type="Variable" Display="always" Required="true" Mask="true">postgres</Config>
   <Config Name="POSTGRES_DB" Target="POSTGRES_DB" Default="immich" Mode="" Description="Database name" Type="Variable" Display="always" Required="true" Mask="false">immich</Config>
@@ -30,10 +30,10 @@
   <Config Name="Path: DB Data" Target="/var/lib/postgresql" Default="/mnt/user/appdata/immich-vectorchord-db/" Mode="rw" Description="Persistent database data directory. PG 18+ stores data in a version-specific subdirectory (18/docker). Must be on locally attached storage (SSD/NVMe), not a remote filesystem." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/immich-vectorchord-db/</Config>
 
   <!-- Separator: Storage Tuning -->
-  <Config Name="--- Storage Tuning ---" Target="" Default="" Mode="" Description="Built-in PostgreSQL tuning. The official Immich image auto-configures based on storage type." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="--- Storage Tuning ---" Target="" Default="" Mode="" Description="Built-in PostgreSQL tuning. The official Immich image auto-configures based on storage type." Type="Variable" Display="always" Required="false" Mask="false"></Config>
   <Config Name="DB_STORAGE_TYPE" Target="DB_STORAGE_TYPE" Default="SSD|HDD" Mode="" Description="Storage type for I/O tuning. Set to HDD if your database is not on an SSD/NVMe. Adjusts effective_io_concurrency and random_page_cost automatically." Type="Variable" Display="always" Required="false" Mask="false">SSD</Config>
 
   <!-- Separator: System -->
-  <Config Name="--- System ---" Target="" Default="" Mode="" Description="Timezone." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="--- System ---" Target="" Default="" Mode="" Description="Timezone." Type="Variable" Display="always" Required="false" Mask="false"></Config>
   <Config Name="Variable: TZ" Target="TZ" Default="Europe/Berlin" Mode="" Description="Timezone. See: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List" Type="Variable" Display="always" Required="false" Mask="false">Europe/Berlin</Config>
 </Container>
