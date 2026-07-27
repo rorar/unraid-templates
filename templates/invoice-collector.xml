@@ -57,5 +57,5 @@
   <Config Name="UI_BEARER_VALIDITY_DURATION_MS" Target="UI_BEARER_VALIDITY_DURATION_MS" Default="3600000" Mode="" Description="UI bearer token validity duration in milliseconds." Type="Variable" Display="advanced" Required="false" Mask="false">3600000</Config>
 
   <Config Name="--- System ---" Target="" Default="" Mode="" Description="System configuration." Type="Variable" Display="always" Required="false" Mask="false"></Config>
-  <Config Name="Variable: TZ" Target="TZ" Default="Europe/Berlin" Mode="" Description="Timezone." Type="Variable" Display="always" Required="false" Mask="false">Europe/Berlin</Config>
+  <Config Name="Variable: TZ" Target="TZ" Default="Europe/Berlin" Mode="" Description="Timezone. See: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List" Type="Variable" Display="always" Required="false" Mask="false">Europe/Berlin</Config>
 </Container>
