@@ -10,7 +10,7 @@
   <Project>https://simstudio.ai</Project>
   <Overview>Sim Studio Database Migration Runner. This container runs database migrations to initialize and update the PostgreSQL schema for Sim Studio.&#13;&#13;This is a one-time setup container. It runs migrations and exits. Must complete successfully before starting simstudio-app and simstudio-realtime.</Overview>
   <Category>Development: Tools:</Category>
-  <WebUI/>
+  <WebUI><WebUI/>
   <TemplateURL>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/simstudio-migrations.xml</TemplateURL>
   <Icon>https://raw.githubusercontent.com/simstudioai/sim/main/apps/sim/public/logo/primary/rounded.png</Icon>
   <ExtraParams>--restart=no -w /app/packages/db</ExtraParams>
@@ -18,14 +18,14 @@
   <Requires>Requires simstudio-db UP AND RUNNING on the same Docker network (simstudio_internal). Must run and complete successfully before starting simstudio-app and simstudio-realtime AND after every simstudio-db upgrade. This is a one-time setup container.&#13;&#13;IMPORTANT: Before adding this container, you must create the Docker network 'simstudio_internal' first. &#13;&#13;Follow these steps in Unraid:&#13;&#13;1. Open Terminal (Go to Main, click Terminal button)&#13;2. Run: docker network create simstudio_internal&#13;3. Go to Settings > Docker&#13;4. Set "Enable Docker" to "No" and click Apply&#13;5. Set "Preserve user defined networks" to "Yes" and click Apply&#13;6. Set "Enable Docker" to "Yes" and click Apply&#13;7. The network is now ready for use with all Sim Studio containers</Requires>
 
   <!-- Separator: Database -->
-  <Config Name="--- Database ---" Target="" Default="" Mode="" Description="PostgreSQL connection settings. Must match simstudio-db configuration." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="--- Database ---" Target="" Default="" Mode="" Description="PostgreSQL connection settings. Must match simstudio-db configuration." Type="Variable" Display="always" Required="false" Mask="false"></Config>
   <Config Name="DATABASE_URL" Target="DATABASE_URL" Default="postgresql://postgres:postgres@simstudio-db:5432/simstudio" Mode="" Description="PostgreSQL connection URL (format: postgresql://user:password@host:port/database). Must match simstudio-db." Type="Variable" Display="always" Required="true" Mask="false">postgresql://postgres:postgres@simstudio-db:5432/simstudio</Config>
 
   <!-- Separator: System -->
-  <Config Name="--- System ---" Target="" Default="" Mode="" Description="Timezone configuration." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="--- System ---" Target="" Default="" Mode="" Description="Timezone configuration." Type="Variable" Display="always" Required="false" Mask="false"></Config>
   <Config Name="Variable: TZ" Target="TZ" Default="Europe/Berlin" Mode="" Description="Timezone. See: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List" Type="Variable" Display="always" Required="false" Mask="false">Europe/Berlin</Config>
 
   <!-- Separator: Advanced -->
-  <Config Name="--- Advanced ---" Target="" Default="" Mode="" Description="Advanced settings for troubleshooting." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="--- Advanced ---" Target="" Default="" Mode="" Description="Advanced settings for troubleshooting." Type="Variable" Display="advanced" Required="false" Mask="false"></Config>
   <Config Name="LOG_LEVEL" Target="LOG_LEVEL" Default="info" Mode="" Description="Log verbosity: error, warn, info, debug" Type="Variable" Display="advanced" Required="false" Mask="false">info</Config>
 </Container>
