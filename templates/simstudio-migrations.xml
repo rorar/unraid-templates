@@ -10,7 +10,7 @@
   <Project>https://simstudio.ai</Project>
   <Overview>Sim Studio Database Migration Runner. This container runs database migrations to initialize and update the PostgreSQL schema for Sim Studio.&#13;&#13;This is a one-time setup container. It runs migrations and exits. Must complete successfully before starting simstudio-app and simstudio-realtime.</Overview>
   <Category>Development: Tools:</Category>
-  <WebUI><WebUI/>
+  <WebUI></WebUI>
   <TemplateURL>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/simstudio-migrations.xml</TemplateURL>
   <Icon>https://raw.githubusercontent.com/simstudioai/sim/main/apps/sim/public/logo/primary/rounded.png</Icon>
   <ExtraParams>--restart=no -w /app/packages/db</ExtraParams>
