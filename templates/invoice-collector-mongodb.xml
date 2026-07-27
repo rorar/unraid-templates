@@ -6,24 +6,20 @@
   <Network>invoice-collector_internal</Network>
   <Shell>sh</Shell>
   <Privileged>false</Privileged>
-
   <Support>https://github.com/mongodb/mongo/issues</Support>
   <Project>https://www.mongodb.com/</Project>
-
-  <Overview>MongoDB is a cross-platform document-oriented NoSQL database.&#13;&#13;This container provides the MongoDB database backend required by invoice-collector. It must run on the same Docker network invoice-collector_internal.</Overview>
-
+  <Overview>MongoDB is a cross-platform document-oriented NoSQL database.&#13;&#13;This container provides the MongoDB backend required by invoice-collector. It stores application data and is intended to run on the same Docker network (invoice-collector_internal) as the invoice-collector container.</Overview>
   <Category>Network:Other</Category>
-
+  <WebUI/>
   <TemplateURL>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/invoice-collector-MongoDB.xml</TemplateURL>
-
   <Icon>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/docker_icons/mongodb-logo.png</Icon>
-
+  <ExtraParams>--hostname=mongodb</ExtraParams>
   <PostArgs>--logpath /dev/null</PostArgs>
+  <Requires>Required by the invoice-collector container running on the same Docker network "invoice-collector_internal".&#13;&#13;IMPORTANT: Before adding this container, create the Docker network first.&#13;&#13;1. Open Unraid Terminal&#13;2. Run: docker network create invoice-collector_internal&#13;3. Go to Settings &gt; Docker&#13;4. Disable Docker and click Apply&#13;5. Enable "Preserve user defined networks" and click Apply&#13;6. Re-enable Docker&#13;&#13;This template configures the container hostname as "mongodb", allowing invoice-collector to connect using the default connection string:&#13;DATABASE_URI=mongodb://mongodb:27017</Requires>
 
-  <Requires>Requires invoice-collector container to run on the same Docker network "invoice-collector_internal".&#13;&#13;IMPORTANT: Before adding this container, create the Docker network first.&#13;&#13;1. Open Unraid Terminal&#13;2. Run: docker network create invoice-collector_internal&#13;3. Go to Settings &gt; Docker&#13;4. Disable Docker and click Apply&#13;5. Enable "Preserve user defined networks" and click Apply&#13;6. Re-enable Docker&#13;&#13;MongoDB configuration:&#13;- Container name: invoice-collector-MongoDB&#13;- Hostname: mongodb&#13;- Network: invoice-collector_internal&#13;- Database port: 27017 (internal only)&#13;&#13;The invoice-collector container connects using DATABASE_URI=mongodb://mongodb:27017</Requires>
+  <Config Name="MongoDB Data" Target="/data/db" Default="/mnt/user/appdata/invoice-collector-mongodb" Mode="rw" Description="Directory used to store MongoDB database files." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/invoice-collector-mongodb</Config>
 
-  <Config Name="Hostname" Target="" Default="mongodb" Mode="" Description="Docker hostname used by invoice-collector for database connectivity." Type="Variable" Display="always" Required="true" Mask="false">mongodb</Config>
-
-  <Config Name="MongoDB Data" Target="/data/db" Default="/mnt/user/appdata/invoice-collector-mongodb" Mode="rw" Description="MongoDB database storage location." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/invoice-collector-mongodb</Config>
+  <Config Name="--- System ---" Target="" Default="" Mode="" Description="System configuration." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="Variable: TZ" Target="TZ" Default="Europe/Berlin" Mode="" Description="Timezone. See: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List" Type="Variable" Display="always" Required="false" Mask="false">Europe/Berlin</Config>
 
 </Container>
