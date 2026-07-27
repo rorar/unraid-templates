@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>invoice-collector</Name>
+  <Repository>ghcr.io/invoice-collector/invoice-collector:master</Repository>
+  <Registry>https://github.com/invoice-collector/invoice-collector/pkgs/container/invoice-collector</Registry>
+  <Network>invoice-collector_internal</Network>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/invoice-collector/invoice-collector/issues</Support>
+  <Project>https://github.com/invoice-collector/invoice-collector</Project>
+  <Overview>Invoice Collector is an open source application for collecting and managing invoices.&#13;&#13;This container provides the Invoice Collector API service.&#13;&#13;Requires MongoDB running as container "mongodb" on the same Docker network: invoice-collector_internal.</Overview>
+  <Category>Productivity: Tools:Finance</Category>
+  <WebUI>http://[IP]:[PORT:8080]</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/invoice-collector.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/rorar/unraid-templates/main/templates/docker_icons/invoice-collector-logo.png</Icon>
+
+  <Requires>Requires a free Bitwarden account with a free Secrets Manager subscription enabled. &#13;&#13;Requires MongoDB running as container "mongodb" on Docker network "invoice-collector_internal".&#13;&#13;IMPORTANT: Before adding this container, create the Docker network first.&#13;&#13;1. Open Unraid Terminal&#13;2. Run: docker network create invoice-collector_internal&#13;3. Go to Settings &gt; Docker&#13;4. Disable Docker and click Apply&#13;5. Enable "Preserve user defined networks" and click Apply&#13;6. Re-enable Docker&#13;&#13;MongoDB requirements:&#13;- Container name: mongodb&#13;- Network: invoice-collector_internal&#13;&#13;The default connection is DATABASE_URI=mongodb://mongodb:27017</Requires>
+
+  <Config Name="Port: Web UI" Target="8080" Default="8080" Mode="tcp" Description="Invoice Collector API port." Type="Port" Display="always" Required="true" Mask="false">8080</Config>
+
+  <Config Name="--- Application ---" Target="" Default="" Mode="" Description="General application configuration." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="PORT" Target="PORT" Default="8080" Mode="" Description="Port on which the API is listening." Type="Variable" Display="always" Required="true" Mask="false">8080</Config>
+  <Config Name="ENV" Target="ENV" Default="prod|debug" Mode="" Description="Application environment. Possible values: prod or debug." Type="Variable" Display="always" Required="false" Mask="false">prod</Config>
+  <Config Name="IS_SELF_HOSTED" Target="IS_SELF_HOSTED" Default="True|False" Mode="" Description="Whether the application is self-hosted." Type="Variable" Display="always" Required="true" Mask="false">True</Config>
+
+  <Config Name="--- Database ---" Target="" Default="" Mode="" Description="MongoDB connection settings." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="DATABASE_URI" Target="DATABASE_URI" Default="mongodb://mongodb:27017" Mode="" Description="MongoDB connection URI. MongoDB container must be named mongodb and connected to invoice-collector_internal network." Type="Variable" Display="always" Required="true" Mask="false">mongodb://mongodb:27017</Config>
+  <Config Name="DATABASE_MONGODB_NAME" Target="DATABASE_MONGODB_NAME" Default="prod" Mode="" Description="MongoDB database name." Type="Variable" Display="always" Required="true" Mask="false">prod</Config>
+
+  <Config Name="--- Frontend ---" Target="" Default="" Mode="" Description="Frontend URL configuration." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="FRONTEND" Target="FRONTEND" Default="http://localhost:8080" Mode="" Description="URL of the frontend application." Type="Variable" Display="always" Required="true" Mask="false">http://localhost:8080</Config>
+
+  <Config Name="--- Bitwarden Secret Manager ---" Target="" Default="" Mode="" Description="Bitwarden secret manager configuration." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="SECRET_MANAGER_TYPE" Target="SECRET_MANAGER_TYPE" Default="bitwarden" Mode="" Description="Secret manager type. Supported value: bitwarden." Type="Variable" Display="always" Required="true" Mask="false">bitwarden</Config>
+  <Config Name="SECRET_MANAGER_BITWARDEN_API_URI" Target="SECRET_MANAGER_BITWARDEN_API_URI" Default="https://vault.bitwarden.eu/api|https://vault.bitwarden.com/api" Mode="" Description="Bitwarden API URI. For non-EU accounts, change to .com" Type="Variable" Display="always" Required="true" Mask="false">https://vault.bitwarden.eu/api</Config>
+  <Config Name="SECRET_MANAGER_BITWARDEN_IDENTITY_URI" Target="SECRET_MANAGER_BITWARDEN_IDENTITY_URI" Default="https://vault.bitwarden.eu/identity|https://vault.bitwarden.com/identity" Mode="" Description="Bitwarden identity URI. For non-EU accounts, change to .com" Type="Variable" Display="always" Required="true" Mask="false">https://vault.bitwarden.eu/identity</Config>
+  <Config Name="SECRET_MANAGER_BITWARDEN_ACCESS_TOKEN" Target="SECRET_MANAGER_BITWARDEN_ACCESS_TOKEN" Default="" Mode="" Description="Bitwarden access token." Type="Variable" Display="always" Required="true" Mask="true"/>
+  <Config Name="SECRET_MANAGER_BITWARDEN_ORGANIZATION_ID" Target="SECRET_MANAGER_BITWARDEN_ORGANIZATION_ID" Default="" Mode="" Description="Bitwarden organization ID. Create a organization, link project using Secret Manager, than copy ID from Secrets Manager overview page." Type="Variable" Display="always" Required="true" Mask="false"/>
+  <Config Name="SECRET_MANAGER_BITWARDEN_PROJECT_ID" Target="SECRET_MANAGER_BITWARDEN_PROJECT_ID" Default="" Mode="" Description="Create a project using Secret Manager, than copy ID from Secrets Manager overview page." Type="Variable" Display="always" Required="true" Mask="false"/>
+
+  <Config Name="--- Proxy ---" Target="" Default="" Mode="" Description="Optional proxy configuration." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="PROXY_TYPE" Target="PROXY_TYPE" Default="no_proxy|oxylab" Mode="" Description="Proxy type. Possible values: no_proxy or oxylab." Type="Variable" Display="advanced" Required="false" Mask="false">no_proxy</Config>
+  <Config Name="PROXY_OXYLAB_USERNAME" Target="PROXY_OXYLAB_USERNAME" Default="" Mode="" Description="Oxylabs proxy username." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="PROXY_OXYLAB_PASSWORD" Target="PROXY_OXYLAB_PASSWORD" Default="" Mode="" Description="Oxylabs proxy password." Type="Variable" Display="advanced" Required="false" Mask="true"/>
+
+  <Config Name="--- Remote Chrome ---" Target="" Default="" Mode="" Description="Optional remote Chrome server configuration." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="REMOTE_CHROME_IP" Target="REMOTE_CHROME_IP" Default="" Mode="" Description="Remote Chrome server IP." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="REMOTE_CHROME_PORT" Target="REMOTE_CHROME_PORT" Default="" Mode="" Description="Remote Chrome server port." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+
+  <Config Name="--- Analytics ---" Target="" Default="" Mode="" Description="Optional analytics configuration." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="ANALYTICS_SERVER_ENDPOINT" Target="ANALYTICS_SERVER_ENDPOINT" Default="" Mode="" Description="Analytics server endpoint." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="ANALYTICS_SERVER_HEADERS" Target="ANALYTICS_SERVER_HEADERS" Default="{}" Mode="" Description="Headers sent to analytics server." Type="Variable" Display="advanced" Required="false" Mask="false">{}</Config>
+
+  <Config Name="--- Token Expiration ---" Target="" Default="" Mode="" Description="Token validity configuration in milliseconds." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="OAUTH_TOKEN_VALIDITY_DURATION_MS" Target="OAUTH_TOKEN_VALIDITY_DURATION_MS" Default="600000" Mode="" Description="OAuth token validity duration in milliseconds." Type="Variable" Display="advanced" Required="false" Mask="false">600000</Config>
+  <Config Name="RESET_PASSWORD_TOKEN_VALIDITY_DURATION_MS" Target="RESET_PASSWORD_TOKEN_VALIDITY_DURATION_MS" Default="3600000" Mode="" Description="Reset password token validity duration in milliseconds." Type="Variable" Display="advanced" Required="false" Mask="false">3600000</Config>
+  <Config Name="UI_BEARER_VALIDITY_DURATION_MS" Target="UI_BEARER_VALIDITY_DURATION_MS" Default="3600000" Mode="" Description="UI bearer token validity duration in milliseconds." Type="Variable" Display="advanced" Required="false" Mask="false">3600000</Config>
+
+  <Config Name="--- System ---" Target="" Default="" Mode="" Description="System configuration." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="Variable: TZ" Target="TZ" Default="Europe/Berlin" Mode="" Description="Timezone." Type="Variable" Display="always" Required="false" Mask="false">Europe/Berlin</Config>
+</Container>
